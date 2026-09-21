@@ -12,6 +12,20 @@ la API de ChatGPT (OpenAI) para obtener una revisión crítica.
 
 ## 2. Instalación
 
+### Windows (automático)
+
+Con Git y Python ya instalados, dentro de la carpeta del repo:
+
+```powershell
+.\setup.ps1
+```
+
+El script verifica los requisitos, instala las dependencias y te pide la API
+key una sola vez (queda guardada de forma permanente para tu usuario de
+Windows, no se pide de nuevo en futuras terminales).
+
+### Manual (cualquier sistema)
+
 ```bash
 pip install -r requirements.txt
 export OPENAI_API_KEY=sk-tu-key-aqui
