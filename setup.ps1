@@ -23,7 +23,7 @@ if (-not (Test-Command "python")) {
 Write-Host "Git and Python found." -ForegroundColor Green
 
 Write-Host "== Installing Python dependencies ==" -ForegroundColor Cyan
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 
 Write-Host "== OpenAI API key ==" -ForegroundColor Cyan
 $existing = [Environment]::GetEnvironmentVariable("OPENAI_API_KEY", "User")
