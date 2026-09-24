@@ -1,6 +1,6 @@
 # Setup script for review_with_chatgpt.py on Windows.
-# Run this from PowerShell, inside the cloned "claude" repo folder:
-#   .\setup.ps1
+# Run this from PowerShell, from the root of the cloned repo:
+#   .\herramientas\revision-chatgpt\setup.ps1
 
 $ErrorActionPreference = "Stop"
 
@@ -23,7 +23,7 @@ if (-not (Test-Command "python")) {
 Write-Host "Git and Python found." -ForegroundColor Green
 
 Write-Host "== Installing Python dependencies ==" -ForegroundColor Cyan
-python -m pip install -r requirements.txt
+python -m pip install -r (Join-Path $PSScriptRoot "requirements.txt")
 
 Write-Host "== OpenAI API key ==" -ForegroundColor Cyan
 $existing = [Environment]::GetEnvironmentVariable("OPENAI_API_KEY", "User")
@@ -46,4 +46,4 @@ if ($existing) {
 
 Write-Host "== Setup complete ==" -ForegroundColor Cyan
 Write-Host "Open a NEW PowerShell window (so the saved key loads), then run:"
-Write-Host "  python review_with_chatgpt.py <path-to-file>" -ForegroundColor Yellow
+Write-Host "  python herramientas\revision-chatgpt\review_with_chatgpt.py <path-to-file>" -ForegroundColor Yellow
