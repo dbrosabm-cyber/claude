@@ -15,6 +15,16 @@
 - Cliente ideal (edad, sexo, dolor principal, deseo, dónde está): _pendiente_
 - Propuesta de valor en una frase: _pendiente_
 
+## Oferta y productos (decidido; costes pendientes de confirmar en CJ)
+Contexto Amazon.es: guante 5,90-15,84 € · rodillo 19-39,99 € · base autolimpiante ~15 € · spray 9,88-15,84 €.
+- ⭐ Producto estrella: **rodillo quitapelos reutilizable** a 34,95 € (coste puesto 11,85 € + 3 € de arancel → margen 11,78 €, 41 %). El rango de Amazon lo aguanta y la demo en el sofá es muy visual.
+- 🏆 Oferta principal: **Kit Casa Sin Pelo** (rodillo + guante) a 44,95 € ("el más elegido"). Coste estimado 17,50 € con envío combinado (PENDIENTE de confirmar en CJ) → ~13-14 € de margen (~37 %). Se puede mostrar "por separado costaría X €" solo con precios reales de la tienda.
+- Guante: solo dentro del kit (suelto a precio creíble, 19,95 €, deja un 15 %: no compensa).
+- Aparcados: base autolimpiante (27 % a 24,95 €) y spray de plantas (riesgo de biocidas).
+- Envío gratis en todo (ya incluido en el precio). Garantía de 30 días.
+- Mínimo para seguir: margen del kit ≥ 30 % con los costes reales de CJ. Si no, buscar una variante más barata o con almacén UE.
+- GPSR: pedir a CJ la persona responsable en la UE del rodillo y del guante antes de publicar.
+
 ## Marca (bloque 4 aprobado salvo logo final)
 - Tono: cercana, cuidadosa, con un puntito de humor. Nunca: urgencias falsas, "el mejor del mercado", "como dice todo el mundo".
 - Frase principal: "Menos pelo en el sofá, más ronroneo en casa."
