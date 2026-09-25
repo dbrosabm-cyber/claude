@@ -6,8 +6,8 @@ de dropshipping (España, EUR). Se carga sola al abrir una sesión en este repo.
 | Pieza | Qué hace |
 |---|---|
 | `CLAUDE.md` | Rol, reglas de oro y qué conector usar. Corto a propósito: se lee en cada mensaje. |
-| `.claude/settings.json` | Bloquea conectores que no aportan a la tienda (Vercel, Spotify, Gamma, Calendar, Supermetrics) para ahorrar tokens. |
-| `.claude/skills/` | Conocimiento experto que solo se carga cuando hace falta: `/producto-ganador`, `/ficha-producto`, `/creativos`, `/campanas-ads`, `/auditoria-tienda`, `/email-retencion`, `/informe`, `/marca`. |
+| `.claude/settings.json` | Bloquea conectores que no aportan a la tienda (Vercel, Spotify, Gamma, Calendar, Supermetrics, Apollo) para ahorrar tokens. |
+| `.claude/skills/` | Conocimiento experto que solo se carga cuando hace falta: `/producto-ganador`, `/ficha-producto`, `/creativos`, `/campanas-ads`, `/auditoria-tienda`, `/email-retencion`, `/informe`, `/marca`, `/contenido-organico`. |
 | `negocio/` | Datos del negocio (perfil, marca, proveedores) y registro de productos testeados. |
 | `herramientas/rentabilidad.py` | Márgenes, CPA y ROAS break-even, precio sugerido. |
 | `herramientas/tokens.py` | Consumo de tokens por pregunta. |

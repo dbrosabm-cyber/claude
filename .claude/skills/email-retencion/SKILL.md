@@ -24,4 +24,4 @@ Asunto ≤ 40 caracteres + preheader que lo complementa. Un solo CTA. Móvil pri
 Consentimiento expreso (RGPD/LSSI); a clientes que ya compraron se les puede enviar publicidad de productos similares con baja fácil (LSSI art. 21.2). SMS solo con opt-in específico. Remitente con dominio propio autenticado (SPF, DKIM, DMARC).
 
 ## Herramientas
-Shopify Email y automatizaciones de marketing de Shopify para empezar. Klaviyo cuando haya >1.000 contactos o se quiera segmentación fina (Windsor `list_actions` en `klaviyo` para flujos). Entrega textos y esquema; activar solo tras confirmación.
+Klaviyo (conector directo: listas, formularios, flujos, campañas, informes); su plan gratuito vale para empezar. Alternativa sin coste: Shopify Email. Entrega textos y esquema; activar solo tras confirmación.
