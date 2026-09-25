@@ -52,6 +52,7 @@ Deja la sesión iniciada en el perfil "Tienda" de Chrome en cada una:
 > 4. Crea páginas: Sobre nosotros, Envíos, Devoluciones, Preguntas frecuentes, Contacto, y textos de políticas (aviso legal, privacidad, términos) con los datos que te dé.
 > 5. Menús principal y de pie, código BIENVENIDA10 y SEO de todo.
 > 6. Pasa la skill auditoria-tienda y dame la lista de lo que me toca hacer a mí en el panel.
+> La tienda arranca en modo lista de espera (botón "Avísame" en vez de "Comprar") hasta validar la demanda.
 > No publiques nada ni gastes dinero sin preguntarme.
 
 Ten a mano antes de empezar: nombre de la tienda, tu nombre o empresa y NIF, dirección, email de contacto, logo (o pide que te lo diseñe con Canva) y la persona responsable en la UE de cada producto (la da el proveedor).

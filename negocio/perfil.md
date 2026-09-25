@@ -28,10 +28,11 @@
 - Titular y NIF para aviso legal: _pendiente_ · Persona responsable UE (GPSR): _pendiente_
 
 ## Estrategia por fases (decidida)
+0. Validación sin vender (0 €, sin alta): tienda visible con precios pero en modo lista de espera. Botón "Avísame cuando esté disponible" (formulario de Klaviyo con casilla de consentimiento RGPD) en lugar de "Comprar"; vídeos orgánicos llevan tráfico. GO si en 2-3 semanas hay ≥ 100 emails y se apunta ≥ 5 % de quien visita la ficha. Luego se abre la venta y se avisa a la lista el primer día.
 1. Ahora, < 500 €/mes: Shopify + CJ con almacén UE, sin stock y sin anuncios. Ventas con contenido orgánico (TikTok, Reels, Shorts) y TikTok Shop con creadores afiliados (skill `contenido-organico`).
 2. Producto que vende solo (5-10 pedidos/día durante 2-3 semanas): comprar stock con marca propia, bajar coste y abrir Amazon FBA con ese producto ya probado.
 3. Con beneficios: anuncios Meta/TikTok (skill `campanas-ads`).
-Requisito previo para vender con regularidad y para TikTok Shop/Amazon: alta de autónomo o empresa.
+Alta para vender: decidido hacerlo bajo la actividad de autónomo del padre (tiene bar y otros negocios, con gestoría). Antes: presentarle idea, tienda y números, y que su gestoría confirme que no afecta a los módulos del bar. Pendiente: comprobar cuota cero de la comunidad autónoma como alternativa (falta saber la comunidad).
 
 ## Cuentas de publicidad
 - Cuentas de ads: ninguna todavía (crear Meta Business con 2FA y administrador de respaldo; luego conectar a Windsor.ai)
