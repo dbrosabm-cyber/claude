@@ -9,7 +9,7 @@
 - Mercados: España (añadir Portugal/Francia/Italia solo con la tienda traducida y rentable en ES)
 
 ## Nicho y cliente
-- Nicho: mascotas, perros y gatos.
+- Nicho: mascotas, perros y gatos. **El usuario tiene gato**: prioridad a productos de gato que pueda demostrar en vídeo con el suyo; los de perro, más adelante o grabados con mascotas de conocidos.
   - Subnichos fuertes: pelo y aseo (quitapelos, cepillos), comederos lentos y alfombras lamedoras, fuentes de agua, juguetes interactivos para gato, rascadores, viaje y coche (fundas, bebederos portátiles), camas y mantas.
   - Evitar: pienso, snacks y suplementos (registro sanitario), antiparasitarios (biocidas/medicamentos), cualquier claim de salud o de "calma la ansiedad", y productos por tallas (arneses, ropa) hasta tener tabla de tallas fiable: disparan devoluciones.
 - Cliente ideal (edad, sexo, dolor principal, deseo, dónde está): _pendiente_
