@@ -3,13 +3,13 @@
 > Rellenar y mantener al día. Claude lo lee antes de crear copy, creatividades o campañas.
 
 ## Tienda
-- Nombre comercial: Mi tienda (provisional)
+- Nombre comercial: El Hogar de Lana
 - Dominio: 2tm11i-dz.myshopify.com · dominio propio: _pendiente_
 - Plan Shopify: Advanced · Moneda: EUR · País: España
 - Mercados: España (añadir Portugal/Francia/Italia solo con la tienda traducida y rentable en ES)
 
 ## Nicho y cliente
-- Nicho: mascotas, perros y gatos. **El usuario tiene gato**: prioridad a productos de gato que pueda demostrar en vídeo con el suyo, **Lana** (protagonista de la marca y del contenido; nombre candidato "La Casa de Lana", pendiente de comprobar dominio y marca); los de perro, más adelante o grabados con mascotas de conocidos.
+- Nicho: mascotas, perros y gatos. **El usuario tiene gato**: prioridad a productos de gato que pueda demostrar en vídeo con el suyo, **Lana** (protagonista de la marca y del contenido; nombre decidido: **"El Hogar de Lana"** (dominio y marca pendientes de comprobar y comprar la semana que viene)); los de perro, más adelante o grabados con mascotas de conocidos.
   - Subnichos fuertes: pelo y aseo (quitapelos, cepillos), comederos lentos y alfombras lamedoras, fuentes de agua, juguetes interactivos para gato, rascadores, viaje y coche (fundas, bebederos portátiles), camas y mantas.
   - Evitar: pienso, snacks y suplementos (registro sanitario), antiparasitarios (biocidas/medicamentos), cualquier claim de salud o de "calma la ansiedad", y productos por tallas (arneses, ropa) hasta tener tabla de tallas fiable: disparan devoluciones.
 - Cliente ideal (edad, sexo, dolor principal, deseo, dónde está): _pendiente_
