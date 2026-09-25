@@ -22,7 +22,10 @@ Contexto Amazon.es: guante 5,90-15,84 € · rodillo 19-39,99 € · base autoli
 - Guante: solo dentro del kit (suelto a precio creíble, 19,95 €, deja un 15 %: no compensa).
 - Aparcados: base autolimpiante (27 % a 24,95 €) y spray de plantas (riesgo de biocidas).
 - Envío gratis en todo (ya incluido en el precio). Garantía de 30 días.
-- Mínimo para seguir: margen del kit ≥ 30 % con los costes reales de CJ. Si no, buscar una variante más barata o con almacén UE.
+- Costes reales CJ (paso 0): rodillo doble autolimpiante SKU CJMY200580807GT 13,03 € con envío, 8-18 días · guante electrostático SKU CJYD233200837KP 3,52 € con envío, 3-8 días. Proveedores distintos = 2 paquetes y 2 aranceles.
+  - Kit a 44,95 €: margen 11,77 € (32 %) con 2 paquetes · 14,77 € (40 %) si llega en 1 paquete. Rodillo solo 34,95 €: 10,60 € (37 %). Guante solo 14,95 €: 4,73 € (38 %) → producto de entrada.
+  - Riesgo principal: plazo del rodillo de hasta 18 días. Buscar alternativa ≤ 10 días o mismo proveedor que el guante; cuando venda 3-5 al día, stock de 30-50 unidades en el almacén UE de CJ.
+  - Comunicar siempre que el pedido puede llegar en 2 paquetes, con los plazos reales.
 - GPSR: pedir a CJ la persona responsable en la UE del rodillo y del guante antes de publicar.
 
 ## Marca (bloque 4 aprobado salvo logo final)
