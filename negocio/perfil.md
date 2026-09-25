@@ -28,11 +28,11 @@
 - Titular y NIF para aviso legal: _pendiente_ · Persona responsable UE (GPSR): _pendiente_
 
 ## Estrategia por fases (decidida)
-0. Validación sin vender (0 €, sin alta): tienda visible con precios pero en modo lista de espera. Botón "Avísame cuando esté disponible" (formulario de Klaviyo con casilla de consentimiento RGPD) en lugar de "Comprar"; vídeos orgánicos llevan tráfico. GO si en 2-3 semanas hay ≥ 100 emails y se apunta ≥ 5 % de quien visita la ficha. Luego se abre la venta y se avisa a la lista el primer día.
+0. Sin validación previa (decisión del usuario): se construye todo y se abre directamente a la venta. Si el producto estrella no vende en 30 días de vídeos diarios, se cambia de producto antes que cerrar la tienda.
 1. Ahora, < 500 €/mes: Shopify + CJ con almacén UE, sin stock y sin anuncios. Ventas con contenido orgánico (TikTok, Reels, Shorts) y TikTok Shop con creadores afiliados (skill `contenido-organico`).
 2. Producto que vende solo (5-10 pedidos/día durante 2-3 semanas): comprar stock con marca propia, bajar coste y abrir Amazon FBA con ese producto ya probado.
 3. Con beneficios: anuncios Meta/TikTok (skill `campanas-ads`).
-Alta para vender: todo se monta antes sin alta (modo lista de espera). Una semana antes de la primera venta, el padre (autónomo con bar y otros negocios, con gestoría) añade la tienda a su actividad; sus datos van en aviso legal, cobros y facturas. Si funciona, sociedad o porcentaje para él. Marca, dominio y redes a nombre del usuario. Acuerdo por escrito desde el primer día.
+Alta para vender: todo se monta antes sin alta y sin vender. Una semana antes de la primera venta, el padre (autónomo con bar y otros negocios, con gestoría) añade la tienda a su actividad; sus datos van en aviso legal, cobros y facturas. Si funciona, sociedad o porcentaje para él. Marca, dominio y redes a nombre del usuario. Acuerdo por escrito desde el primer día.
 
 ## Cuentas de publicidad
 - Cuentas de ads: ninguna todavía (crear Meta Business con 2FA y administrador de respaldo; luego conectar a Windsor.ai)
