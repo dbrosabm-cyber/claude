@@ -1,6 +1,6 @@
 # Plan de lanzamiento: todo construido antes de la primera venta
 
-Regla: la venta no se abre hasta marcar todas las casillas de las fases 1 y 2 y de la semana antes de abrir. Sin lista de espera: se abre directamente a la venta.
+Regla: la venta no se abre hasta marcar todas las casillas de las fases 1 y 2 y de la sección con tu padre. Sin lista de espera: se abre directamente a la venta.
 Cada mensaje (1, A, B, C, D, E) se pega en un chat nuevo del Proyecto: menos tokens y más foco.
 
 ## Fase 1 · Idea y producto (días 1-3)
@@ -48,16 +48,23 @@ Mensaje 1: el que ya tienes, sin añadir nada.
 - [ ] Pedido de prueba de principio a fin en modo prueba de pagos, revisado en móvil
 - [ ] Portada y ficha cargan en menos de 2,5 s en móvil
 
+## Antes del calentamiento (con tu padre)
+- [ ] Dossier enseñado y aprobado · acuerdo firmado (porcentaje, marca y cuentas tuyas, salida)
+- [ ] Su gestoría añade la tienda a su actividad y confirma que no afecta a los módulos del bar
+- [ ] Shopify Payments con sus datos y cuenta bancaria, verificado · políticas con sus datos · CJ factura a su nombre
+- [ ] Productos publicados · emails activados · pedido automático en CJ activado
+
+## Calentamiento en redes (7-14 días antes de abrir)
+- [ ] El alta con tu padre ya hecha ANTES de empezar a publicar: si un vídeo se hace viral el día 2, se abre la venta ese mismo día y no se pierde
+- [ ] 1-2 vídeos orgánicos al día (sin anuncios de pago): demos del producto, humor de mascotas, "muy pronto en…"
+- [ ] Responder todos los comentarios; las preguntas de la gente se convierten en los siguientes vídeos
+- [ ] Contenido 100 % propio (nada de resubir vídeos ajenos: TikTok e Instagram lo penalizan)
+
 ## Primeros 30 días tras abrir
 - [ ] 1-2 vídeos al día; los que superen 10 veces la media se repiten con variaciones
 - [ ] Afiliados de TikTok Shop con muestras a 10-20 creadores de mascotas
 - [ ] Día 30: si el producto estrella no vende, se cambia por el siguiente candidato de la fase 1 antes que cerrar la tienda (marca, web y redes se reutilizan)
 
-## Semana antes de abrir (con tu padre)
-- [ ] Dossier enseñado y aprobado · acuerdo firmado (porcentaje, marca y cuentas tuyas, salida)
-- [ ] Su gestoría añade la tienda a su actividad y confirma que no afecta a los módulos del bar
-- [ ] Shopify Payments con sus datos y cuenta bancaria, verificado · políticas con sus datos · CJ factura a su nombre
-- [ ] Productos publicados · emails activados · pedido automático en CJ activado
 
 ---
 
