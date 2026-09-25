@@ -15,11 +15,15 @@
 - Cliente ideal (edad, sexo, dolor principal, deseo, dónde está): _pendiente_
 - Propuesta de valor en una frase: _pendiente_
 
-## Marca
-- Tono: cercano, seguro, sin exageraciones (tuteo, español de España)
-- Colores (hex): primario _ · secundario _ · acento (CTA) _ · fondo _
-- Tipografías: títulos _ · texto _
-- Logo: _enlace Drive/Canva_ · Brand kit de Canva: _id_
+## Marca (bloque 4 aprobado salvo logo final)
+- Tono: cercana, cuidadosa, con un puntito de humor. Nunca: urgencias falsas, "el mejor del mercado", "como dice todo el mundo".
+- Frase principal: "Menos pelo en el sofá, más ronroneo en casa."
+- Bio redes: "El pelo de gato en tu sofá tiene los días contados 🐾 Productos para la vida con gatos, probados por Lana en casa." (nunca "hecho en España": los productos vienen de China)
+- Paleta: Pizarra #3C3A42 (texto, logo) · Gris Lana #6E6976 · Niebla #B5AFB8 · Ámbar #D9A441 (acento, ojos de Lana) · Crema #F6F1E9 (fondo)
+  - Contraste: pizarra/crema 9,96 · pizarra sobre ámbar 4,98 (botones de compra: fondo ámbar + texto pizarra) · blanco sobre ámbar 2,25 NO · ámbar sobre crema 2,0 NO para texto
+- Tipografías: Poppins (títulos, logo) + Lora (textos largos)
+- Logo: sistema A + B. B (silueta sentada con cola) = logo principal con el nombre, para web y packaging; A (carita) = icono para avatar de redes y favicon. C descartado (se lee como una "L").
+- Fotos editadas: perfil-redes, banner-web (banner partido), sobre-nosotros, antes-pelo-en-ropa, lana-sin-fondo.png
 
 ## Operativa
 - Proveedor: almacén en la UE o CJ Dropshipping (priorizar stock en almacenes UE de CJ: entrega 2-5 días y arancel 0 en `rentabilidad.py`)
