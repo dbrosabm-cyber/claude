@@ -1,316 +1,377 @@
 <title>Diseño Dental desde Casa</title>
-<meta name="description" content="Guía paso a paso para aprender diseño dental digital (coronas, férulas, modelos y más) y trabajar desde casa.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<meta name="description" content="Curso paso a paso de diseño dental digital, con aspecto y funcionamiento de app de iPhone.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Diseño Dental">
+<meta name="theme-color" content="#F2F2F7">
 <style>
 :root{
-  --bg:#F3F5F6; --surface:#FFFFFF; --surface-2:#EAEFF1;
-  --ink:#17232B; --ink-soft:#4B5C66; --line:#D6DEE2;
-  --gum:#B3475B; --gum-soft:#F7E3E7;
-  --zir:#2C6282; --zir-soft:#E0ECF3;
-  --enamel:#EFE5D0;
-  --warn:#9A5A12; --warn-soft:#FBEBD4;
-  --ok:#2A7453; --ok-soft:#DDF0E6;
-  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --mono:"IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
-  --radius:14px;
+  --bg:#F2F2F7; --card:#FFFFFF; --card-2:#F2F2F7; --fill:#E9E9EE;
+  --label:#000000; --label-2:rgba(60,60,67,.62); --label-3:rgba(60,60,67,.32);
+  --sep:rgba(60,60,67,.22);
+  --bar:rgba(249,249,251,.86);
+  --tint:#D23F5E; --tint-soft:rgba(210,63,94,.12);
+  --blue:#007AFF; --green:#34C759; --orange:#FF9500; --indigo:#5856D6; --teal:#30B0C7; --gray:#8E8E93;
+  --enamel:#F3EBDA;
+  --font:-apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono:ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --r:12px;
+  --nav-h:44px; --tab-h:50px;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     color-scheme:dark;
-    --bg:#10171C; --surface:#172128; --surface-2:#1E2A32;
-    --ink:#E6ECEF; --ink-soft:#A5B3BB; --line:#2B3943;
-    --gum:#EE8C9D; --gum-soft:#3A2128;
-    --zir:#86B9D6; --zir-soft:#1B3040;
-    --enamel:#3B3428;
-    --warn:#E8AA62; --warn-soft:#3A2A16;
-    --ok:#72C9A0; --ok-soft:#163026;
+    --bg:#000000; --card:#1C1C1E; --card-2:#2C2C2E; --fill:#2C2C2E;
+    --label:#FFFFFF; --label-2:rgba(235,235,245,.62); --label-3:rgba(235,235,245,.3);
+    --sep:rgba(84,84,88,.6);
+    --bar:rgba(22,22,24,.84);
+    --tint:#FF5E7E; --tint-soft:rgba(255,94,126,.16);
+    --blue:#0A84FF; --green:#30D158; --orange:#FF9F0A; --indigo:#5E5CE6; --teal:#40C8E0; --gray:#8E8E93;
+    --enamel:#3A3325;
   }
 }
 :root[data-theme="dark"]{
   color-scheme:dark;
-  --bg:#10171C; --surface:#172128; --surface-2:#1E2A32;
-  --ink:#E6ECEF; --ink-soft:#A5B3BB; --line:#2B3943;
-  --gum:#EE8C9D; --gum-soft:#3A2128;
-  --zir:#86B9D6; --zir-soft:#1B3040;
-  --enamel:#3B3428;
-  --warn:#E8AA62; --warn-soft:#3A2A16;
-  --ok:#72C9A0; --ok-soft:#163026;
+  --bg:#000000; --card:#1C1C1E; --card-2:#2C2C2E; --fill:#2C2C2E;
+  --label:#FFFFFF; --label-2:rgba(235,235,245,.62); --label-3:rgba(235,235,245,.3);
+  --sep:rgba(84,84,88,.6);
+  --bar:rgba(22,22,24,.84);
+  --tint:#FF5E7E; --tint-soft:rgba(255,94,126,.16);
+  --blue:#0A84FF; --green:#30D158; --orange:#FF9F0A; --indigo:#5E5CE6; --teal:#40C8E0; --gray:#8E8E93;
+  --enamel:#3A3325;
 }
 
-*{box-sizing:border-box}
-html{scroll-behavior:smooth; scroll-padding-top:72px}
-@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important} }
-body{background:var(--bg); color:var(--ink); font-family:var(--body); font-size:17px; line-height:1.65; margin:0}
-a{color:var(--zir); text-underline-offset:3px}
-a:focus-visible, button:focus-visible, input:focus-visible{outline:3px solid var(--zir); outline-offset:2px; border-radius:6px}
-h1,h2,h3,h4{font-family:var(--display); line-height:1.15; text-wrap:balance; margin:0}
-p{margin:0}
-strong{font-weight:700}
-.mono{font-family:var(--mono); font-size:.9em; font-variant-numeric:tabular-nums}
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+body{margin:0; background:var(--bg); color:var(--label); font-family:var(--font); font-size:17px; line-height:1.47; letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased; -webkit-text-size-adjust:100%;
+  padding-bottom:calc(var(--tab-h) + env(safe-area-inset-bottom,0px) + 24px)}
+h1,h2,h3,h4,p{margin:0}
+a{color:var(--tint); text-decoration:none}
+button{font:inherit; color:inherit}
+:focus-visible{outline:3px solid var(--blue); outline-offset:2px; border-radius:8px}
+.mono{font-family:var(--mono); font-size:.88em; font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important} }
 
-/* ---------- Layout ---------- */
-.shell{display:grid; grid-template-columns:1fr; max-width:1240px; margin:0 auto; padding-inline:16px}
-@media (min-width:1000px){ .shell{grid-template-columns:280px minmax(0,1fr); gap:48px; padding-inline:32px} }
+/* ================= Bars ================= */
+.navbar{position:sticky; top:env(safe-area-inset-top,0px); z-index:20; height:var(--nav-h);
+  background:var(--bar); -webkit-backdrop-filter:saturate(180%) blur(20px); backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:.5px solid transparent; transition:border-color .2s}
+.navbar.scrolled{border-bottom-color:var(--sep)}
+.navbar-in{max-width:720px; margin:0 auto; height:100%; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; padding-inline:8px}
+.back{justify-self:start; display:flex; align-items:center; gap:2px; background:none; border:0; color:var(--tint); font-size:17px; padding:8px 6px; cursor:pointer; max-width:100%; white-space:nowrap; overflow:hidden}
+.back svg{flex:none}
+.back[hidden]{display:none}
+.nav-title{font-weight:600; font-size:17px; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:56vw; opacity:0; transition:opacity .18s}
+.navbar.scrolled .nav-title{opacity:1}
 
-.topbar{position:sticky; top:env(safe-area-inset-top,0px); z-index:20; background:var(--bg); border-bottom:1px solid var(--line);
-  display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 16px}
-.topbar .brand{font-family:var(--display); font-weight:700; font-size:16px}
-.topbar button{font:inherit; font-weight:700; font-size:15px; background:var(--ink); color:var(--bg); border:0; border-radius:999px; padding:8px 16px; cursor:pointer}
-@media (min-width:1000px){ .topbar{display:none} }
+.tabbar{position:fixed; left:0; right:0; bottom:0; z-index:20;
+  background:var(--bar); -webkit-backdrop-filter:saturate(180%) blur(20px); backdrop-filter:saturate(180%) blur(20px);
+  border-top:.5px solid var(--sep); padding-bottom:env(safe-area-inset-bottom,0px)}
+.tabbar-in{max-width:720px; margin:0 auto; height:var(--tab-h); display:grid; grid-template-columns:repeat(4,1fr)}
+.tab{background:none; border:0; display:grid; justify-items:center; align-content:center; gap:2px; color:var(--gray); font-size:10.5px; font-weight:500; letter-spacing:.01em; cursor:pointer; padding:4px 0}
+.tab svg{width:26px; height:26px}
+.tab[aria-selected="true"]{color:var(--tint)}
 
-nav.toc{display:none}
-nav.toc.open{display:block; position:fixed; inset:0; z-index:30; background:var(--bg); overflow-y:auto; padding:calc(16px + env(safe-area-inset-top,0px)) 20px calc(24px + env(safe-area-inset-bottom,0px))}
-@media (min-width:1000px){
-  nav.toc, nav.toc.open{display:block; position:sticky; inset:auto; top:0; height:100vh; overflow-y:auto; padding:32px 0 32px; background:transparent; z-index:auto}
-}
-.toc-close{display:flex; justify-content:flex-end}
-.toc-close button{font:inherit; font-weight:700; background:var(--surface-2); color:var(--ink); border:0; border-radius:999px; padding:8px 16px; cursor:pointer}
-@media (min-width:1000px){ .toc-close{display:none} }
-.toc .progress-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px; margin:12px 0 20px}
-.toc .progress-card p{font-size:14px; color:var(--ink-soft)}
-.toc .progress-card strong{color:var(--ink)}
-.bar{height:8px; border-radius:99px; background:var(--surface-2); overflow:hidden; margin-top:8px}
-.bar span{display:block; height:100%; width:0; background:var(--gum); border-radius:99px; transition:width .3s}
-.toc h4{font-size:12px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-soft); margin:20px 0 6px; font-family:var(--body); font-weight:700}
-.toc ol{list-style:none; margin:0; padding:0; display:grid; gap:1px}
-.toc a{display:grid; grid-template-columns:28px 1fr; gap:6px; text-decoration:none; color:var(--ink); font-size:15px; line-height:1.35; padding:6px 8px; border-radius:8px}
-.toc a:hover{background:var(--surface-2)}
-.toc a.active{background:var(--gum-soft); color:var(--ink)}
-.toc a .n{font-family:var(--mono); font-size:12px; color:var(--ink-soft); padding-top:2px}
+/* ================= Views ================= */
+.view{max-width:720px; margin:0 auto; padding-inline:16px; padding-top:4px}
+.view[hidden]{display:none}
+.view.enter{animation:push .28s cubic-bezier(.2,.8,.2,1)}
+.view.enter-back{animation:pop .24s cubic-bezier(.2,.8,.2,1)}
+@keyframes push{from{transform:translateX(24px); opacity:.4} to{transform:none; opacity:1}}
+@keyframes pop{from{transform:translateX(-18px); opacity:.5} to{transform:none; opacity:1}}
 
-main{min-width:0; padding-block:24px 80px}
-.content{max-width:760px}
+.large-title{font-size:34px; font-weight:700; letter-spacing:.012em; line-height:1.2; padding:4px 4px 0}
+.view-sub{color:var(--label-2); font-size:15px; padding:2px 4px 0}
 
-/* ---------- Hero ---------- */
-.hero{padding-block:24px 8px; display:grid; gap:20px}
-.eyebrow{font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--gum); font-weight:700}
-.hero h1{font-size:clamp(38px,7vw,64px); font-weight:800; letter-spacing:-.02em}
-.hero h1 em{font-style:normal; color:var(--gum)}
-.hero .lead{font-size:clamp(18px,2.4vw,21px); color:var(--ink-soft); max-width:60ch}
-.letter{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:22px 24px; display:grid; gap:12px}
-.letter .sig{font-family:var(--display); font-weight:700; color:var(--gum)}
-.facts{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px}
-.fact{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px}
-.fact b{display:block; font-family:var(--display); font-size:28px; line-height:1.1}
-.fact span{font-size:14px; color:var(--ink-soft)}
+/* Grouped list (Settings style) */
+.group-h{font-size:13px; text-transform:uppercase; letter-spacing:.02em; color:var(--label-2); padding:26px 16px 7px}
+.group-f{font-size:13px; color:var(--label-2); padding:7px 16px 0; line-height:1.35}
+.list{background:var(--card); border-radius:var(--r); overflow:hidden}
+.row{display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:14px; padding-left:16px; min-height:52px; width:100%; background:none; border:0; text-align:left; cursor:pointer; color:var(--label)}
+.row:active{background:var(--fill)}
+.row-body{display:grid; gap:1px; padding:9px 16px 9px 0; border-bottom:.5px solid var(--sep); min-height:52px; align-content:center; grid-column:2 / 4; grid-row:1; padding-right:78px}
+.row:last-child .row-body{border-bottom:0}
+.row-title{font-size:17px; line-height:1.3}
+.row-sub{font-size:14px; color:var(--label-2); line-height:1.3}
+.row-end{grid-column:3; grid-row:1; display:flex; align-items:center; gap:6px; padding-right:14px; color:var(--label-3); font-size:15px; position:relative; z-index:1}
+.row-end .count{color:var(--label-2); font-variant-numeric:tabular-nums}
+.row-end .done{color:var(--green)}
+.icon{width:30px; height:30px; border-radius:7px; display:grid; place-items:center; color:#fff; font-size:13px; font-weight:700; font-variant-numeric:tabular-nums; flex:none}
+.chev{width:9px; height:15px; flex:none}
 
-/* ---------- Parts & chapters ---------- */
-.part{margin-top:72px; padding-top:20px; border-top:2px solid var(--ink)}
-.part .eyebrow{color:var(--ink-soft)}
-.part h2{font-size:clamp(28px,4.5vw,40px); font-weight:800; margin-top:4px}
-.part p{color:var(--ink-soft); margin-top:6px}
+/* Home cards */
+.hero-card{background:var(--card); border-radius:var(--r); padding:16px; display:grid; grid-template-columns:auto 1fr; gap:16px; align-items:center; margin-top:18px}
+.ring{width:78px; height:78px}
+.ring .track{stroke:var(--tint-soft)}
+.ring .val{stroke:var(--tint); transition:stroke-dashoffset .5s}
+.hero-card b{font-size:22px; font-weight:700; display:block; font-variant-numeric:tabular-nums}
+.hero-card span{color:var(--label-2); font-size:15px}
+.continue{margin-top:12px; background:var(--tint); color:#fff; border:0; border-radius:var(--r); width:100%; padding:14px 16px; display:grid; grid-template-columns:1fr auto; align-items:center; gap:10px; text-align:left; cursor:pointer}
+.continue small{display:block; font-size:13px; opacity:.85}
+.continue strong{font-size:17px; font-weight:600}
+.continue:active{opacity:.85}
 
-.chapter{margin-top:56px; display:grid; gap:18px}
-.chapter > header{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; align-items:baseline}
-.chapter .num{font-family:var(--display); font-weight:800; font-size:44px; line-height:1; color:var(--gum); font-variant-numeric:tabular-nums; grid-row:span 2}
-.chapter h3{font-size:clamp(24px,3.6vw,30px); font-weight:700}
-.chapter .sub{color:var(--ink-soft); font-size:15px}
-.chapter h4{font-size:20px; font-weight:700; margin-top:10px}
-.chapter ul, .chapter ol{margin:0; padding-left:1.3em; display:grid; gap:6px}
-.chapter li::marker{color:var(--gum)}
+/* Search */
+.search{margin-top:12px; display:flex; align-items:center; gap:6px; background:var(--fill); border-radius:10px; padding:0 10px; height:38px; color:var(--label-2)}
+.search input{flex:1; min-width:0; border:0; background:none; font:inherit; font-size:17px; color:var(--label); outline:none; height:100%}
+.search input::placeholder{color:var(--label-2)}
+.empty{color:var(--label-2); text-align:center; padding:24px 0}
 
-.summary{background:var(--enamel); border-radius:var(--radius); padding:16px 20px; display:grid; gap:6px}
-.summary .label{font-size:12px; letter-spacing:.1em; text-transform:uppercase; font-weight:700}
+/* ================= Lesson content ================= */
+#store{display:none}
+.chapter{display:grid; gap:14px}
+.chapter > header{display:grid; gap:2px; padding:4px 4px 6px}
+.chapter .num{font-size:13px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--tint)}
+.chapter .num:not(.plain)::before{content:"Lección "}
+.chapter h3{font-size:34px; font-weight:700; line-height:1.15; letter-spacing:.01em; text-wrap:balance}
+.chapter .sub{color:var(--label-2); font-size:15px}
+.chapter h4{font-size:22px; font-weight:700; letter-spacing:.01em; margin-top:14px; padding-inline:4px; text-wrap:balance}
+.chapter > p, .chapter > ul, .chapter > ol:not(.steps){padding-inline:4px}
+.chapter ul, .chapter ol{margin:0; padding-left:1.25em; display:grid; gap:6px}
+.chapter > ul, .chapter > ol:not(.steps){padding-left:calc(4px + 1.25em)}
+.chapter li::marker{color:var(--tint)}
+
+.summary, .note, .ex, .teeth, .figure, .letter, .fact, .closing-card{background:var(--card); border-radius:var(--r); padding:14px 16px; display:grid; gap:6px}
+.summary .label, .note .label, .ex .label{font-size:13px; font-weight:600; letter-spacing:.02em; text-transform:uppercase; display:flex; align-items:center; gap:7px}
+.summary .label, .note.key .label{color:var(--tint)}
+.note.warn .label{color:var(--orange)}
+.note.tip .label{color:var(--blue)}
+.ex .label{color:var(--green)}
+.summary .label::before, .note .label::before{content:""; width:8px; height:8px; border-radius:50%; background:currentColor}
+.summary{background:var(--enamel)}
 .summary ul{padding-left:1.2em}
 
-.note{border-radius:var(--radius); padding:14px 18px; display:grid; gap:6px; border-left:5px solid}
-.note .label{font-size:12px; letter-spacing:.1em; text-transform:uppercase; font-weight:700}
-.note.key{background:var(--gum-soft); border-color:var(--gum)}
-.note.key .label{color:var(--gum)}
-.note.warn{background:var(--warn-soft); border-color:var(--warn)}
-.note.warn .label{color:var(--warn)}
-.note.tip{background:var(--zir-soft); border-color:var(--zir)}
-.note.tip .label{color:var(--zir)}
-
-/* Steps: numbered, real sequence */
-ol.steps{list-style:none; padding:0; counter-reset:step; display:grid; gap:12px}
-ol.steps > li{counter-increment:step; display:grid; grid-template-columns:36px 1fr; gap:14px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px}
-ol.steps > li::before{content:counter(step); display:grid; place-items:center; width:32px; height:32px; border-radius:50%; background:var(--ink); color:var(--bg); font-family:var(--display); font-weight:700; font-size:15px}
-ol.steps > li > div{display:grid; gap:6px; min-width:0}
-ol.steps > li b.t{font-size:17px}
+/* Numbered steps = inset grouped list */
+ol.steps{list-style:none; padding:0; margin:0; counter-reset:step; background:var(--card); border-radius:var(--r); display:block}
+ol.steps > li{counter-increment:step; display:grid; grid-template-columns:26px 1fr; gap:12px; padding:12px 16px 0}
+ol.steps > li::before{content:counter(step); width:26px; height:26px; border-radius:50%; background:var(--tint); color:#fff; font-size:14px; font-weight:600; display:grid; place-items:center; font-variant-numeric:tabular-nums}
+ol.steps > li > div{display:grid; gap:6px; min-width:0; padding-bottom:12px; border-bottom:.5px solid var(--sep)}
+ol.steps > li:last-child > div{border-bottom:0}
+ol.steps b.t{font-weight:600}
 ol.steps ul{padding-left:1.1em; gap:4px}
+ol.steps .note, ol.steps .table-wrap{background:var(--card-2)}
+ol.steps .table-wrap th{background:transparent}
 
 /* Tables */
-.table-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface)}
-table{border-collapse:collapse; width:100%; font-size:15px; line-height:1.45}
-th,td{text-align:left; vertical-align:top; padding:10px 14px; border-bottom:1px solid var(--line)}
-th{font-size:12px; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-soft); background:var(--surface-2); font-weight:700; white-space:nowrap}
+.table-wrap{background:var(--card); border-radius:var(--r); overflow-x:auto; -webkit-overflow-scrolling:touch}
+table{border-collapse:collapse; width:100%; font-size:15px; line-height:1.4}
+th,td{text-align:left; vertical-align:top; padding:10px 14px}
+th{font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.03em; color:var(--label-2); white-space:nowrap; border-bottom:.5px solid var(--sep)}
+td{border-bottom:.5px solid var(--sep)}
 tr:last-child td{border-bottom:0}
-td .mono{white-space:nowrap}
+td .mono, td.mono{white-space:nowrap}
 
-/* Difficulty pips */
 .lvl{display:inline-flex; gap:3px; vertical-align:middle}
-.lvl i{width:10px; height:12px; border-radius:5px 5px 3px 3px; background:var(--surface-2); border:1px solid var(--line)}
-.lvl i.on{background:var(--gum); border-color:var(--gum)}
+.lvl i{width:9px; height:11px; border-radius:5px 5px 3px 3px; background:var(--fill)}
+.lvl i.on{background:var(--tint)}
 
-/* Flow */
 .flow{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px}
-.flow div{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:14px; display:grid; gap:4px; position:relative}
-.flow div.you{background:var(--gum-soft); border-color:var(--gum)}
-.flow b{font-family:var(--display); font-size:17px}
-.flow small{color:var(--ink-soft); font-size:14px; line-height:1.4}
-.flow .step{font-family:var(--mono); font-size:12px; color:var(--ink-soft)}
+.flow > div{background:var(--card); border-radius:var(--r); padding:12px 14px; display:grid; gap:3px}
+.flow > div.you{background:var(--tint); color:#fff}
+.flow > div.you small, .flow > div.you .step{color:rgba(255,255,255,.85)}
+.flow b{font-size:16px; font-weight:600}
+.flow small{color:var(--label-2); font-size:14px; line-height:1.35}
+.flow .step{font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.03em; color:var(--label-2)}
 
 /* Tooth chart */
-.teeth{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:16px; display:grid; gap:10px}
-.teeth-scroll{overflow-x:auto}
-.arch{display:grid; grid-template-columns:repeat(16,minmax(30px,1fr)); gap:4px; min-width:540px}
-.arch.low{margin-top:4px; padding-top:8px; border-top:2px dashed var(--line)}
-.arch button{font-family:var(--mono); font-size:13px; font-variant-numeric:tabular-nums; padding:8px 0; border:1px solid var(--line); background:var(--enamel); color:var(--ink); cursor:pointer; border-radius:10px 10px 6px 6px}
-.arch.low button{border-radius:6px 6px 10px 10px}
+.teeth-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:2px}
+.arch{display:grid; grid-template-columns:repeat(16,minmax(32px,1fr)); gap:4px; min-width:560px}
+.arch.low{margin-top:6px; padding-top:8px; border-top:1px dashed var(--sep)}
+.arch button{font-family:var(--mono); font-size:13px; font-variant-numeric:tabular-nums; padding:9px 0; border:0; background:var(--enamel); color:var(--label); cursor:pointer; border-radius:11px 11px 6px 6px}
+.arch.low button{border-radius:6px 6px 11px 11px}
 .arch button:nth-child(8){margin-right:6px}
-.arch button:hover{border-color:var(--gum)}
-.arch button[aria-pressed="true"]{background:var(--gum); color:#fff; border-color:var(--gum)}
-.teeth .legend{display:flex; justify-content:space-between; font-size:13px; color:var(--ink-soft); min-width:540px}
-.tooth-out{font-size:16px; min-height:1.6em}
-.swipe-hint{font-size:13px; color:var(--ink-soft)}
+.arch button[aria-pressed="true"]{background:var(--tint); color:#fff}
+.teeth .legend{display:flex; justify-content:space-between; font-size:12px; color:var(--label-2); min-width:560px}
+.tooth-out{font-size:16px; min-height:1.5em}
+.tooth-out b{color:var(--tint)}
+.swipe-hint{font-size:13px; color:var(--label-2)}
 @media (min-width:640px){ .swipe-hint{display:none} }
-.tooth-out b{color:var(--gum)}
 
-/* Surfaces SVG */
-.figure{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:16px; display:grid; gap:8px; justify-items:center}
+.figure{margin:0; justify-items:center}
 .figure svg{max-width:100%; height:auto}
-.figure figcaption{font-size:14px; color:var(--ink-soft); text-align:center}
-svg .t-fill{fill:var(--enamel); stroke:var(--ink-soft); stroke-width:2}
-svg .t-line{stroke:var(--ink-soft); stroke-width:1.5; fill:none}
-svg .t-label{fill:var(--ink); font-family:var(--body); font-size:15px; font-weight:700}
-svg .t-small{fill:var(--ink-soft); font-family:var(--body); font-size:12px}
-svg .t-accent{fill:var(--gum)}
+.figure figcaption{font-size:13px; color:var(--label-2); text-align:center}
+svg .t-fill{fill:var(--enamel); stroke:var(--label-2); stroke-width:2}
+svg .t-line{stroke:var(--label-2); stroke-width:1.5; fill:none}
+svg .t-label{fill:var(--label); font-family:var(--font); font-size:15px; font-weight:600}
+svg .t-small{fill:var(--label-2); font-family:var(--font); font-size:12px}
+svg .t-accent{fill:var(--tint)}
 
-/* Exercises */
-.ex{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px; display:grid; gap:10px}
-.ex .label{font-size:12px; letter-spacing:.1em; text-transform:uppercase; font-weight:700; color:var(--ok)}
-.ex label{display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; cursor:pointer; line-height:1.45}
-.ex input{width:20px; height:20px; margin:2px 0 0; accent-color:var(--ok)}
-.ex input:checked + span{color:var(--ink-soft); text-decoration:line-through; text-decoration-color:var(--ok)}
+/* Exercises: Reminders style */
+.ex{padding:12px 0 0; gap:0}
+#examHost .chapter > header{display:none}
+.ex .label{padding:0 16px 4px}
+.ex label{display:grid; grid-template-columns:24px 1fr; gap:12px; align-items:start; padding:10px 16px 0; cursor:pointer; line-height:1.4}
+.ex label > span{padding-bottom:10px; border-bottom:.5px solid var(--sep)}
+.ex label:last-child > span{border-bottom:0}
+.ex input{-webkit-appearance:none; appearance:none; width:24px; height:24px; margin:0; border-radius:50%; border:1.5px solid var(--label-3); background:transparent center/14px no-repeat; cursor:pointer; transition:background-color .15s,border-color .15s}
+.ex input:checked{background-color:var(--green); border-color:var(--green);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M2.5 7.4l2.9 2.9 6.1-6.6' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.ex input:checked + span{color:var(--label-2)}
+.ex a{font-weight:600}
 
-/* QA lists */
+/* QA */
 .qa{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px}
-.qa section{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px; display:grid; gap:8px; align-content:start}
-.qa h4{font-size:18px; margin:0}
-.qa ul{list-style:none; padding:0; gap:6px}
-.qa li{display:grid; grid-template-columns:20px 1fr; gap:8px; font-size:15px; line-height:1.45}
-.qa li::before{content:""; width:14px; height:14px; margin-top:4px; border:2px solid var(--ok); border-radius:4px}
+.qa > section{background:var(--card); border-radius:var(--r); padding:12px 16px; display:grid; gap:6px; align-content:start}
+.qa h4{font-size:17px; font-weight:600; margin:0; padding:0}
+.qa ul{list-style:none; padding:0; gap:0}
+.qa li{display:grid; grid-template-columns:22px 1fr; gap:10px; font-size:15px; line-height:1.4; padding:7px 0; border-bottom:.5px solid var(--sep)}
+.qa li:last-child{border-bottom:0}
+.qa li::before{content:""; width:18px; height:18px; border-radius:50%; border:1.5px solid var(--green); margin-top:1px}
 
 /* Plan */
-.plan{display:grid; gap:8px}
-.week{display:grid; grid-template-columns:72px 1fr; gap:14px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:12px 16px}
-.week .w{font-family:var(--display); font-weight:800; font-size:15px; color:var(--gum); line-height:1.2}
-.week .w small{display:block; font-family:var(--body); font-weight:400; font-size:12px; color:var(--ink-soft)}
-.week b{display:block}
-.week span{color:var(--ink-soft); font-size:15px}
+.plan{background:var(--card); border-radius:var(--r); display:block}
+.week{display:grid; grid-template-columns:44px 1fr; gap:12px; padding:10px 16px 0}
+.week > div{padding-bottom:10px; border-bottom:.5px solid var(--sep); display:grid; gap:1px}
+.week:last-child > div{border-bottom:0}
+.week .w{width:40px; height:40px; border-radius:10px; background:var(--tint-soft); color:var(--tint); display:grid; place-items:center; font-weight:700; font-size:17px; line-height:1; font-variant-numeric:tabular-nums}
+.week .w small{display:none}
+.week b{font-weight:600}
+.week span{color:var(--label-2); font-size:15px}
 
 /* Quiz */
-.quiz{display:grid; gap:8px}
-details{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:12px 16px}
-summary{cursor:pointer; font-weight:700; list-style:none; display:grid; grid-template-columns:1fr auto; gap:12px}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"Ver respuesta"; font-size:13px; font-weight:700; color:var(--zir); white-space:nowrap}
-details[open] summary::after{content:"Ocultar"}
-details p{margin-top:8px; color:var(--ink-soft)}
+.quiz{background:var(--card); border-radius:var(--r); display:block; overflow:hidden}
+.quiz details{padding:0 16px}
+.quiz details + details summary{border-top:.5px solid var(--sep)}
+.quiz summary{list-style:none; cursor:pointer; display:grid; grid-template-columns:1fr 12px; gap:12px; align-items:center; padding:12px 0; font-weight:500}
+.quiz summary::-webkit-details-marker{display:none}
+.quiz summary::after{content:""; width:8px; height:8px; border-right:2px solid var(--label-3); border-bottom:2px solid var(--label-3); transform:rotate(45deg); margin-top:-4px; transition:transform .2s}
+.quiz details[open] summary::after{transform:rotate(-135deg); margin-top:4px}
+.quiz details p{color:var(--label-2); padding:0 0 12px}
 
-.glossary{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px}
-.glossary div{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:12px 14px}
-.glossary dt{font-weight:700}
-.glossary dd{margin:2px 0 0; color:var(--ink-soft); font-size:15px; line-height:1.45}
+/* Glossary */
+.glossary{background:var(--card); border-radius:var(--r); margin:0; display:block}
+.glossary > div{padding:10px 16px 0}
+.glossary > div > dd{padding-bottom:10px; border-bottom:.5px solid var(--sep)}
+.glossary > div:last-child > dd, .glossary > div.last > dd{border-bottom:0}
+.glossary dt{font-weight:600}
+.glossary dd{margin:1px 0 0; color:var(--label-2); font-size:15px; line-height:1.4}
+.glossary > div[hidden]{display:none}
 
-.filename{font-family:var(--mono); font-size:14px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px; overflow-x:auto; white-space:pre; line-height:1.7}
+.filename{font-family:var(--mono); font-size:13px; background:var(--card); border-radius:var(--r); padding:12px 16px; overflow-x:auto; white-space:pre; line-height:1.7}
 
-.closing{margin-top:72px; background:var(--ink); color:var(--bg); border-radius:20px; padding:28px 26px; display:grid; gap:12px}
-.closing h3{font-size:28px}
-.closing .sig{font-family:var(--display); font-weight:700; color:var(--gum-soft)}
+.facts{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
+.fact b{font-size:26px; font-weight:700; line-height:1.1; font-variant-numeric:tabular-nums}
+.fact span{font-size:13px; color:var(--label-2)}
+.letter .sig, .closing-card .sig{color:var(--tint); font-weight:600}
+.closing-card{background:var(--tint); color:#fff; margin-top:10px}
+.closing-card .sig{color:#fff; opacity:.9}
+.closing-card h4{margin:0; padding:0; font-size:20px}
+
+/* Lesson pager */
+.pager{margin-top:26px}
 </style>
 
-<div class="topbar">
-  <span class="brand">Diseño dental desde casa</span>
-  <button type="button" id="openToc" aria-controls="toc" aria-expanded="false">Índice</button>
-</div>
-
-<div class="shell">
-<nav class="toc" id="toc" aria-label="Índice de la guía">
-  <div class="toc-close"><button type="button" id="closeToc">Cerrar</button></div>
-  <div class="progress-card">
-    <p>Tu progreso: <strong data-progress-text>0 de 0</strong> ejercicios</p>
-    <div class="bar"><span data-progress-bar></span></div>
-  </div>
-
-  <h4>Empezar</h4>
-  <ol>
-    <li><a href="#c0"><span class="n">00</span>Cómo usar esta guía</a></li>
-    <li><a href="#c1"><span class="n">01</span>En qué consiste el trabajo</a></li>
-    <li><a href="#c2"><span class="n">02</span>Lo legal en España</a></li>
-    <li><a href="#c3"><span class="n">03</span>Tu ordenador</a></li>
-    <li><a href="#c4"><span class="n">04</span>Qué programas aprender</a></li>
-  </ol>
-  <h4>Las bases</h4>
-  <ol>
-    <li><a href="#c5"><span class="n">05</span>Los dientes: lo imprescindible</a></li>
-    <li><a href="#c6"><span class="n">06</span>El 3D sin miedo</a></li>
-    <li><a href="#c7"><span class="n">07</span>Primeras prácticas gratis</a></li>
-    <li><a href="#c8"><span class="n">08</span>Cómo piensa exocad</a></li>
-  </ol>
-  <h4>Diseñar, paso a paso</h4>
-  <ol>
-    <li><a href="#c9"><span class="n">09</span>Coronas</a></li>
-    <li><a href="#c10"><span class="n">10</span>Puentes</a></li>
-    <li><a href="#c11"><span class="n">11</span>Coronas sobre implantes</a></li>
-    <li><a href="#c12"><span class="n">12</span>Incrustaciones y carillas</a></li>
-    <li><a href="#c13"><span class="n">13</span>Férulas de descarga</a></li>
-    <li><a href="#c14"><span class="n">14</span>Modelos para imprimir</a></li>
-    <li><a href="#c15"><span class="n">15</span>Encerados y provisionales</a></li>
-    <li><a href="#c16"><span class="n">16</span>Trabajos avanzados</a></li>
-  </ol>
-  <h4>Trabajar bien</h4>
-  <ol>
-    <li><a href="#c17"><span class="n">17</span>Lista de control</a></li>
-    <li><a href="#c18"><span class="n">18</span>Errores de principiante</a></li>
-    <li><a href="#c19"><span class="n">19</span>Entregar un trabajo</a></li>
-  </ol>
-  <h4>Tu camino</h4>
-  <ol>
-    <li><a href="#c20"><span class="n">20</span>Plan de 16 semanas</a></li>
-    <li><a href="#c21"><span class="n">21</span>Conseguir clientes</a></li>
-    <li><a href="#c22"><span class="n">22</span>Dónde seguir aprendiendo</a></li>
-    <li><a href="#c23"><span class="n">23</span>Glosario</a></li>
-    <li><a href="#c24"><span class="n">24</span>Chuleta de medidas</a></li>
-    <li><a href="#c25"><span class="n">25</span>Examen final</a></li>
-  </ol>
-</nav>
-
-<main>
-<div class="content">
-
-<!-- ================= HERO ================= -->
-<header class="hero">
-  <span class="eyebrow">Curso completo · de cero a trabajar desde casa</span>
-  <h1>Aprende a diseñar <em>dientes</em> en el ordenador</h1>
-  <p class="lead">Coronas, puentes, férulas de descarga, modelos e implantes. Todo explicado paso a paso, con palabras sencillas, ejercicios para practicar y un plan de 16 semanas.</p>
-
-  <div class="letter">
-    <p><strong>Bienvenida a clase.</strong></p>
-    <p>Soy tu profesora de diseño dental digital. Vamos a trabajar como en la universidad: primero entender <em>por qué</em> se hace cada cosa y luego practicar mucho, siempre paso a paso.</p>
-    <p>Te adelanto un secreto: <strong>aprender el programa es lo fácil.</strong> Lo que hará que te paguen es saber de dientes: cómo son, cómo muerden y qué aguanta cada material. Por eso esta guía mezcla las dos cosas.</p>
-    <p>Léela entera una vez, sin prisa, para ver el mapa completo. Después vuelve al principio y avanza lección a lección haciendo los ejercicios. Puedes marcarlos al terminarlos: la página recuerda tu progreso en este dispositivo.</p>
-    <p class="sig">Tu profesora</p>
-  </div>
-
-  <div class="facts">
-    <div class="fact"><b>26</b><span>lecciones cortas</span></div>
-    <div class="fact"><b>16</b><span>semanas de plan de estudio</span></div>
-    <div class="fact"><b data-progress-text>0 de 0</b><span>ejercicios hechos</span><div class="bar"><span data-progress-bar></span></div></div>
+<header class="navbar" id="navbar">
+  <div class="navbar-in">
+    <button type="button" class="back" id="backBtn" hidden>
+      <svg width="13" height="21" viewBox="0 0 13 21" aria-hidden="true"><path d="M11 2L2.5 10.5 11 19" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span id="backLabel">Curso</span>
+    </button>
+    <span class="nav-title" id="navTitle">Curso</span>
+    <span></span>
   </div>
 </header>
 
-<!-- ================= PART 1 ================= -->
-<div class="part">
-  <span class="eyebrow">Parte 1</span>
-  <h2>Empezar</h2>
-  <p>Qué es este trabajo, qué necesitas y qué debes saber antes de encender el ordenador.</p>
-</div>
+<!-- ============ TAB: CURSO ============ -->
+<section class="view" id="view-curso" data-title="Curso">
+  <h1 class="large-title" data-large>Curso</h1>
+  <p class="view-sub">Diseño dental desde casa, paso a paso</p>
 
+  <div class="hero-card">
+    <svg class="ring" viewBox="0 0 80 80" aria-hidden="true">
+      <circle class="track" cx="40" cy="40" r="32" fill="none" stroke-width="10"/>
+      <circle class="val" data-ring cx="40" cy="40" r="32" fill="none" stroke-width="10" stroke-linecap="round" transform="rotate(-90 40 40)" stroke-dasharray="201.06" stroke-dashoffset="201.06"/>
+    </svg>
+    <div><b data-progress-pct>0 %</b><span><span data-progress-text>0 de 0</span> ejercicios hechos</span></div>
+  </div>
+  <button type="button" class="continue" id="continueBtn">
+    <span><small id="continueKicker">Empieza aquí</small><strong id="continueTitle">Bienvenida a clase</strong></span>
+    <svg class="chev" viewBox="0 0 9 15" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5 1.5 13.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <div id="courseList"></div>
+  <p class="group-f">Tu progreso se guarda en este dispositivo.</p>
+</section>
+
+<!-- ============ TAB: PROGRESO ============ -->
+<section class="view" id="view-progreso" data-title="Progreso" hidden>
+  <h1 class="large-title" data-large>Progreso</h1>
+  <div class="hero-card">
+    <svg class="ring" viewBox="0 0 80 80" aria-hidden="true">
+      <circle class="track" cx="40" cy="40" r="32" fill="none" stroke-width="10"/>
+      <circle class="val" data-ring cx="40" cy="40" r="32" fill="none" stroke-width="10" stroke-linecap="round" transform="rotate(-90 40 40)" stroke-dasharray="201.06" stroke-dashoffset="201.06"/>
+    </svg>
+    <div><b data-progress-pct>0 %</b><span><span data-progress-text>0 de 0</span> ejercicios hechos</span></div>
+  </div>
+  <div class="group-h">Ejercicios por lección</div>
+  <div class="list" id="progressList"></div>
+  <p class="group-f">Toca una lección para ir a sus ejercicios y marcarlos.</p>
+</section>
+
+<!-- ============ TAB: GLOSARIO ============ -->
+<section class="view" id="view-glosario" data-title="Glosario" hidden>
+  <h1 class="large-title" data-large>Glosario</h1>
+  <label class="search">
+    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="6.8" cy="6.8" r="5.3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10.8 10.8L15 15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <input type="search" id="glossSearch" placeholder="Buscar una palabra" autocomplete="off" aria-label="Buscar en el glosario">
+  </label>
+  <div class="group-h">Palabras de la A a la Z</div>
+  <div id="glossHost"></div>
+  <p class="empty" id="glossEmpty" hidden>No hay ninguna palabra con ese texto.</p>
+</section>
+
+<!-- ============ TAB: EXAMEN ============ -->
+<section class="view" id="view-examen" data-title="Examen" hidden>
+  <h1 class="large-title" data-large>Examen</h1>
+  <p class="view-sub">Contesta antes de mirar la respuesta</p>
+  <div id="examHost" style="margin-top:16px"></div>
+</section>
+
+<!-- ============ LESSON (pushed view) ============ -->
+<section class="view" id="view-lesson" hidden>
+  <div id="lessonHost"></div>
+  <div class="pager">
+    <div class="list" id="pager"></div>
+  </div>
+</section>
+
+<nav class="tabbar" aria-label="Secciones">
+  <div class="tabbar-in" role="tablist">
+    <button type="button" class="tab" role="tab" data-tab="curso" aria-selected="true">
+      <svg viewBox="0 0 28 28" aria-hidden="true"><path fill="currentColor" d="M4 6.2C4 5 5 4 6.2 4H12c.9 0 1.5.7 1.5 1.5v18c-.6-.6-1.4-1-2.3-1H6.2C5 22.5 4 21.5 4 20.3zM15 5.5C15 4.7 15.6 4 16.5 4h5.3C23 4 24 5 24 6.2v14.1c0 1.2-1 2.2-2.2 2.2h-5c-.9 0-1.7.4-2.3 1z"/></svg>
+      Curso
+    </button>
+    <button type="button" class="tab" role="tab" data-tab="progreso" aria-selected="false">
+      <svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="9.5" fill="none" stroke="currentColor" stroke-width="3" opacity=".35"/><path d="M14 4.5a9.5 9.5 0 0 1 9.2 11.9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+      Progreso
+    </button>
+    <button type="button" class="tab" role="tab" data-tab="glosario" aria-selected="false">
+      <svg viewBox="0 0 28 28" aria-hidden="true"><text x="14" y="20" text-anchor="middle" fill="currentColor" font-family="-apple-system, system-ui, sans-serif" font-size="15" font-weight="700">Aa</text><rect x="3.5" y="4.5" width="21" height="19" rx="4.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      Glosario
+    </button>
+    <button type="button" class="tab" role="tab" data-tab="examen" aria-selected="false">
+      <svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="10.5" fill="currentColor"/><path d="M9 14.3l3.3 3.3L19 10.8" fill="none" stroke="var(--bar-ink, #fff)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Examen
+    </button>
+  </div>
+</nav>
+
+<div id="store">
+<section class="chapter" id="intro">
+  <header><span class="num plain">Carta de tu profesora</span><h3>Bienvenida a clase</h3><span class="sub">Léela antes de empezar</span></header>
+  <div class="letter">
+    <p>Soy tu profesora de diseño dental digital. Vamos a trabajar como en la universidad: primero entender <em>por qué</em> se hace cada cosa y luego practicar mucho, siempre paso a paso.</p>
+    <p>Te adelanto un secreto: <strong>aprender el programa es lo fácil.</strong> Lo que hará que te paguen es saber de dientes: cómo son, cómo muerden y qué aguanta cada material. Por eso este curso mezcla las dos cosas.</p>
+    <p>Recórrelo entero una vez, sin prisa, para ver el mapa completo. Después vuelve al principio y avanza lección a lección haciendo los ejercicios. Cuando termines uno, márcalo: la app recuerda tu progreso en este dispositivo.</p>
+    <p class="sig">Tu profesora</p>
+  </div>
+  <div class="facts">
+    <div class="fact"><b>26</b><span>lecciones</span></div>
+    <div class="fact"><b>16</b><span>semanas de plan</span></div>
+    <div class="fact"><b data-ex-total>0</b><span>ejercicios</span></div>
+  </div>
+  <div class="note tip"><span class="label">Cómo moverte</span><p>Abajo tienes cuatro pestañas: <strong>Curso</strong> con todas las lecciones, <strong>Progreso</strong> con tus ejercicios, <strong>Glosario</strong> para buscar palabras y <strong>Examen</strong> para ponerte a prueba. Al final de cada lección hay un botón para pasar a la siguiente.</p></div>
+</section>
 <section class="chapter" id="c0">
   <header><span class="num">00</span><h3>Cómo usar esta guía</h3><span class="sub">Mis tres reglas de clase</span></header>
   <ol class="steps">
@@ -448,13 +509,6 @@ details p{margin-top:8px; color:var(--ink-soft)}
   </ol>
   <div class="note tip"><span class="label">¿Por qué no empezar directamente con exocad?</span><p>Porque el primer mes lo vas a dedicar a entender el 3D y los dientes. No tiene sentido pagar una licencia mientras aprendes a girar un modelo en la pantalla.</p></div>
 </section>
-
-<!-- ================= PART 2 ================= -->
-<div class="part">
-  <span class="eyebrow">Parte 2</span>
-  <h2>Las bases</h2>
-  <p>Lo que separa a quien «sabe usar un programa» de una diseñadora dental de verdad.</p>
-</div>
 
 <section class="chapter" id="c5">
   <header><span class="num">05</span><h3>Los dientes: lo imprescindible</h3><span class="sub">Anatomía, mordida y materiales</span></header>
@@ -707,13 +761,6 @@ details p{margin-top:8px; color:var(--ink-soft)}
   </ul>
   <div class="note tip"><span class="label">Tu libro de consulta</span><p>exocad tiene un <strong>manual oficial en internet (exocad Wiki)</strong> con cada módulo explicado paso a paso, y un canal oficial de vídeos. Cuando un botón no te cuadre con esta guía, búscalo ahí.</p></div>
 </section>
-
-<!-- ================= PART 3 ================= -->
-<div class="part">
-  <span class="eyebrow">Parte 3</span>
-  <h2>Diseñar, paso a paso</h2>
-  <p>Cada trabajo con su teoría, sus pasos y sus ejercicios.</p>
-</div>
 
 <section class="chapter" id="c9">
   <header><span class="num">09</span><h3>Coronas</h3><span class="sub">El trabajo más pedido del mundo</span></header>
@@ -1011,13 +1058,6 @@ details p{margin-top:8px; color:var(--ink-soft)}
   </table></div>
 </section>
 
-<!-- ================= PART 4 ================= -->
-<div class="part">
-  <span class="eyebrow">Parte 4</span>
-  <h2>Trabajar bien</h2>
-  <p>Lo que hace que un cliente vuelva a llamarte.</p>
-</div>
-
 <section class="chapter" id="c17">
   <header><span class="num">17</span><h3>Lista de control</h3><span class="sub">Revísala antes de entregar cualquier trabajo</span></header>
   <div class="note key"><span class="label">Consejo</span><p>Imprime esta lista y pégala junto a la pantalla. Antes de entregar, repasa cada punto. Siempre.</p></div>
@@ -1097,13 +1137,6 @@ LS-0161_SUP_troquel_16_v1.stl</div>
     <li>Acuerda por escrito la hora límite (por ejemplo, «lo que llegue antes de las 12:00 se entrega ese día»), las urgencias y cómo se hacen las correcciones.</li>
   </ul>
 </section>
-
-<!-- ================= PART 5 ================= -->
-<div class="part">
-  <span class="eyebrow">Parte 5</span>
-  <h2>Tu camino</h2>
-  <p>El plan, los clientes y todo lo que necesitas para seguir.</p>
-</div>
 
 <section class="chapter" id="c20">
   <header><span class="num">20</span><h3>Plan de 16 semanas</h3><span class="sub">De 2 a 3 horas al día, cinco días a la semana</span></header>
@@ -1266,93 +1299,228 @@ LS-0161_SUP_troquel_16_v1.stl</div>
     <label><input type="checkbox" id="ex-fin-4"><span>Un técnico con experiencia ha revisado los tres y te da el visto bueno.</span></label>
   </div>
   <p>Si lo consigues con buena calidad, <strong>ya estás lista para empezar a trabajar desde casa.</strong></p>
+  <div class="closing-card">
+    <h4>Unas últimas palabras</h4>
+    <p>Nadie diseña bien sus primeras cincuenta coronas. Es normal que al principio tardes una hora y el resultado no te guste. Sigue el plan, compárate con dientes de verdad, deja que te corrijan y no te saltes la anatomía ni la mordida.</p>
+    <p>En unos meses de práctica constante notarás el cambio, y en un año puedes tener una profesión de verdad que te permita trabajar desde casa. ¡Mucho ánimo y a practicar!</p>
+    <p class="sig">Tu profesora</p>
+  </div>
 </section>
-
-<div class="closing">
-  <h3>Unas últimas palabras</h3>
-  <p>Nadie diseña bien sus primeras cincuenta coronas. Es normal que al principio tardes una hora y el resultado no te guste. Sigue el plan, compárate con dientes de verdad, deja que te corrijan y no te saltes la anatomía ni la mordida.</p>
-  <p>En unos meses de práctica constante notarás el cambio, y en un año puedes tener una profesión de verdad que te permita trabajar desde casa.</p>
-  <p>¡Mucho ánimo y a practicar!</p>
-  <p class="sig">Tu profesora</p>
-</div>
-
-</div>
-</main>
 </div>
 
 <script>
 (function(){
-  /* ---- Progress (saved only in this browser) ---- */
-  var KEY = 'guiaDental.v1';
-  var state = {};
-  try { state = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { state = {}; }
-  var boxes = Array.prototype.slice.call(document.querySelectorAll('.ex input[type="checkbox"]'));
-  function update(){
-    var done = boxes.filter(function(b){ return b.checked; }).length;
-    var pct = boxes.length ? (done / boxes.length * 100) : 0;
-    document.querySelectorAll('[data-progress-text]').forEach(function(el){ el.textContent = done + ' de ' + boxes.length; });
-    document.querySelectorAll('[data-progress-bar]').forEach(function(el){ el.style.width = pct + '%'; });
+  var ORDER = ['intro','c0','c1','c2','c3','c4','c5','c6','c7','c8','c9','c10','c11','c12','c13','c14','c15','c16','c17','c18','c19','c20','c21','c22','c23','c24','c25'];
+  var GROUPS = [
+    {name:'Empezar', color:'var(--blue)', ids:['intro','c0','c1','c2','c3','c4']},
+    {name:'Las bases', color:'var(--green)', ids:['c5','c6','c7','c8']},
+    {name:'Diseñar, paso a paso', color:'var(--tint)', ids:['c9','c10','c11','c12','c13','c14','c15','c16']},
+    {name:'Trabajar bien', color:'var(--orange)', ids:['c17','c18','c19']},
+    {name:'Tu camino', color:'var(--indigo)', ids:['c20','c21','c22','c23','c24','c25']}
+  ];
+  var TAB_OF = {c23:'glosario', c25:'examen'};
+  var KEY = 'guiaDental.v1', LAST = 'guiaDental.last';
+  var CHEV = '<svg class="chev" viewBox="0 0 9 15" aria-hidden="true"><path d="M1.5 1.5L7.5 7.5 1.5 13.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var CHECK = '<svg width="18" height="18" viewBox="0 0 18 18" aria-label="Completada"><circle cx="9" cy="9" r="9" fill="currentColor"/><path d="M5 9.3l2.6 2.6L13 6.4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+  function $(s, r){ return (r||document).querySelector(s); }
+  function $$(s, r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); }
+  function get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+  function set(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+  function esc(t){ return String(t).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+  var sections = {};
+  ORDER.forEach(function(id){ sections[id] = document.getElementById(id); });
+  function meta(id){
+    var s = sections[id];
+    return { title: $('h3', s).textContent.trim(), sub: ($('.sub', s)||{}).textContent || '', num: id === 'intro' ? '' : String(parseInt(id.slice(1),10)) };
   }
+  function groupOf(id){ for (var i=0;i<GROUPS.length;i++){ if (GROUPS[i].ids.indexOf(id) > -1) return GROUPS[i]; } return GROUPS[0]; }
+  function iconHtml(id){
+    var m = meta(id), g = groupOf(id);
+    var inner = id === 'intro' ? '<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5l1.8 4.3 4.7.4-3.6 3 1.1 4.6L8 11.4l-4 2.4 1.1-4.6-3.6-3 4.7-.4z" fill="#fff"/></svg>' : m.num;
+    return '<span class="icon" style="background:' + g.color + '">' + inner + '</span>';
+  }
+
+  /* ---------- Progress ---------- */
+  var state = {};
+  try { state = JSON.parse(get(KEY) || '{}') || {}; } catch(e){ state = {}; }
+  var boxes = $$('#store .ex input[type="checkbox"]');
   boxes.forEach(function(b){
     if (state[b.id]) b.checked = true;
-    b.addEventListener('change', function(){
-      state[b.id] = b.checked;
-      try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
-      update();
-    });
+    b.addEventListener('change', function(){ state[b.id] = b.checked; set(KEY, JSON.stringify(state)); refresh(); });
   });
-  update();
+  function exOf(id){ return $$('.ex input[type="checkbox"]', sections[id]); }
+  function refresh(){
+    var done = boxes.filter(function(b){ return b.checked; }).length, total = boxes.length;
+    var pct = total ? Math.round(done/total*100) : 0;
+    $$('[data-progress-text]').forEach(function(el){ el.textContent = done + ' de ' + total; });
+    $$('[data-progress-pct]').forEach(function(el){ el.textContent = pct + ' %'; });
+    $$('[data-ex-total]').forEach(function(el){ el.textContent = total; });
+    $$('[data-ring]').forEach(function(el){ el.setAttribute('stroke-dashoffset', (201.06 * (1 - pct/100)).toFixed(2)); });
+    $$('[data-end-for]').forEach(function(el){
+      var id = el.getAttribute('data-end-for'), list = exOf(id);
+      if (!list.length){ el.innerHTML = CHEV; return; }
+      var d = list.filter(function(b){ return b.checked; }).length;
+      el.innerHTML = (d === list.length ? '<span class="done">' + CHECK + '</span>' : '<span class="count">' + d + '/' + list.length + '</span>') + CHEV;
+    });
+  }
 
-  /* ---- Tooth chart ---- */
+  /* ---------- Build lists ---------- */
+  function row(id, sub){
+    var m = meta(id);
+    return '<button type="button" class="row" data-go="' + id + '">' + iconHtml(id) +
+      '<span class="row-body"><span class="row-title">' + esc(m.title) + '</span>' + (sub ? '<span class="row-sub">' + esc(sub) + '</span>' : '') + '</span>' +
+      '<span class="row-end" data-end-for="' + id + '"></span></button>';
+  }
+  var html = '';
+  GROUPS.forEach(function(g){
+    html += '<div class="group-h">' + esc(g.name) + '</div><div class="list">';
+    g.ids.forEach(function(id){ html += row(id, meta(id).sub); });
+    html += '</div>';
+  });
+  $('#courseList').innerHTML = html;
+  var ph = '';
+  ORDER.forEach(function(id){ if (exOf(id).length) ph += row(id, ''); });
+  $('#progressList').innerHTML = ph;
+
+  /* Glossary and exam live in their own tabs */
+  var gloss = $('#c23 .glossary');
+  $$('div', gloss).sort(function(x, y){ return $('dt', x).textContent.localeCompare($('dt', y).textContent, 'es', {sensitivity:'base'}); })
+    .forEach(function(d){ gloss.appendChild(d); });
+  $('#glossHost').appendChild(gloss);
+  function markLast(){
+    var vis = $$('#glossHost .glossary > div').filter(function(d){ return !d.hidden; });
+    $$('#glossHost .glossary > div').forEach(function(d){ d.classList.remove('last'); });
+    if (vis.length) vis[vis.length-1].classList.add('last');
+  }
+  markLast();
+  var examSec = sections.c25;
+  $('#examHost').appendChild(examSec);
+
+  $('#glossSearch').addEventListener('input', function(){
+    var q = this.value.trim().toLowerCase(), shown = 0;
+    $$('#glossHost .glossary > div').forEach(function(d){
+      var hit = !q || d.textContent.toLowerCase().indexOf(q) > -1;
+      d.hidden = !hit; if (hit) shown++;
+    });
+    gloss.hidden = shown === 0;
+    markLast();
+    $('#glossEmpty').hidden = shown !== 0;
+  });
+
+  /* ---------- Tooth chart ---------- */
   var names = {1:'incisivo central',2:'incisivo lateral',3:'canino',4:'primer premolar',5:'segundo premolar',6:'primer molar',7:'segundo molar',8:'tercer molar (muela del juicio)'};
   var quads = {1:'de arriba a la derecha',2:'de arriba a la izquierda',3:'de abajo a la izquierda',4:'de abajo a la derecha'};
-  var out = document.getElementById('toothOut');
-  var current = null;
+  var out = document.getElementById('toothOut'), current = null;
   function makeRow(el, list){
+    if (!el) return;
     list.forEach(function(n){
       var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.textContent = n;
-      btn.setAttribute('aria-pressed','false');
-      btn.setAttribute('aria-label','Diente ' + n);
+      btn.type = 'button'; btn.textContent = n;
+      btn.setAttribute('aria-pressed','false'); btn.setAttribute('aria-label','Diente ' + n);
       btn.addEventListener('click', function(){
         if (current) current.setAttribute('aria-pressed','false');
-        btn.setAttribute('aria-pressed','true');
-        current = btn;
-        var q = Math.floor(n / 10), p = n % 10;
-        var name = names[p];
-        out.innerHTML = '<b>' + n + '</b> · ' + name.charAt(0).toUpperCase() + name.slice(1) + ' ' + quads[q] + ' del paciente.';
+        btn.setAttribute('aria-pressed','true'); current = btn;
+        var name = names[n % 10];
+        out.innerHTML = '<b>' + n + '</b> · ' + name.charAt(0).toUpperCase() + name.slice(1) + ' ' + quads[Math.floor(n/10)] + ' del paciente.';
       });
       el.appendChild(btn);
     });
   }
   makeRow(document.getElementById('archUp'), [18,17,16,15,14,13,12,11,21,22,23,24,25,26,27,28]);
   makeRow(document.getElementById('archLow'), [48,47,46,45,44,43,42,41,31,32,33,34,35,36,37,38]);
-  var sc = document.querySelector('.teeth-scroll');
-  if (sc) sc.scrollLeft = (sc.scrollWidth - sc.clientWidth) / 2;
 
-  /* ---- Mobile index ---- */
-  var toc = document.getElementById('toc');
-  var openBtn = document.getElementById('openToc');
-  var closeBtn = document.getElementById('closeToc');
-  function setOpen(v){ toc.classList.toggle('open', v); openBtn.setAttribute('aria-expanded', v ? 'true' : 'false'); }
-  openBtn.addEventListener('click', function(){ setOpen(true); });
-  closeBtn.addEventListener('click', function(){ setOpen(false); });
-  toc.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setOpen(false); }); });
+  /* ---------- Navigation ---------- */
+  var views = {curso:$('#view-curso'), progreso:$('#view-progreso'), glosario:$('#view-glosario'), examen:$('#view-examen'), lesson:$('#view-lesson')};
+  var TAB_TITLES = {curso:'Curso', progreso:'Progreso', glosario:'Glosario', examen:'Examen'};
+  var navbar = $('#navbar'), navTitle = $('#navTitle'), backBtn = $('#backBtn'), backLabel = $('#backLabel');
+  var tab = 'curso', lessonId = null, scrolls = {};
+  var io = null;
 
-  /* ---- Highlight current lesson in the index ---- */
-  var links = {};
-  toc.querySelectorAll('a[href^="#c"]').forEach(function(a){ links[a.getAttribute('href').slice(1)] = a; });
-  if ('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (e.isIntersecting){
-          Object.keys(links).forEach(function(k){ links[k].classList.remove('active'); });
-          var l = links[e.target.id]; if (l) l.classList.add('active');
-        }
-      });
-    }, {rootMargin:'-20% 0px -70% 0px'});
-    document.querySelectorAll('section.chapter').forEach(function(s){ io.observe(s); });
+  function watchTitle(el){
+    if (io) io.disconnect();
+    if (!('IntersectionObserver' in window) || !el){ navbar.classList.add('scrolled'); return; }
+    navbar.classList.remove('scrolled');
+    io = new IntersectionObserver(function(en){ navbar.classList.toggle('scrolled', !en[0].isIntersecting); }, {rootMargin:'-' + (navbar.offsetHeight + 4) + 'px 0px 0px 0px'});
+    io.observe(el);
   }
+  function show(name, anim){
+    Object.keys(views).forEach(function(k){ views[k].hidden = k !== name; views[k].classList.remove('enter','enter-back'); });
+    if (anim){ void views[name].offsetWidth; views[name].classList.add(anim); }
+  }
+  function selectTab(name){ $$('.tab').forEach(function(t){ t.setAttribute('aria-selected', t.getAttribute('data-tab') === name ? 'true' : 'false'); }); }
+
+  function openTab(name, anim){
+    if (lessonId === null) scrolls[tab] = window.scrollY;
+    parkLesson();
+    tab = name; lessonId = null;
+    selectTab(name);
+    show(name, anim);
+    backBtn.hidden = true;
+    navTitle.textContent = TAB_TITLES[name];
+    window.scrollTo(0, scrolls[name] || 0);
+    watchTitle($('[data-large]', views[name]));
+  }
+  function parkLesson(){
+    if (lessonId && sections[lessonId] && !TAB_OF[lessonId]) $('#store').appendChild(sections[lessonId]);
+  }
+  function openLesson(id, focusEx){
+    if (TAB_OF[id]){ openTab(TAB_OF[id], 'enter'); return; }
+    if (!sections[id]) return;
+    if (lessonId === null) scrolls[tab] = window.scrollY;
+    parkLesson();
+    lessonId = id;
+    $('#lessonHost').appendChild(sections[id]);
+    buildPager(id);
+    show('lesson', 'enter');
+    backBtn.hidden = false;
+    backLabel.textContent = TAB_TITLES[tab];
+    navTitle.textContent = meta(id).title;
+    window.scrollTo(0, 0);
+    watchTitle($('h3', sections[id]));
+    set(LAST, id); updateContinue();
+    var sc = $('.teeth-scroll', sections[id]);
+    if (sc) sc.scrollLeft = (sc.scrollWidth - sc.clientWidth) / 2;
+    if (focusEx){ var ex = $('.ex', sections[id]); if (ex) setTimeout(function(){ ex.scrollIntoView({block:'start'}); window.scrollBy(0, -(navbar.offsetHeight + 12)); }, 30); }
+  }
+  function buildPager(id){
+    var i = ORDER.indexOf(id), h = '';
+    var next = ORDER[i+1], prev = ORDER[i-1];
+    if (next) h += row(next, 'Siguiente lección');
+    if (prev) h += row(prev, 'Lección anterior');
+    $('#pager').innerHTML = h;
+    refresh();
+  }
+  function updateContinue(){
+    var last = get(LAST);
+    if (last && sections[last] && last !== 'intro'){
+      var i = ORDER.indexOf(last);
+      $('#continueKicker').textContent = 'Seguir donde lo dejaste';
+      $('#continueTitle').textContent = meta(last).title;
+      $('#continueBtn').setAttribute('data-go', last);
+    } else {
+      $('#continueKicker').textContent = 'Empieza aquí';
+      $('#continueTitle').textContent = meta('intro').title;
+      $('#continueBtn').setAttribute('data-go', 'intro');
+    }
+  }
+
+  document.addEventListener('click', function(e){
+    var go = e.target.closest('[data-go]');
+    if (go){ openLesson(go.getAttribute('data-go'), go.closest('#progressList') !== null); return; }
+    var t = e.target.closest('.tab');
+    if (t){ var n = t.getAttribute('data-tab'); if (n === tab && lessonId === null){ window.scrollTo({top:0, behavior:'smooth'}); } else { openTab(n); } return; }
+    var a = e.target.closest('a[href^="#"]');
+    if (a){ var id = a.getAttribute('href').slice(1); if (sections[id]){ e.preventDefault(); openLesson(id); } }
+  });
+  backBtn.addEventListener('click', function(){ openTab(tab, 'enter-back'); });
+
+  updateContinue();
+  refresh();
+  var start = (location.hash || '').slice(1);
+  if (sections[start]) { openLesson(start); }
+  else if (TAB_TITLES[start]) { openTab(start); }
+  else { openTab('curso'); }
 })();
 </script>
