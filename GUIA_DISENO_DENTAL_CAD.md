@@ -153,7 +153,7 @@ Los escaneos dentales son **datos de salud** (categoría especial). Reglas de or
 
 ### 3.1 Requisitos del ordenador
 
-Los programas profesionales (exocad y 3Shape) funcionan **en Windows**. **No compres un Mac** para esto: no funcionan de forma nativa.
+Los programas profesionales (exocad y 3Shape) funcionan **en Windows**. **No compres un Mac** para esto: no funcionan de forma nativa. Si ya tienes un Mac, puedes empezar a practicar con programas gratuitos que sí tienen versión para Mac (como Blue Sky Plan), pero para trabajar necesitarás un PC con Windows.
 
 | Componente | Mínimo para aprender | Recomendado para trabajar |
 |---|---|---|
@@ -213,7 +213,7 @@ Los programas profesionales (exocad y 3Shape) funcionan **en Windows**. **No com
    - Pide a un **distribuidor oficial de exocad en España** una **licencia de demostración/prueba** (muchos la ofrecen temporalmente) y un presupuesto.
    - Hazte **un curso oficial** de exocad: suelen incluir licencia temporal para practicar.
    - Si conoces un laboratorio que use exocad, pregunta si puedes practicar allí o hacer prácticas.
-   - Existe la modalidad de **suscripción (exocad "Flex")** que abarata la entrada frente a la licencia perpetua. Pregunta al distribuidor.
+   - Pregunta al distribuidor por las **modalidades de suscripción** o pago mensual: suelen abaratar mucho la entrada frente a la licencia completa.
 3. **Cuando ya tengas clientes:** compra solo los **módulos** que te pidan (no hace falta comprarlos todos).
 4. **3Shape**: apréndelo si tus clientes lo usan. La lógica es muy parecida a la de exocad; si sabes uno, el otro lo aprendes en semanas.
 
@@ -308,7 +308,7 @@ Esto es lo que más se equivocan los principiantes. Aprende estos términos:
 - **Guía canina:** al mover la mandíbula hacia un lado, solo el canino toca y separa el resto (lo ideal en la mayoría de casos).
 - **Función de grupo:** al mover hacia un lado tocan varios dientes a la vez (canino + premolares).
 - **Interferencia:** un contacto no deseado durante los movimientos (por ejemplo, un molar que toca al mover la mandíbula hacia un lado). **Tu diseño no debe crear interferencias.**
-- **Clases de Angle:** clase I (normal), clase II (mandíbula atrasada), clase III (mandíbula adelantada).
+- **Clases de Angle** (se miden por la posición de los primeros molares; simplificando): clase I (relación normal), clase II (la mandíbula queda atrasada), clase III (la mandíbula queda adelantada).
 - **Dimensión vertical:** la altura de la cara con los dientes cerrados. En férulas y rehabilitaciones grandes se modifica a propósito.
 
 **Regla práctica para una corona posterior:** contactos **puntuales** y **ligeros** en las cúspides y fosas, repartidos, en la misma intensidad que los dientes vecinos. **Nunca** una "meseta" plana de contacto y **nunca** contactos en las vertientes que empujen el diente hacia un lado.
@@ -333,7 +333,7 @@ Cada material necesita un **grosor mínimo** distinto. Si lo diseñas más fino,
 | Material | Uso típico | Grosor mínimo orientativo | Notas |
 |---|---|---|---|
 | **Zirconio monolítico** | Coronas y puentes posteriores (y anteriores con zirconios translúcidos) | Oclusal ~0,5–1,0 mm; axial ~0,5 mm | Muy resistente. Distintos tipos de zirconio (más o menos translúcidos) tienen mínimos distintos |
-| **Disilicato de litio** (tipo e.max CAD/Press) | Coronas anteriores y posteriores, carillas, incrustaciones | Coronas: oclusal ~1,5 mm, axial ~1,0 mm; carillas ~0,3–0,6 mm | Muy estético; puentes solo cortos y con conectores grandes |
+| **Disilicato de litio** (tipo e.max CAD/Press) | Coronas anteriores y posteriores, carillas, incrustaciones | Coronas: oclusal ~1,5 mm, paredes ~1,0–1,5 mm; carillas ~0,3–0,6 mm | Muy estético; puentes solo cortos y con conectores grandes |
 | **Estructura de zirconio para estratificar** | Estética alta (el ceramista pone cerámica encima) | Estructura ~0,5 mm | Se diseña "reducida" (cut-back) dejando espacio para la cerámica |
 | **Metal (CoCr) para metal-cerámica** | Puentes largos, casos con poco espacio | Estructura ~0,3–0,5 mm | Se fresa o se sinteriza por láser |
 | **PMMA / resina de provisionales** | Provisionales | ~1,0–1,5 mm | Menos resistente, se usa temporalmente |
@@ -426,7 +426,7 @@ Descarga Autodesk Meshmixer (gratuito). Necesitas modelos de práctica: muchos p
 
 **Ejercicio 3 — Convertir un escaneo en un modelo sencillo con base**
 1. Recorta el escaneo dejando solo dientes y 3–5 mm de encía.
-2. Selecciona el borde inferior y **extrúyelo** hacia abajo (herramienta de extrusión o "Plane Cut" + cerrar) para crear una base plana.
+2. Crea una base plana: cierra el modelo (*Edit → Make Solid*) y corta la parte de abajo con un plano (*Edit → Plane Cut*). Así queda una base recta y cerrada.
 3. Haz la malla sólida/cerrada.
 4. Comprueba con el inspector que no hay agujeros.
 5. Exporta como STL.
@@ -571,7 +571,7 @@ Con las herramientas de forma libre:
 **Paso 8 — Revisar grosores**
 - Activa la visualización de grosor mínimo. Si hay zonas por debajo del mínimo:
   - Mejor solución: pedir al dentista más reducción (si la falta es grande).
-  - Si es poco: el programa puede **engordar** esas zonas automáticamente, pero comprueba después la oclusión (engordar por dentro no afecta; por fuera sí).
+  - Si es poco: el programa puede **engordar** esas zonas automáticamente. Como engorda la pieza hacia fuera, vuelve a revisar después la oclusión y los contactos.
 - Haz un **corte (sección)** en vestibulo-lingual y mesio-distal y mira el grosor real.
 
 **Paso 9 — Articulador virtual (si se usa)**
@@ -616,7 +616,7 @@ El programa une la parte interna (la que ajusta al muñón) con la externa (la a
 
 **Conectores (valores orientativos):**
 - Zirconio: aproximadamente **7–9 mm² en anteriores** y **9–12 mm² en posteriores** (más si el puente es largo).
-- Disilicato de litio: conectores mayores (en torno a **16 mm²**) y solo puentes cortos en zonas anteriores/premolares.
+- Disilicato de litio: conectores mayores (del orden de **12–16 mm²** según zona y fabricante) y solo puentes cortos de 3 piezas, hasta la zona de premolares.
 - Siempre: **más alto que ancho** (la altura resiste mucho más que la anchura) y **redondeados** (sin ángulos vivos).
 - Deja **troneras** hacia la encía para que el paciente pueda limpiar con cepillo interproximal.
 
@@ -1137,11 +1137,11 @@ Ya hay herramientas de IA que proponen coronas automáticamente (tanto dentro de
 | Espacio de cemento adicional | 0,03–0,08 mm |
 | Distancia al margen (inicio del espacio adicional) | 0,5–1,0 mm |
 | Zirconio monolítico, grosor oclusal | ~0,5–1,0 mm (según tipo de zirconio) |
-| Disilicato de litio, corona: oclusal / axial | ~1,5 mm / ~1,0 mm |
+| Disilicato de litio, corona: oclusal / paredes | ~1,5 mm / ~1,0–1,5 mm |
 | Carilla de disilicato | ~0,3–0,6 mm |
 | Provisional PMMA | ~1,0–1,5 mm |
 | Conector zirconio anterior / posterior | ~7–9 mm² / ~9–12 mm² |
-| Conector disilicato (puentes cortos) | ~16 mm² |
+| Conector disilicato (puentes cortos) | ~12–16 mm² |
 | Férula de descarga, grosor mínimo | ~1,5–2,0 mm |
 | Pared de modelo hueco | ~1,5–2,5 mm (+ agujeros de drenaje) |
 | Proporción ancho/largo del incisivo central superior | ~75–80 % |

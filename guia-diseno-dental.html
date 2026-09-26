@@ -1,0 +1,1358 @@
+<title>Diseño Dental desde Casa</title>
+<meta name="description" content="Guía paso a paso para aprender diseño dental digital (coronas, férulas, modelos y más) y trabajar desde casa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{
+  --bg:#F3F5F6; --surface:#FFFFFF; --surface-2:#EAEFF1;
+  --ink:#17232B; --ink-soft:#4B5C66; --line:#D6DEE2;
+  --gum:#B3475B; --gum-soft:#F7E3E7;
+  --zir:#2C6282; --zir-soft:#E0ECF3;
+  --enamel:#EFE5D0;
+  --warn:#9A5A12; --warn-soft:#FBEBD4;
+  --ok:#2A7453; --ok-soft:#DDF0E6;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --radius:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#10171C; --surface:#172128; --surface-2:#1E2A32;
+    --ink:#E6ECEF; --ink-soft:#A5B3BB; --line:#2B3943;
+    --gum:#EE8C9D; --gum-soft:#3A2128;
+    --zir:#86B9D6; --zir-soft:#1B3040;
+    --enamel:#3B3428;
+    --warn:#E8AA62; --warn-soft:#3A2A16;
+    --ok:#72C9A0; --ok-soft:#163026;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#10171C; --surface:#172128; --surface-2:#1E2A32;
+  --ink:#E6ECEF; --ink-soft:#A5B3BB; --line:#2B3943;
+  --gum:#EE8C9D; --gum-soft:#3A2128;
+  --zir:#86B9D6; --zir-soft:#1B3040;
+  --enamel:#3B3428;
+  --warn:#E8AA62; --warn-soft:#3A2A16;
+  --ok:#72C9A0; --ok-soft:#163026;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:72px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important} }
+body{background:var(--bg); color:var(--ink); font-family:var(--body); font-size:17px; line-height:1.65; margin:0}
+a{color:var(--zir); text-underline-offset:3px}
+a:focus-visible, button:focus-visible, input:focus-visible{outline:3px solid var(--zir); outline-offset:2px; border-radius:6px}
+h1,h2,h3,h4{font-family:var(--display); line-height:1.15; text-wrap:balance; margin:0}
+p{margin:0}
+strong{font-weight:700}
+.mono{font-family:var(--mono); font-size:.9em; font-variant-numeric:tabular-nums}
+
+/* ---------- Layout ---------- */
+.shell{display:grid; grid-template-columns:1fr; max-width:1240px; margin:0 auto; padding-inline:16px}
+@media (min-width:1000px){ .shell{grid-template-columns:280px minmax(0,1fr); gap:48px; padding-inline:32px} }
+
+.topbar{position:sticky; top:env(safe-area-inset-top,0px); z-index:20; background:var(--bg); border-bottom:1px solid var(--line);
+  display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 16px}
+.topbar .brand{font-family:var(--display); font-weight:700; font-size:16px}
+.topbar button{font:inherit; font-weight:700; font-size:15px; background:var(--ink); color:var(--bg); border:0; border-radius:999px; padding:8px 16px; cursor:pointer}
+@media (min-width:1000px){ .topbar{display:none} }
+
+nav.toc{display:none}
+nav.toc.open{display:block; position:fixed; inset:0; z-index:30; background:var(--bg); overflow-y:auto; padding:calc(16px + env(safe-area-inset-top,0px)) 20px calc(24px + env(safe-area-inset-bottom,0px))}
+@media (min-width:1000px){
+  nav.toc, nav.toc.open{display:block; position:sticky; inset:auto; top:0; height:100vh; overflow-y:auto; padding:32px 0 32px; background:transparent; z-index:auto}
+}
+.toc-close{display:flex; justify-content:flex-end}
+.toc-close button{font:inherit; font-weight:700; background:var(--surface-2); color:var(--ink); border:0; border-radius:999px; padding:8px 16px; cursor:pointer}
+@media (min-width:1000px){ .toc-close{display:none} }
+.toc .progress-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px; margin:12px 0 20px}
+.toc .progress-card p{font-size:14px; color:var(--ink-soft)}
+.toc .progress-card strong{color:var(--ink)}
+.bar{height:8px; border-radius:99px; background:var(--surface-2); overflow:hidden; margin-top:8px}
+.bar span{display:block; height:100%; width:0; background:var(--gum); border-radius:99px; transition:width .3s}
+.toc h4{font-size:12px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-soft); margin:20px 0 6px; font-family:var(--body); font-weight:700}
+.toc ol{list-style:none; margin:0; padding:0; display:grid; gap:1px}
+.toc a{display:grid; grid-template-columns:28px 1fr; gap:6px; text-decoration:none; color:var(--ink); font-size:15px; line-height:1.35; padding:6px 8px; border-radius:8px}
+.toc a:hover{background:var(--surface-2)}
+.toc a.active{background:var(--gum-soft); color:var(--ink)}
+.toc a .n{font-family:var(--mono); font-size:12px; color:var(--ink-soft); padding-top:2px}
+
+main{min-width:0; padding-block:24px 80px}
+.content{max-width:760px}
+
+/* ---------- Hero ---------- */
+.hero{padding-block:24px 8px; display:grid; gap:20px}
+.eyebrow{font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--gum); font-weight:700}
+.hero h1{font-size:clamp(38px,7vw,64px); font-weight:800; letter-spacing:-.02em}
+.hero h1 em{font-style:normal; color:var(--gum)}
+.hero .lead{font-size:clamp(18px,2.4vw,21px); color:var(--ink-soft); max-width:60ch}
+.letter{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:22px 24px; display:grid; gap:12px}
+.letter .sig{font-family:var(--display); font-weight:700; color:var(--gum)}
+.facts{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px}
+.fact{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px}
+.fact b{display:block; font-family:var(--display); font-size:28px; line-height:1.1}
+.fact span{font-size:14px; color:var(--ink-soft)}
+
+/* ---------- Parts & chapters ---------- */
+.part{margin-top:72px; padding-top:20px; border-top:2px solid var(--ink)}
+.part .eyebrow{color:var(--ink-soft)}
+.part h2{font-size:clamp(28px,4.5vw,40px); font-weight:800; margin-top:4px}
+.part p{color:var(--ink-soft); margin-top:6px}
+
+.chapter{margin-top:56px; display:grid; gap:18px}
+.chapter > header{display:grid; grid-template-columns:auto 1fr; gap:4px 16px; align-items:baseline}
+.chapter .num{font-family:var(--display); font-weight:800; font-size:44px; line-height:1; color:var(--gum); font-variant-numeric:tabular-nums; grid-row:span 2}
+.chapter h3{font-size:clamp(24px,3.6vw,30px); font-weight:700}
+.chapter .sub{color:var(--ink-soft); font-size:15px}
+.chapter h4{font-size:20px; font-weight:700; margin-top:10px}
+.chapter ul, .chapter ol{margin:0; padding-left:1.3em; display:grid; gap:6px}
+.chapter li::marker{color:var(--gum)}
+
+.summary{background:var(--enamel); border-radius:var(--radius); padding:16px 20px; display:grid; gap:6px}
+.summary .label{font-size:12px; letter-spacing:.1em; text-transform:uppercase; font-weight:700}
+.summary ul{padding-left:1.2em}
+
+.note{border-radius:var(--radius); padding:14px 18px; display:grid; gap:6px; border-left:5px solid}
+.note .label{font-size:12px; letter-spacing:.1em; text-transform:uppercase; font-weight:700}
+.note.key{background:var(--gum-soft); border-color:var(--gum)}
+.note.key .label{color:var(--gum)}
+.note.warn{background:var(--warn-soft); border-color:var(--warn)}
+.note.warn .label{color:var(--warn)}
+.note.tip{background:var(--zir-soft); border-color:var(--zir)}
+.note.tip .label{color:var(--zir)}
+
+/* Steps: numbered, real sequence */
+ol.steps{list-style:none; padding:0; counter-reset:step; display:grid; gap:12px}
+ol.steps > li{counter-increment:step; display:grid; grid-template-columns:36px 1fr; gap:14px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px}
+ol.steps > li::before{content:counter(step); display:grid; place-items:center; width:32px; height:32px; border-radius:50%; background:var(--ink); color:var(--bg); font-family:var(--display); font-weight:700; font-size:15px}
+ol.steps > li > div{display:grid; gap:6px; min-width:0}
+ol.steps > li b.t{font-size:17px}
+ol.steps ul{padding-left:1.1em; gap:4px}
+
+/* Tables */
+.table-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:15px; line-height:1.45}
+th,td{text-align:left; vertical-align:top; padding:10px 14px; border-bottom:1px solid var(--line)}
+th{font-size:12px; letter-spacing:.07em; text-transform:uppercase; color:var(--ink-soft); background:var(--surface-2); font-weight:700; white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td .mono{white-space:nowrap}
+
+/* Difficulty pips */
+.lvl{display:inline-flex; gap:3px; vertical-align:middle}
+.lvl i{width:10px; height:12px; border-radius:5px 5px 3px 3px; background:var(--surface-2); border:1px solid var(--line)}
+.lvl i.on{background:var(--gum); border-color:var(--gum)}
+
+/* Flow */
+.flow{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px}
+.flow div{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:14px; display:grid; gap:4px; position:relative}
+.flow div.you{background:var(--gum-soft); border-color:var(--gum)}
+.flow b{font-family:var(--display); font-size:17px}
+.flow small{color:var(--ink-soft); font-size:14px; line-height:1.4}
+.flow .step{font-family:var(--mono); font-size:12px; color:var(--ink-soft)}
+
+/* Tooth chart */
+.teeth{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:16px; display:grid; gap:10px}
+.teeth-scroll{overflow-x:auto}
+.arch{display:grid; grid-template-columns:repeat(16,minmax(30px,1fr)); gap:4px; min-width:540px}
+.arch.low{margin-top:4px; padding-top:8px; border-top:2px dashed var(--line)}
+.arch button{font-family:var(--mono); font-size:13px; font-variant-numeric:tabular-nums; padding:8px 0; border:1px solid var(--line); background:var(--enamel); color:var(--ink); cursor:pointer; border-radius:10px 10px 6px 6px}
+.arch.low button{border-radius:6px 6px 10px 10px}
+.arch button:nth-child(8){margin-right:6px}
+.arch button:hover{border-color:var(--gum)}
+.arch button[aria-pressed="true"]{background:var(--gum); color:#fff; border-color:var(--gum)}
+.teeth .legend{display:flex; justify-content:space-between; font-size:13px; color:var(--ink-soft); min-width:540px}
+.tooth-out{font-size:16px; min-height:1.6em}
+.swipe-hint{font-size:13px; color:var(--ink-soft)}
+@media (min-width:640px){ .swipe-hint{display:none} }
+.tooth-out b{color:var(--gum)}
+
+/* Surfaces SVG */
+.figure{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:16px; display:grid; gap:8px; justify-items:center}
+.figure svg{max-width:100%; height:auto}
+.figure figcaption{font-size:14px; color:var(--ink-soft); text-align:center}
+svg .t-fill{fill:var(--enamel); stroke:var(--ink-soft); stroke-width:2}
+svg .t-line{stroke:var(--ink-soft); stroke-width:1.5; fill:none}
+svg .t-label{fill:var(--ink); font-family:var(--body); font-size:15px; font-weight:700}
+svg .t-small{fill:var(--ink-soft); font-family:var(--body); font-size:12px}
+svg .t-accent{fill:var(--gum)}
+
+/* Exercises */
+.ex{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px; display:grid; gap:10px}
+.ex .label{font-size:12px; letter-spacing:.1em; text-transform:uppercase; font-weight:700; color:var(--ok)}
+.ex label{display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; cursor:pointer; line-height:1.45}
+.ex input{width:20px; height:20px; margin:2px 0 0; accent-color:var(--ok)}
+.ex input:checked + span{color:var(--ink-soft); text-decoration:line-through; text-decoration-color:var(--ok)}
+
+/* QA lists */
+.qa{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px}
+.qa section{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px; display:grid; gap:8px; align-content:start}
+.qa h4{font-size:18px; margin:0}
+.qa ul{list-style:none; padding:0; gap:6px}
+.qa li{display:grid; grid-template-columns:20px 1fr; gap:8px; font-size:15px; line-height:1.45}
+.qa li::before{content:""; width:14px; height:14px; margin-top:4px; border:2px solid var(--ok); border-radius:4px}
+
+/* Plan */
+.plan{display:grid; gap:8px}
+.week{display:grid; grid-template-columns:72px 1fr; gap:14px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:12px 16px}
+.week .w{font-family:var(--display); font-weight:800; font-size:15px; color:var(--gum); line-height:1.2}
+.week .w small{display:block; font-family:var(--body); font-weight:400; font-size:12px; color:var(--ink-soft)}
+.week b{display:block}
+.week span{color:var(--ink-soft); font-size:15px}
+
+/* Quiz */
+.quiz{display:grid; gap:8px}
+details{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:12px 16px}
+summary{cursor:pointer; font-weight:700; list-style:none; display:grid; grid-template-columns:1fr auto; gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"Ver respuesta"; font-size:13px; font-weight:700; color:var(--zir); white-space:nowrap}
+details[open] summary::after{content:"Ocultar"}
+details p{margin-top:8px; color:var(--ink-soft)}
+
+.glossary{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:10px}
+.glossary div{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:12px 14px}
+.glossary dt{font-weight:700}
+.glossary dd{margin:2px 0 0; color:var(--ink-soft); font-size:15px; line-height:1.45}
+
+.filename{font-family:var(--mono); font-size:14px; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px; overflow-x:auto; white-space:pre; line-height:1.7}
+
+.closing{margin-top:72px; background:var(--ink); color:var(--bg); border-radius:20px; padding:28px 26px; display:grid; gap:12px}
+.closing h3{font-size:28px}
+.closing .sig{font-family:var(--display); font-weight:700; color:var(--gum-soft)}
+</style>
+
+<div class="topbar">
+  <span class="brand">Diseño dental desde casa</span>
+  <button type="button" id="openToc" aria-controls="toc" aria-expanded="false">Índice</button>
+</div>
+
+<div class="shell">
+<nav class="toc" id="toc" aria-label="Índice de la guía">
+  <div class="toc-close"><button type="button" id="closeToc">Cerrar</button></div>
+  <div class="progress-card">
+    <p>Tu progreso: <strong data-progress-text>0 de 0</strong> ejercicios</p>
+    <div class="bar"><span data-progress-bar></span></div>
+  </div>
+
+  <h4>Empezar</h4>
+  <ol>
+    <li><a href="#c0"><span class="n">00</span>Cómo usar esta guía</a></li>
+    <li><a href="#c1"><span class="n">01</span>En qué consiste el trabajo</a></li>
+    <li><a href="#c2"><span class="n">02</span>Lo legal en España</a></li>
+    <li><a href="#c3"><span class="n">03</span>Tu ordenador</a></li>
+    <li><a href="#c4"><span class="n">04</span>Qué programas aprender</a></li>
+  </ol>
+  <h4>Las bases</h4>
+  <ol>
+    <li><a href="#c5"><span class="n">05</span>Los dientes: lo imprescindible</a></li>
+    <li><a href="#c6"><span class="n">06</span>El 3D sin miedo</a></li>
+    <li><a href="#c7"><span class="n">07</span>Primeras prácticas gratis</a></li>
+    <li><a href="#c8"><span class="n">08</span>Cómo piensa exocad</a></li>
+  </ol>
+  <h4>Diseñar, paso a paso</h4>
+  <ol>
+    <li><a href="#c9"><span class="n">09</span>Coronas</a></li>
+    <li><a href="#c10"><span class="n">10</span>Puentes</a></li>
+    <li><a href="#c11"><span class="n">11</span>Coronas sobre implantes</a></li>
+    <li><a href="#c12"><span class="n">12</span>Incrustaciones y carillas</a></li>
+    <li><a href="#c13"><span class="n">13</span>Férulas de descarga</a></li>
+    <li><a href="#c14"><span class="n">14</span>Modelos para imprimir</a></li>
+    <li><a href="#c15"><span class="n">15</span>Encerados y provisionales</a></li>
+    <li><a href="#c16"><span class="n">16</span>Trabajos avanzados</a></li>
+  </ol>
+  <h4>Trabajar bien</h4>
+  <ol>
+    <li><a href="#c17"><span class="n">17</span>Lista de control</a></li>
+    <li><a href="#c18"><span class="n">18</span>Errores de principiante</a></li>
+    <li><a href="#c19"><span class="n">19</span>Entregar un trabajo</a></li>
+  </ol>
+  <h4>Tu camino</h4>
+  <ol>
+    <li><a href="#c20"><span class="n">20</span>Plan de 16 semanas</a></li>
+    <li><a href="#c21"><span class="n">21</span>Conseguir clientes</a></li>
+    <li><a href="#c22"><span class="n">22</span>Dónde seguir aprendiendo</a></li>
+    <li><a href="#c23"><span class="n">23</span>Glosario</a></li>
+    <li><a href="#c24"><span class="n">24</span>Chuleta de medidas</a></li>
+    <li><a href="#c25"><span class="n">25</span>Examen final</a></li>
+  </ol>
+</nav>
+
+<main>
+<div class="content">
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <span class="eyebrow">Curso completo · de cero a trabajar desde casa</span>
+  <h1>Aprende a diseñar <em>dientes</em> en el ordenador</h1>
+  <p class="lead">Coronas, puentes, férulas de descarga, modelos e implantes. Todo explicado paso a paso, con palabras sencillas, ejercicios para practicar y un plan de 16 semanas.</p>
+
+  <div class="letter">
+    <p><strong>Bienvenida a clase.</strong></p>
+    <p>Soy tu profesora de diseño dental digital. Vamos a trabajar como en la universidad: primero entender <em>por qué</em> se hace cada cosa y luego practicar mucho, siempre paso a paso.</p>
+    <p>Te adelanto un secreto: <strong>aprender el programa es lo fácil.</strong> Lo que hará que te paguen es saber de dientes: cómo son, cómo muerden y qué aguanta cada material. Por eso esta guía mezcla las dos cosas.</p>
+    <p>Léela entera una vez, sin prisa, para ver el mapa completo. Después vuelve al principio y avanza lección a lección haciendo los ejercicios. Puedes marcarlos al terminarlos: la página recuerda tu progreso en este dispositivo.</p>
+    <p class="sig">Tu profesora</p>
+  </div>
+
+  <div class="facts">
+    <div class="fact"><b>26</b><span>lecciones cortas</span></div>
+    <div class="fact"><b>16</b><span>semanas de plan de estudio</span></div>
+    <div class="fact"><b data-progress-text>0 de 0</b><span>ejercicios hechos</span><div class="bar"><span data-progress-bar></span></div></div>
+  </div>
+</header>
+
+<!-- ================= PART 1 ================= -->
+<div class="part">
+  <span class="eyebrow">Parte 1</span>
+  <h2>Empezar</h2>
+  <p>Qué es este trabajo, qué necesitas y qué debes saber antes de encender el ordenador.</p>
+</div>
+
+<section class="chapter" id="c0">
+  <header><span class="num">00</span><h3>Cómo usar esta guía</h3><span class="sub">Mis tres reglas de clase</span></header>
+  <ol class="steps">
+    <li><div><b class="t">Primero entender, luego hacer</b><p>Cada lección empieza con un recuadro «En pocas palabras» y un poco de teoría. No te lo saltes: es lo que te hará diseñar bien.</p></div></li>
+    <li><div><b class="t">Repetir, repetir, repetir</b><p>Una corona no se aprende haciendo una: se aprende haciendo cincuenta. En cada lección te digo cuántas prácticas hacer como mínimo.</p></div></li>
+    <li><div><b class="t">Compárate con dientes de verdad</b><p>Ten siempre abierta una foto de un diente natural del mismo tipo que estás diseñando. Tu diseño tiene que parecer un diente, no un caramelo.</p></div></li>
+  </ol>
+  <div class="note tip"><span class="label">Truco</span><p>Lleva un <strong>cuaderno de diseño</strong>. En cada práctica apunta qué has diseñado, cuánto has tardado y qué te ha salido mal. En dos o tres meses verás tu progreso con números, y eso motiva muchísimo.</p></div>
+  <div class="note warn"><span class="label">Sobre las medidas</span><p>Las medidas que verás (grosores, espacios…) son <strong>valores orientativos</strong> para que entiendas de qué tamaño hablamos. En el trabajo real mandan siempre: la ficha del fabricante del material, el protocolo del laboratorio que te encarga el trabajo y la calibración de su máquina.</p></div>
+</section>
+
+<section class="chapter" id="c1">
+  <header><span class="num">01</span><h3>¿En qué consiste este trabajo?</h3><span class="sub">Tu lugar en el laboratorio digital</span></header>
+  <div class="summary"><span class="label">En pocas palabras</span><p>El dentista escanea la boca del paciente, tú diseñas la pieza en el ordenador desde casa y el laboratorio la fabrica con una máquina.</p></div>
+  <p>Hoy muchísimas prótesis dentales ya no se modelan en cera: se <strong>escanean</strong>, se <strong>diseñan en el ordenador</strong> y se <strong>fabrican con máquinas</strong> (fresadora o impresora 3D). Tú eres la pieza del medio: la diseñadora.</p>
+  <div class="flow">
+    <div><span class="step">Paso 1</span><b>La clínica escanea</b><small>Con un escáner dentro de la boca. Envía los archivos y una orden de trabajo.</small></div>
+    <div class="you"><span class="step">Paso 2 · Tú</span><b>Tú diseñas</b><small>Con un programa de diseño dental (CAD), desde tu casa.</small></div>
+    <div><span class="step">Paso 3</span><b>El laboratorio fabrica</b><small>Fresa o imprime tu diseño, lo termina y lo pinta.</small></div>
+    <div><span class="step">Paso 4</span><b>El dentista lo coloca</b><small>La pieza llega a la boca del paciente.</small></div>
+  </div>
+  <p><strong>CAD</strong> significa «diseño asistido por ordenador»: eso es lo tuyo. <strong>CAM</strong> es «fabricación asistida por ordenador»: lo hace el laboratorio con la máquina.</p>
+
+  <h4>¿Qué trabajos vas a poder diseñar?</h4>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Trabajo</th><th>Dificultad</th><th>Cuánto se pide</th></tr></thead>
+    <tbody>
+      <tr><td>Modelos para imprimir</td><td><span class="lvl" aria-label="1 de 4"><i class="on"></i><i></i><i></i><i></i></span></td><td>Muchísimo</td></tr>
+      <tr><td>Férulas de descarga</td><td><span class="lvl" aria-label="2 de 4"><i class="on"></i><i class="on"></i><i></i><i></i></span></td><td>Mucho</td></tr>
+      <tr><td>Coronas de muelas y premolares</td><td><span class="lvl" aria-label="2 de 4"><i class="on"></i><i class="on"></i><i></i><i></i></span></td><td>Muchísimo</td></tr>
+      <tr><td>Coronas de dientes delanteros (estética)</td><td><span class="lvl" aria-label="3 de 4"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td><td>Mucho</td></tr>
+      <tr><td>Puentes</td><td><span class="lvl" aria-label="3 de 4"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td><td>Mucho</td></tr>
+      <tr><td>Coronas sobre implantes</td><td><span class="lvl" aria-label="3 de 4"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td><td>Mucho</td></tr>
+      <tr><td>Incrustaciones y carillas</td><td><span class="lvl" aria-label="3 de 4"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td><td>Bastante</td></tr>
+      <tr><td>Encerados y diseño de sonrisa</td><td><span class="lvl" aria-label="3 de 4"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td><td>Bastante</td></tr>
+      <tr><td>Dentaduras completas</td><td><span class="lvl" aria-label="4 de 4"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td>Cada vez más</td></tr>
+      <tr><td>Esqueléticos (prótesis removible metálica)</td><td><span class="lvl" aria-label="4 de 4"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td>Bastante</td></tr>
+      <tr><td>Guías para operar implantes</td><td><span class="lvl" aria-label="4 de 4"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td>Bastante</td></tr>
+      <tr><td>Alineadores de ortodoncia</td><td><span class="lvl" aria-label="4 de 4"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td>Mucho</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note key"><span class="label">Mi recomendación de orden</span><p>Modelos → férulas → coronas de muelas → coronas delanteras → puentes → implantes → lo demás. Así puedes empezar a cobrar pronto (modelos y férulas) mientras aprendes lo más difícil.</p></div>
+
+  <h4>Qué te van a pedir los clientes</h4>
+  <ul>
+    <li><strong>Calidad constante:</strong> que no tengan que retocar tu diseño.</li>
+    <li><strong>Rapidez:</strong> muchos piden entregas en 24 horas o el mismo día.</li>
+    <li><strong>Comunicación clara:</strong> si un escaneo viene mal, avisar <em>antes</em> de diseñar.</li>
+    <li><strong>Respetar su forma de trabajar:</strong> sus medidas, sus materiales y su forma de nombrar los archivos.</li>
+  </ul>
+</section>
+
+<section class="chapter" id="c2">
+  <header><span class="num">02</span><h3>Lo legal en España</h3><span class="sub">Para trabajar tranquila y sin sustos</span></header>
+  <div class="summary"><span class="label">En pocas palabras</span><ul><li>Trabaja diseñando <strong>para laboratorios que tengan licencia</strong>.</li><li>El título de <strong>Técnico Superior en Prótesis Dentales</strong> te abre muchas puertas.</li><li>Los escaneos son datos de salud: <strong>nunca con el nombre del paciente</strong>.</li></ul></div>
+  <div class="note warn"><span class="label">Importante</span><p>Yo te enseño diseño, no leyes. Esto es para que conozcas lo básico; tu caso concreto consúltalo con el Colegio de Protésicos Dentales de tu comunidad autónoma y con una gestoría.</p></div>
+
+  <h4>Una corona es un «producto sanitario a medida»</h4>
+  <p>La ley europea (Reglamento 2017/745) y la española (Real Decreto 192/2023) dicen que una corona o una férula hecha para un paciente concreto es un <strong>producto sanitario a medida</strong>. Quien la fabrica (el laboratorio) necesita una <strong>licencia sanitaria</strong> y un <strong>responsable técnico con título</strong>.</p>
+  <ul>
+    <li>Lo más habitual y seguro: trabajar como <strong>diseñadora externa para laboratorios con licencia</strong>. Ellos revisan tu diseño, lo fabrican y responden legalmente por el producto.</li>
+    <li>Lo que <strong>no</strong> debes hacer: vender prótesis terminadas directamente a pacientes o clínicas sin tener un laboratorio legalizado.</li>
+  </ul>
+
+  <h4>La titulación</h4>
+  <p>El <strong>Técnico Superior en Prótesis Dentales</strong> es una FP de Grado Superior de dos cursos. Se puede estudiar presencial o a distancia en muchas comunidades. No es obligatorio para aprender a diseñar ni para empezar como diseñadora externa, pero los clientes confían mucho más en ti con él, y te permitiría ser responsable técnica de un laboratorio. Te lo recomiendo a medio plazo; puedes estudiarlo a la vez que practicas con esta guía.</p>
+
+  <h4>Protección de datos</h4>
+  <p>Los escaneos de la boca son <strong>datos de salud</strong>, los más protegidos por la ley. Reglas de oro:</p>
+  <ul>
+    <li>Pide los casos <strong>con un código</strong> (por ejemplo <span class="mono">LAB-0153</span>), nunca con el nombre del paciente.</li>
+    <li>Nada de WhatsApp ni servicios gratuitos poco seguros para enviar archivos.</li>
+    <li>Borra los casos cuando ya no los necesites (acuerda el plazo con el laboratorio).</li>
+    <li>Firma con cada cliente un <strong>contrato de encargado del tratamiento</strong> (el laboratorio suele tener el modelo).</li>
+    <li>Ordenador con contraseña y disco cifrado (en Windows se llama BitLocker).</li>
+  </ul>
+</section>
+
+<section class="chapter" id="c3">
+  <header><span class="num">03</span><h3>Tu ordenador</h3><span class="sub">Qué necesitas en casa</span></header>
+  <div class="summary"><span class="label">En pocas palabras</span><p>Un PC con <strong>Windows</strong>, buena tarjeta gráfica <strong>NVIDIA</strong>, 32 GB de RAM y un ratón con rueda. No compres un Mac para esto.</p></div>
+  <p>Los programas profesionales (exocad y 3Shape) funcionan <strong>en Windows</strong>. En Mac no funcionan de forma nativa. Si ya tienes un Mac, puedes empezar a practicar con programas gratuitos que sí tienen versión para Mac (como Blue Sky Plan), pero para trabajar necesitarás un PC con Windows.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Pieza</th><th>Para aprender</th><th>Para trabajar</th></tr></thead>
+    <tbody>
+      <tr><td>Sistema</td><td>Windows 10 u 11 (64 bits)</td><td>Windows 11 (64 bits)</td></tr>
+      <tr><td>Procesador</td><td>Intel i5 o AMD Ryzen 5 recientes</td><td>Intel i7 o AMD Ryzen 7, o superior</td></tr>
+      <tr><td>Memoria RAM</td><td>16 GB</td><td>32 GB</td></tr>
+      <tr><td>Tarjeta gráfica</td><td>NVIDIA con 4 GB</td><td>NVIDIA RTX con 8 GB o más</td></tr>
+      <tr><td>Disco</td><td>SSD de 512 GB</td><td>SSD de 1 TB y un disco externo para copias</td></tr>
+      <tr><td>Pantalla</td><td>24 pulgadas</td><td>27 pulgadas, o dos pantallas</td></tr>
+      <tr><td>Internet</td><td>Fibra estable</td><td>Fibra estable</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note tip"><span class="label">Antes de comprar</span><p>Mira los <strong>requisitos oficiales actualizados</strong> del programa que vayas a usar en su web. Cambian con cada versión, y algunos piden tarjetas gráficas concretas.</p></div>
+  <h4>Lo que va encima de la mesa</h4>
+  <ul>
+    <li><strong>Ratón de tres botones con rueda:</strong> imprescindible. Todo el diseño 3D es girar, mover y acercar.</li>
+    <li><strong>Ratón 3D</strong> (tipo SpaceMouse): opcional, para más adelante. Se usa con la otra mano para girar el modelo mientras modelas.</li>
+    <li><strong>Buena silla</strong> y pantalla a la altura de los ojos. Tu espalda también es tu herramienta de trabajo.</li>
+  </ul>
+  <h4>Ordena tus carpetas desde el primer día</h4>
+<div class="filename">DISEÑO_DENTAL
+├─ 01_PRACTICAS
+├─ 02_CLIENTES
+│   └─ LabSonrisa
+│       └─ 2026-10-05_LS-0153_corona_36
+│           ├─ recibido
+│           └─ entregado
+├─ 03_BIBLIOTECAS
+├─ 04_PORTFOLIO
+└─ 05_ADMINISTRACION</div>
+</section>
+
+<section class="chapter" id="c4">
+  <header><span class="num">04</span><h3>Qué programas aprender</h3><span class="sub">Y en qué orden</span></header>
+  <div class="summary"><span class="label">En pocas palabras</span><p>Empieza gratis con <strong>Meshmixer</strong> y <strong>Blue Sky Plan</strong>. Después, tu programa principal será <strong>exocad</strong>, el que más trabajo da.</p></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Programa</th><th>Para qué sirve</th><th>Precio</th><th>Mi opinión</th></tr></thead>
+    <tbody>
+      <tr><td><strong>exocad DentalCAD</strong></td><td>El más usado en laboratorios. Coronas, puentes, implantes, férulas, modelos, dentaduras… por módulos</td><td>De pago (varios miles de euros o suscripción), a través de un distribuidor</td><td><strong>Tu programa principal</strong></td></tr>
+      <tr><td><strong>3Shape Dental System</strong></td><td>El otro gran programa de laboratorio</td><td>De pago, alto</td><td>El segundo, si tus clientes lo usan</td></tr>
+      <tr><td><strong>Blue Sky Plan</strong></td><td>Modelos, férulas, guías de implantes, dentaduras, ortodoncia</td><td><strong>Gratis para diseñar</strong>; pagas poco por cada archivo que exportas</td><td>Ideal para practicar gratis</td></tr>
+      <tr><td><strong>Meshmixer</strong></td><td>Editar y reparar objetos 3D, bases sencillas</td><td><strong>Gratis</strong> (ya no se actualiza, pero funciona)</td><td>Para perderle el miedo al 3D</td></tr>
+      <tr><td>Blender</td><td>Modelado 3D general, con complementos dentales gratuitos</td><td>Gratis</td><td>Opcional; cuesta aprenderlo</td></tr>
+      <tr><td>Apps de Medit</td><td>Modelos, férulas y otras</td><td>Algunas gratis, otras de pago</td><td>Útil si tus clientes usan escáner Medit</td></tr>
+    </tbody>
+  </table></div>
+  <h4>Mi plan para ti</h4>
+  <ol class="steps">
+    <li><div><b class="t">Semanas 1 a 4: gratis</b><p>Meshmixer para aprender a moverte en 3D y Blue Sky Plan para tus primeros modelos y férulas.</p></div></li>
+    <li><div><b class="t">Desde la semana 5: exocad</b><ul><li>Pide a un <strong>distribuidor oficial de exocad en España</strong> una licencia de prueba y un presupuesto.</li><li>Pregunta por las <strong>modalidades de suscripción</strong> o pago mensual: abaratan mucho la entrada.</li><li>Un <strong>curso oficial</strong> suele incluir licencia temporal para practicar.</li><li>Si conoces un laboratorio con exocad, pregunta si puedes practicar allí.</li></ul></div></li>
+    <li><div><b class="t">Cuando tengas clientes</b><p>Compra solo los <strong>módulos</strong> que te pidan. No hace falta tenerlos todos.</p></div></li>
+    <li><div><b class="t">3Shape, si hace falta</b><p>Funciona con la misma lógica. Si sabes usar uno, el otro lo aprendes en pocas semanas.</p></div></li>
+  </ol>
+  <div class="note tip"><span class="label">¿Por qué no empezar directamente con exocad?</span><p>Porque el primer mes lo vas a dedicar a entender el 3D y los dientes. No tiene sentido pagar una licencia mientras aprendes a girar un modelo en la pantalla.</p></div>
+</section>
+
+<!-- ================= PART 2 ================= -->
+<div class="part">
+  <span class="eyebrow">Parte 2</span>
+  <h2>Las bases</h2>
+  <p>Lo que separa a quien «sabe usar un programa» de una diseñadora dental de verdad.</p>
+</div>
+
+<section class="chapter" id="c5">
+  <header><span class="num">05</span><h3>Los dientes: lo imprescindible</h3><span class="sub">Anatomía, mordida y materiales</span></header>
+  <div class="summary"><span class="label">En pocas palabras</span><p>Tienes que saber el número y el nombre de cada diente, sus caras, cómo muerden los dientes entre sí y cuánto grosor necesita cada material. Estudia un poco de esto cada semana, aunque ya estés diseñando.</p></div>
+
+  <h4>1. El número de cada diente</h4>
+  <p>En España y en Europa cada diente tiene <strong>dos cifras</strong>. La primera dice en qué <strong>cuarto de la boca</strong> está. La segunda, qué <strong>posición</strong> ocupa contando desde el centro. Toca cualquier diente para ver su nombre:</p>
+  <div class="teeth">
+    <div class="teeth-scroll">
+      <div class="legend"><span>Derecha del paciente</span><span>Arriba (maxilar superior)</span><span>Izquierda del paciente</span></div>
+      <div class="arch" id="archUp"></div>
+      <div class="arch low" id="archLow"></div>
+      <div class="legend"><span>Derecha del paciente</span><span>Abajo (mandíbula)</span><span>Izquierda del paciente</span></div>
+    </div>
+    <p class="swipe-hint">Desliza el esquema hacia los lados para ver toda la boca.</p>
+    <p class="tooth-out" id="toothOut" aria-live="polite">Toca un diente. Por ejemplo, el <b>36</b>.</p>
+  </div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Segunda cifra</th><th>Diente</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">1</td><td>Incisivo central</td></tr>
+      <tr><td class="mono">2</td><td>Incisivo lateral</td></tr>
+      <tr><td class="mono">3</td><td>Canino (colmillo)</td></tr>
+      <tr><td class="mono">4 y 5</td><td>Primer y segundo premolar</td></tr>
+      <tr><td class="mono">6 y 7</td><td>Primer y segundo molar (muelas)</td></tr>
+      <tr><td class="mono">8</td><td>Tercer molar (muela del juicio)</td></tr>
+    </tbody>
+  </table></div>
+  <div class="note warn"><span class="label">Ojo</span><p>En la pantalla ves la boca como si miraras al paciente de frente: <strong>su derecha está a tu izquierda</strong>. En Estados Unidos numeran del 1 al 32; apréndelo si trabajas para clientes de allí.</p></div>
+
+  <h4>2. Las caras del diente</h4>
+  <figure class="figure">
+    <svg viewBox="0 0 420 300" width="420" role="img" aria-label="Esquema de una muela vista desde arriba con sus cinco caras">
+      <text class="t-label" x="210" y="26" text-anchor="middle">VESTIBULAR</text>
+      <text class="t-small" x="210" y="44" text-anchor="middle">hacia labios y mejillas</text>
+      <text class="t-label" x="210" y="270" text-anchor="middle">LINGUAL / PALATINO</text>
+      <text class="t-small" x="210" y="288" text-anchor="middle">hacia la lengua / el paladar</text>
+      <text class="t-label" x="52" y="150" text-anchor="middle">MESIAL</text>
+      <text class="t-small" x="52" y="168" text-anchor="middle">hacia el centro</text>
+      <text class="t-label" x="368" y="150" text-anchor="middle">DISTAL</text>
+      <text class="t-small" x="368" y="168" text-anchor="middle">hacia atrás</text>
+      <path class="t-fill" d="M140 70 Q210 52 280 70 Q300 150 280 230 Q210 248 140 230 Q120 150 140 70 Z"/>
+      <path class="t-line" d="M170 110 Q210 150 250 110 M170 190 Q210 150 250 190 M210 150 L210 150"/>
+      <circle class="t-accent" cx="210" cy="150" r="5"/>
+      <text class="t-label" x="210" y="140" text-anchor="middle" dy="-12">OCLUSAL</text>
+    </svg>
+    <figcaption>Una muela vista desde arriba. En los dientes de delante, la cara de arriba se llama «incisal» (el borde que corta).</figcaption>
+  </figure>
+  <ul>
+    <li><strong>Vestibular:</strong> la cara que mira a labios y mejillas.</li>
+    <li><strong>Lingual</strong> (dientes de abajo) o <strong>palatino</strong> (dientes de arriba): la que mira a la lengua o al paladar.</li>
+    <li><strong>Mesial:</strong> la que mira al centro de la boca. <strong>Distal:</strong> la que mira hacia atrás.</li>
+    <li><strong>Oclusal:</strong> la cara de masticar de muelas y premolares. <strong>Incisal:</strong> el borde de los dientes delanteros.</li>
+    <li><strong>Cervical:</strong> el «cuello» del diente, junto a la encía.</li>
+  </ul>
+
+  <h4>3. Cómo es cada diente</h4>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Diente</th><th>Lo que tienes que reconocer</th></tr></thead>
+    <tbody>
+      <tr><td>Incisivo central de arriba (11, 21)</td><td>El más importante para la estética. Borde recto; la esquina del lado del centro es más recta que la de fuera.</td></tr>
+      <tr><td>Incisivo lateral de arriba (12, 22)</td><td>Más pequeño y con las esquinas más redondeadas.</td></tr>
+      <tr><td>Caninos (13, 23, 33, 43)</td><td>Una sola punta. El diente más largo. Clave para guiar la mandíbula al moverla hacia los lados.</td></tr>
+      <tr><td>Premolares de arriba</td><td>Dos puntas (cúspides), una por fuera y otra por dentro, de altura parecida.</td></tr>
+      <tr><td>Premolares de abajo</td><td>El 34 y el 44 tienen la cúspide de dentro muy pequeña. El 35 y el 45 pueden tener dos o tres.</td></tr>
+      <tr><td>Primer molar de arriba (16, 26)</td><td>Cuatro cúspides (a veces un bultito extra por dentro). Desde arriba parece un rombo.</td></tr>
+      <tr><td>Primer molar de abajo (36, 46)</td><td>Cinco cúspides: tres por fuera y dos por dentro. Desde arriba, casi rectangular.</td></tr>
+      <tr><td>Segundos molares</td><td>Como los primeros pero más sencillos.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="ex"><span class="label">Ejercicio</span>
+    <label><input type="checkbox" id="ex-anat-1"><span>Dibuja a mano, en papel, cada tipo de diente visto de frente y desde arriba. Sí, a mano: tu ojo aprende mucho más rápido.</span></label>
+    <label><input type="checkbox" id="ex-anat-2"><span>Tápate la tabla y di en voz alta el nombre de 20 números al azar (17, 42, 25…).</span></label>
+  </div>
+
+  <h4>4. Palabras que usarás cada día</h4>
+  <ul>
+    <li><strong>Punto de contacto:</strong> donde un diente toca al de al lado. Si no toca, se mete comida. Si aprieta demasiado, la corona no entra.</li>
+    <li><strong>Tronera:</strong> el hueco en forma de «V» alrededor del punto de contacto. Tiene que existir para que la encía esté sana y el diente parezca natural.</li>
+    <li><strong>Perfil de emergencia:</strong> cómo «sale» el diente de la encía. Tiene que ser <strong>recto o un poco hundido</strong>, nunca abombado, porque un bulto ahí inflama la encía.</li>
+    <li><strong>Curva de Spee y curva de Wilson:</strong> las curvas que forman las puntas de todos los dientes, vistas de lado y de frente. Tu corona debe <strong>seguirlas</strong>.</li>
+    <li><strong>Plano oclusal:</strong> el plano imaginario donde se juntan los dientes de arriba y los de abajo.</li>
+  </ul>
+
+  <h4>5. Cómo muerden los dientes (oclusión)</h4>
+  <p>Aquí es donde más se equivocan las principiantes. Apréndete esto:</p>
+  <ul>
+    <li><strong>Máxima intercuspidación:</strong> la posición en la que los dientes encajan del todo al cerrar la boca.</li>
+    <li><strong>Cúspides de soporte:</strong> las puntas que «pisan» sobre los dientes de enfrente. Son las de <strong>dentro en los de arriba</strong> (palatinas) y las de <strong>fuera en los de abajo</strong> (vestibulares).</li>
+    <li><strong>Resalte:</strong> cuánto sobresalen hacia delante los incisivos de arriba. <strong>Sobremordida:</strong> cuánto tapan desde arriba a los de abajo.</li>
+    <li><strong>Guía anterior:</strong> al adelantar la mandíbula, los incisivos guían el movimiento y separan las muelas.</li>
+    <li><strong>Guía canina:</strong> al mover la mandíbula hacia un lado, solo toca el canino y separa el resto. Es lo ideal en la mayoría de casos.</li>
+    <li><strong>Interferencia:</strong> un contacto que no debería existir durante un movimiento, por ejemplo una muela que choca al mover la mandíbula hacia un lado. <strong>Tu diseño nunca debe crear interferencias.</strong></li>
+    <li><strong>Clases de Angle</strong> (se miden por la posición de los primeros molares; simplificando): clase I es la relación normal, clase II es la mandíbula atrasada y clase III la mandíbula adelantada.</li>
+    <li><strong>Dimensión vertical:</strong> la altura de la cara con la boca cerrada. En férulas y en tratamientos grandes se cambia a propósito.</li>
+  </ul>
+  <div class="note key"><span class="label">Regla de oro para una corona de muela</span><p>Contactos <strong>pequeños, ligeros y repartidos</strong>, en las puntas y los hoyitos, con la misma fuerza que los dientes vecinos. Nunca una zona plana grande de contacto, y nunca contactos en las pendientes que empujen el diente hacia un lado.</p></div>
+
+  <h4>6. El diente tallado</h4>
+  <p>Para poner una corona, el dentista lima el diente. Ese diente limado se llama <strong>muñón</strong> o <strong>preparación</strong>, y tu corona se apoya encima.</p>
+  <ul>
+    <li><strong>Margen (o línea de terminación):</strong> el borde donde termina el limado. <strong>Es la línea más importante de todo el diseño.</strong> Si la marcas mal, la corona no ajusta y entran bacterias.</li>
+    <li><strong>Tipos de margen:</strong> <em>chamfer</em> o chaflán (borde curvo, el más habitual en circonio y cerámica), <em>hombro</em> (escalón recto), hombro biselado y <em>filo de cuchillo</em> (casi sin escalón, el más difícil de ver).</li>
+    <li><strong>Eje de inserción:</strong> la dirección en la que la corona entra y sale. Las zonas del muñón que «se esconden» desde esa dirección se llaman <strong>retenciones</strong>; el programa las rellena por dentro para que la corona pueda entrar.</li>
+    <li><strong>Espacio de cemento:</strong> un hueco finísimo entre la corona y el muñón donde va el cemento.</li>
+  </ul>
+
+  <h4>7. Los materiales</h4>
+  <p>Cada material necesita un <strong>grosor mínimo</strong> distinto. Si diseñas más fino, <strong>se rompe</strong>. Valores orientativos (confírmalos siempre en la ficha del fabricante):</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Material</th><th>Para qué se usa</th><th>Grosor mínimo orientativo</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Circonio monolítico</strong></td><td>Coronas y puentes, sobre todo de muelas</td><td>Arriba <span class="mono">0,5–1,0 mm</span> (según el tipo de circonio); paredes <span class="mono">~0,5 mm</span></td></tr>
+      <tr><td><strong>Disilicato de litio</strong> (tipo e.max)</td><td>Coronas estéticas, carillas, incrustaciones</td><td>Corona: arriba <span class="mono">~1,5 mm</span>, paredes <span class="mono">~1,0–1,5 mm</span>. Carillas: <span class="mono">~0,3–0,6 mm</span></td></tr>
+      <tr><td><strong>Estructura de circonio para cerámica</strong></td><td>Máxima estética: el ceramista añade cerámica encima</td><td>Estructura <span class="mono">~0,5 mm</span></td></tr>
+      <tr><td><strong>Metal</strong> (cromo-cobalto)</td><td>Puentes largos, poco espacio</td><td>Estructura <span class="mono">~0,3–0,5 mm</span></td></tr>
+      <tr><td><strong>Resina de provisionales</strong> (PMMA)</td><td>Dientes provisionales</td><td><span class="mono">~1,0–1,5 mm</span></td></tr>
+      <tr><td><strong>Resina de férulas</strong></td><td>Férulas de descarga</td><td><span class="mono">~1,5–2,0 mm</span> o más</td></tr>
+      <tr><td><strong>Resina de modelos</strong></td><td>Modelos impresos</td><td>Paredes <span class="mono">~1,5–2,5 mm</span> si es hueco</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>8. Vocabulario de trabajos</h4>
+  <ul>
+    <li><strong>Corona completa:</strong> cubre todo el diente. <strong>Anatómica</strong> si tiene ya su forma final; <strong>reducida</strong> si es más pequeña para añadirle cerámica.</li>
+    <li><strong>Puente:</strong> varias piezas unidas. Los <strong>pilares</strong> sujetan, el <strong>póntico</strong> es el diente «falso» que rellena el hueco y los <strong>conectores</strong> son las uniones.</li>
+    <li><strong>Incrustación:</strong> pieza parcial. <em>Inlay</em> va dentro del diente; <em>onlay</em> cubre alguna punta; <em>overlay</em> cubre toda la cara de masticar.</li>
+    <li><strong>Carilla:</strong> lámina fina pegada por delante del diente.</li>
+    <li><strong>Pilar personalizado:</strong> pieza hecha a medida que une el implante con la corona.</li>
+    <li><strong>Férula de descarga:</strong> placa de resina que cubre toda una arcada para proteger los dientes de quien aprieta o rechina.</li>
+  </ul>
+</section>
+
+<section class="chapter" id="c6">
+  <header><span class="num">06</span><h3>El 3D sin miedo</h3><span class="sub">Mallas, archivos y cómo moverte</span></header>
+  <div class="summary"><span class="label">En pocas palabras</span><p>Todo lo que ves en pantalla está hecho de miles de triángulos. Recibirás y entregarás casi todo en archivos <strong>STL</strong>. Y tienes que moverte por el modelo sin pensar: girar, desplazar y acercar.</p></div>
+  <h4>¿Qué es una malla?</h4>
+  <p>Cada diente en pantalla es una superficie hecha de <strong>miles de triángulos diminutos</strong> pegados. A eso se le llama <strong>malla</strong>.</p>
+  <ul>
+    <li>Más triángulos = más detalle, pero archivo más pesado.</li>
+    <li><strong>Malla cerrada:</strong> sin agujeros, como un globo. <strong>Imprescindible</strong> para fabricar una pieza.</li>
+    <li><strong>Malla abierta:</strong> con bordes sueltos. Un escaneo de la boca siempre lo es, porque el escáner solo ve la superficie.</li>
+    <li>Cada triángulo tiene una cara de fuera y una de dentro. Si se dan la vuelta, el programa se confunde.</li>
+  </ul>
+  <h4>Tipos de archivo</h4>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Formato</th><th>Qué guarda</th><th>Cuándo lo verás</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">STL</td><td>Solo la forma, sin color</td><td><strong>El más usado.</strong> Casi todo te llegará y lo entregarás así</td></tr>
+      <tr><td class="mono">PLY</td><td>Forma y color</td><td>Escaneos en color: ayudan a distinguir diente y encía</td></tr>
+      <tr><td class="mono">OBJ</td><td>Forma y color</td><td>Poco en odontología</td></tr>
+      <tr><td>Proyecto de exocad</td><td>El caso completo</td><td>Si tu cliente también usa exocad</td></tr>
+      <tr><td class="mono">DCM</td><td>Formato propio de 3Shape, a menudo protegido</td><td>Pide que te lo exporten a STL</td></tr>
+      <tr><td class="mono">DICOM</td><td>Radiografía 3D del hueso (TAC)</td><td>Solo para guías de implantes</td></tr>
+    </tbody>
+  </table></div>
+  <h4>Qué suele traer un caso de corona</h4>
+  <ul>
+    <li>El escaneo de la arcada con el <strong>diente tallado</strong>.</li>
+    <li>El escaneo de la arcada de <strong>enfrente</strong> (antagonista).</li>
+    <li>La <strong>mordida</strong>: las dos arcadas colocadas como cierran en la boca. Sin esto no puedes diseñar cómo muerde la corona.</li>
+    <li>A veces: escaneo de antes de tallar, fotos, el provisional.</li>
+    <li>La <strong>orden de trabajo</strong>: diente, tipo de trabajo, material, color e indicaciones.</li>
+  </ul>
+  <div class="note key"><span class="label">Antes de aceptar un caso</span><p>Comprueba que el margen se ve claro, que no hay agujeros en el muñón, que la mordida está bien y que tienes toda la información. Si algo falla, <strong>avisa antes de diseñar</strong>. Esto, por sí solo, te hará ganar clientes.</p></div>
+  <h4>Moverte por el modelo</h4>
+  <p>Todos los programas tienen tres movimientos: <strong>girar</strong>, <strong>desplazar</strong> y <strong>acercar o alejar</strong> (casi siempre con la rueda). Normalmente el botón derecho gira y el central desplaza, pero cada programa tiene sus combinaciones: búscalas en su ayuda y apúntalas en un pósit junto a la pantalla.</p>
+  <p>Aprende también los atajos para ver el diente desde <strong>arriba, delante, dentro, mesial y distal</strong>. Las diseñadoras rápidas cambian de vista todo el rato.</p>
+</section>
+
+<section class="chapter" id="c7">
+  <header><span class="num">07</span><h3>Primeras prácticas gratis</h3><span class="sub">Meshmixer y Blue Sky Plan · semanas 1 a 4</span></header>
+  <div class="summary"><span class="label">En pocas palabras</span><p>Con dos programas gratuitos aprendes a moverte en 3D, reparar escaneos y hacer tus primeros modelos y férulas.</p></div>
+  <div class="note tip"><span class="label">¿De dónde saco escaneos para practicar?</span><p>Muchos programas traen <strong>casos de ejemplo</strong>. También puedes pedir a un laboratorio o una clínica <strong>escaneos sin datos del paciente</strong> para practicar.</p></div>
+
+  <h4>Meshmixer (semanas 1 y 2)</h4>
+  <p><strong>Ejercicio A · Moverte</strong> (30 minutos al día, tres días)</p>
+  <ol class="steps">
+    <li><div><p>Abre el escaneo de una arcada (<em>Import</em>).</p></div></li>
+    <li><div><p>Gíralo, desplázalo y acércalo hasta verlo desde las cinco vistas.</p></div></li>
+    <li><div><p>Señala cada diente y di en voz alta su número.</p></div></li>
+  </ol>
+  <p><strong>Ejercicio B · Reparar un escaneo</strong></p>
+  <ol class="steps">
+    <li><div><p>Abre la herramienta de análisis (<em>Analysis → Inspector</em>): te marcará agujeros y errores.</p></div></li>
+    <li><div><p>Deja que los repare automáticamente y fíjate en qué ha cambiado.</p></div></li>
+    <li><div><p>Aprende a seleccionar una zona con el pincel y a borrarla (por ejemplo, trozos de lengua o mejilla escaneados por error).</p></div></li>
+  </ol>
+  <p><strong>Ejercicio C · Tu primer modelo con base</strong></p>
+  <ol class="steps">
+    <li><div><p>Recorta el escaneo dejando los dientes y 3 a 5 mm de encía.</p></div></li>
+    <li><div><p>Crea una base plana: cierra el modelo (<em>Edit → Make Solid</em>) y corta la parte de abajo con un plano (<em>Edit → Plane Cut</em>).</p></div></li>
+    <li><div><p>Revisa con el inspector que no quedan agujeros.</p></div></li>
+    <li><div><p>Guárdalo como STL. ¡Tu primer modelo imprimible!</p></div></li>
+  </ol>
+  <div class="ex"><span class="label">Ejercicios</span>
+    <label><input type="checkbox" id="ex-mm-a"><span>Ejercicio A hecho tres días seguidos.</span></label>
+    <label><input type="checkbox" id="ex-mm-b"><span>Ejercicio B con tres escaneos distintos.</span></label>
+    <label><input type="checkbox" id="ex-mm-c"><span>Ejercicio C: tres modelos con base.</span></label>
+  </div>
+
+  <h4>Blue Sky Plan (semanas 3 y 4)</h4>
+  <p>Es gratis para diseñar (solo pagas si exportas) y te enseña a trabajar con un <strong>asistente paso a paso</strong>, igual que luego en exocad. Mira su tutorial oficial en vídeo antes de cada ejercicio.</p>
+  <div class="ex"><span class="label">Ejercicios</span>
+    <label><input type="checkbox" id="ex-bsp-1"><span>Cinco modelos con base a partir de escaneos: importar, orientar, recortar, crear base y añadir el código del caso.</span></label>
+    <label><input type="checkbox" id="ex-bsp-2"><span>Tu primera férula, siguiendo los pasos de la <a href="#c13">lección 13</a>. Los botones cambian de nombre, pero la idea es la misma.</span></label>
+  </div>
+</section>
+
+<section class="chapter" id="c8">
+  <header><span class="num">08</span><h3>Cómo piensa exocad</h3><span class="sub">La receta que sirve para casi todo</span></header>
+  <div class="summary"><span class="label">En pocas palabras</span><p>Primero rellenas la <strong>ficha del caso</strong> y después el programa te lleva <strong>paso a paso</strong> con un asistente. Casi todos los diseños siguen los mismos diez pasos.</p></div>
+  <h4>Las dos partes de exocad</h4>
+  <ul>
+    <li><strong>DentalDB (la ficha):</strong> aquí creas el caso: código del paciente, cliente, diente, tipo de trabajo, material y archivos de escaneo.</li>
+    <li><strong>DentalCAD (el diseño):</strong> aquí diseñas con un asistente que avanza con «Siguiente». En cada paso puedes retocar a mano.</li>
+  </ul>
+  <h4>Crear un caso</h4>
+  <ol class="steps">
+    <li><div><p><strong>Caso nuevo:</strong> escribe el código del paciente (¡nunca el nombre!) y el cliente.</p></div></li>
+    <li><div><p>En el dibujo de la boca, haz clic en el diente o los dientes.</p></div></li>
+    <li><div><p>Elige el <strong>tipo de trabajo</strong>: corona, póntico, incrustación, carilla, corona sobre implante…</p></div></li>
+    <li><div><p>Elige el <strong>material</strong>. Con él se cargan solas las medidas (grosores, espacio de cemento). Por eso tienen que estar bien configuradas con las del laboratorio.</p></div></li>
+    <li><div><p>Indica si hay diente de enfrente y si usarás el <strong>articulador virtual</strong> (el simulador de movimientos de la mandíbula).</p></div></li>
+    <li><div><p>Asocia los archivos de escaneo, guarda y pulsa <strong>Diseñar</strong>.</p></div></li>
+  </ol>
+  <h4>La receta de casi cualquier diseño</h4>
+  <ol class="steps">
+    <li><div><p>Cargar los escaneos y <strong>comprobar la mordida</strong>.</p></div></li>
+    <li><div><p>Marcar el <strong>margen</strong> (o la zona de trabajo).</p></div></li>
+    <li><div><p>Elegir el <strong>eje de inserción</strong> y rellenar retenciones.</p></div></li>
+    <li><div><p>Ajustar las <strong>medidas</strong>: espacio de cemento y grosores.</p></div></li>
+    <li><div><p>Colocar un <strong>diente de biblioteca</strong> (formas de dientes ya hechas).</p></div></li>
+    <li><div><p>Ajustar posición, tamaño, <strong>contactos</strong> y <strong>mordida</strong>.</p></div></li>
+    <li><div><p><strong>Modelar a mano</strong>, como si esculpieras.</p></div></li>
+    <li><div><p>Revisar los <strong>grosores mínimos</strong>.</p></div></li>
+    <li><div><p><strong>Unir</strong> todo en una pieza cerrada.</p></div></li>
+    <li><div><p>Guardar y <strong>exportar el STL</strong>.</p></div></li>
+  </ol>
+  <div class="note key"><span class="label">Si entiendes esta receta…</span><p>…entiendes el 80 % de exocad, y también de 3Shape.</p></div>
+  <h4>Herramientas que usarás siempre</h4>
+  <ul>
+    <li><strong>Bibliotecas de dientes:</strong> formas naturales ya hechas. Para gente joven, formas marcadas; para gente mayor, más desgastadas.</li>
+    <li><strong>Adaptar al diente de enfrente y a los vecinos:</strong> el programa ajusta solo los contactos.</li>
+    <li><strong>Mapa de colores:</strong> pinta la superficie según lo cerca que está del diente de enfrente o del vecino. <strong>Apréndete de memoria qué significa cada color en tu programa</strong>: es tu mejor amiga.</li>
+    <li><strong>Modelado libre:</strong> pinceles para añadir, quitar, suavizar y aplanar material.</li>
+    <li><strong>Mapa de grosores:</strong> marca en color las zonas más finas de lo permitido.</li>
+    <li><strong>Corte (sección):</strong> ves la pieza «partida» para comprobar grosores y ajuste.</li>
+    <li><strong>Articulador virtual:</strong> simula los movimientos de la mandíbula para detectar choques.</li>
+  </ul>
+  <div class="note tip"><span class="label">Tu libro de consulta</span><p>exocad tiene un <strong>manual oficial en internet (exocad Wiki)</strong> con cada módulo explicado paso a paso, y un canal oficial de vídeos. Cuando un botón no te cuadre con esta guía, búscalo ahí.</p></div>
+</section>
+
+<!-- ================= PART 3 ================= -->
+<div class="part">
+  <span class="eyebrow">Parte 3</span>
+  <h2>Diseñar, paso a paso</h2>
+  <p>Cada trabajo con su teoría, sus pasos y sus ejercicios.</p>
+</div>
+
+<section class="chapter" id="c9">
+  <header><span class="num">09</span><h3>Coronas</h3><span class="sub">El trabajo más pedido del mundo</span></header>
+  <div class="summary"><span class="label">En pocas palabras</span><p>Una buena corona ajusta perfecta en el margen, toca bien a los vecinos, muerde con contactos pequeños, sale recta de la encía, se parece a los dientes de al lado y tiene el grosor que pide el material.</p></div>
+  <p>Empezamos con una <strong>corona de circonio en el primer molar de abajo a la izquierda (36)</strong>. Si dominas esto, ya puedes trabajar.</p>
+  <h4>Cómo es una buena corona de muela</h4>
+  <ul>
+    <li><strong>Margen perfecto:</strong> ajusta justo en el borde del tallado, sin escalones ni sobrantes.</li>
+    <li><strong>Contactos con los vecinos:</strong> en el tercio de arriba del diente, un poco hacia fuera, con la fuerza que marque el laboratorio.</li>
+    <li><strong>Sale recta de la encía</strong>, sin «barriga».</li>
+    <li><strong>Forma coherente</strong> con los vecinos: misma altura de puntas, tamaño parecido, surcos definidos pero suaves.</li>
+    <li><strong>Mordida correcta:</strong> contactos pequeños en las puntas y los hoyitos, sin choques al mover la mandíbula.</li>
+    <li><strong>Grosor mínimo</strong> respetado en toda la pieza.</li>
+  </ul>
+
+  <h4>Paso a paso en exocad</h4>
+  <ol class="steps">
+    <li><div><b class="t">Crear el caso</b><p>Diente 36, corona anatómica, circonio, con diente de enfrente (<a href="#c8">lección 8</a>).</p></div></li>
+    <li><div><b class="t">Revisar los escaneos</b><p>¿El muñón está completo? ¿Se ve el margen? ¿Hay agujeros? ¿Las arcadas cierran como en la boca, sin atravesarse ni quedar separadas? Si algo falla, <strong>para y avisa</strong>.</p></div></li>
+    <li><div><b class="t">Marcar el margen</b>
+      <ul>
+        <li>Haz clic sobre el margen: el programa lo sigue solo alrededor del diente.</li>
+        <li><strong>Nunca te fíes de la línea automática.</strong> Da la vuelta completa al muñón con mucho zoom.</li>
+        <li>Corrige los puntos que se hayan ido a la encía o subido por el muñón.</li>
+        <li>Si el escaneo tiene color, el cambio entre diente y encía te ayuda. Míralo también desde abajo.</li>
+        <li>Tiene que quedar una línea <strong>cerrada y suave</strong>, sin picos.</li>
+      </ul>
+      <div class="note key"><span class="label">Aquí se ganan o se pierden los clientes</span><p>Tómate el tiempo que haga falta. Una corona con el margen mal marcado <strong>no sirve</strong>, por bonita que sea.</p></div>
+    </div></li>
+    <li><div><b class="t">Elegir el eje de inserción</b><p>Mira el muñón desde arriba siguiendo el eje que propone el programa: verás las retenciones en color. Ajusta el eje para que haya las menos posibles, normalmente siguiendo el eje largo del diente. Las que queden se rellenan por dentro.</p></div></li>
+    <li><div><b class="t">Ajustar las medidas de dentro</b><p>Usa las del laboratorio. Como referencia:</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Medida</th><th>Qué es</th><th>Valor habitual</th></tr></thead>
+        <tbody>
+          <tr><td>Espacio de cemento en el margen</td><td>Hueco para el cemento justo en el borde</td><td class="mono">0–0,02 mm</td></tr>
+          <tr><td>Espacio de cemento extra</td><td>Hueco en el resto del muñón</td><td class="mono">0,03–0,08 mm</td></tr>
+          <tr><td>Distancia al margen</td><td>Dónde empieza el espacio extra</td><td class="mono">0,5–1,0 mm</td></tr>
+          <tr><td>Compensación de fresa</td><td>Para que la fresa de la máquina quepa en las zonas estrechas</td><td>Según la máquina del laboratorio</td></tr>
+        </tbody>
+      </table></div>
+    </div></li>
+    <li><div><b class="t">Colocar el diente de biblioteca</b>
+      <ul>
+        <li>Elige una biblioteca que se parezca a los dientes del paciente.</li>
+        <li>Muévelo, gíralo y cambia su tamaño hasta que ocupe el hueco, sus puntas estén a la altura de las vecinas (curva de Spee) y la cara de fuera esté alineada con la arcada.</li>
+        <li>Si te han mandado un escaneo de <strong>antes de tallar</strong> y el diente estaba bien, puedes copiar su forma: rápido y natural.</li>
+      </ul>
+    </div></li>
+    <li><div><b class="t">Ajuste automático</b><p>Usa «adaptar a vecinos» y «adaptar a antagonista». Mira el mapa de colores: contactos con los vecinos en su sitio, contactos pequeños con el diente de enfrente y <strong>ningún atravesamiento grande</strong>.</p></div></li>
+    <li><div><b class="t">Modelado a mano</b><p>Aquí es donde te conviertes en diseñadora.</p>
+      <ul>
+        <li>Quita material donde toca demasiado; añade donde no toca nada.</li>
+        <li>Surcos y hoyitos suaves. Nada de surcos como cañones: debilitan la pieza y acumulan placa.</li>
+        <li>Los bordes altos de delante y detrás (crestas marginales) a la misma altura que los vecinos, para que no se meta comida.</li>
+        <li>Mira de lado y de frente que salga recta de la encía.</li>
+        <li>Deja las troneras en «V» alrededor de los contactos.</li>
+        <li>Suaviza al final, con poca fuerza.</li>
+      </ul>
+    </div></li>
+    <li><div><b class="t">Revisar los grosores</b>
+      <ul>
+        <li>Activa el mapa de grosores. Si falta mucho grosor, lo correcto es pedir al dentista que talle más.</li>
+        <li>Si falta poco, el programa puede engordar esas zonas. Como engorda hacia fuera, <strong>vuelve a revisar la mordida y los contactos</strong> después.</li>
+        <li>Haz un corte de fuera a dentro y otro de delante a atrás para ver el grosor real.</li>
+      </ul>
+    </div></li>
+    <li><div><b class="t">Probar los movimientos</b><p>Con el articulador virtual, mueve la mandíbula a los lados y hacia delante. Si la corona choca, quita material de esa pendiente.</p></div></li>
+    <li><div><b class="t">Unir y exportar</b><p>El programa une la parte de dentro con la de fuera en una pieza cerrada. Revisa que el margen haya quedado limpio y exporta el STL (<a href="#c19">lección 19</a>).</p></div></li>
+  </ol>
+
+  <h4>Coronas de dientes delanteros: qué cambia</h4>
+  <ul>
+    <li><strong>Manda la estética:</strong> simetría con el diente del otro lado (el 11 con el 21), proporciones, textura y borde.</li>
+    <li><strong>Truco profesional:</strong> haz un <strong>espejo</strong> del diente sano del otro lado y ajústalo. Es lo que antes da un resultado natural.</li>
+    <li>Revisa que, al adelantar la mandíbula, los dientes de abajo deslicen sin golpear.</li>
+    <li>Si el laboratorio va a añadir cerámica, diseñas la forma completa y luego la <strong>reduces</strong> (se llama <em>cut-back</em>) dejando sitio para la cerámica.</li>
+  </ul>
+
+  <div class="ex"><span class="label">Ejercicios</span>
+    <label><input type="checkbox" id="ex-cor-1"><span>10 coronas de primer molar de abajo (36 y 46).</span></label>
+    <label><input type="checkbox" id="ex-cor-2"><span>10 coronas de primer molar de arriba (16 y 26).</span></label>
+    <label><input type="checkbox" id="ex-cor-3"><span>10 coronas de premolares.</span></label>
+    <label><input type="checkbox" id="ex-cor-4"><span>5 coronas de incisivo central de arriba, haciendo espejo del otro lado.</span></label>
+    <label><input type="checkbox" id="ex-cor-5"><span>Cronometra cada una. Objetivo de principiante: bajar de 60 a 20 minutos por corona de muela.</span></label>
+    <label><input type="checkbox" id="ex-cor-6"><span>Haz capturas desde arriba, de frente y de lado, y compáralas con fotos de dientes reales.</span></label>
+  </div>
+</section>
+
+<section class="chapter" id="c10">
+  <header><span class="num">10</span><h3>Puentes</h3><span class="sub">Varias piezas unidas</span></header>
+  <div class="summary"><span class="label">En pocas palabras</span><p>Un puente son coronas unidas con un diente «falso» en medio. Lo que más importa: que todas las piezas entren a la vez y que las uniones sean <strong>gruesas y altas</strong>, porque es por donde se rompen.</p></div>
+  <ul>
+    <li><strong>Pilares:</strong> los dientes tallados que sujetan el puente. Se diseñan como coronas.</li>
+    <li><strong>Póntico:</strong> el diente que sustituye al que falta. No tiene muñón: se apoya sobre la encía.</li>
+    <li><strong>Conectores:</strong> las uniones entre piezas.</li>
+  </ul>
+  <h4>Formas de póntico</h4>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Tipo</th><th>Cómo toca la encía</th><th>Cuándo se usa</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Ovoide</strong></td><td>Redondeado, entra un poco en la encía (que el dentista ha preparado)</td><td>Zona estética, muy natural</td></tr>
+      <tr><td><strong>Silla modificada</strong></td><td>Toca un poco, solo por fuera</td><td>Dientes delanteros y premolares</td></tr>
+      <tr><td><strong>Higiénico</strong></td><td>No toca la encía, deja espacio para limpiar</td><td>Muelas de abajo</td></tr>
+      <tr><td><strong>Cónico</strong></td><td>Toca en un punto mínimo</td><td>Zonas de atrás</td></tr>
+    </tbody>
+  </table></div>
+  <h4>Las uniones (conectores)</h4>
+  <ul>
+    <li>Circonio: unos <span class="mono">7–9 mm²</span> delante y <span class="mono">9–12 mm²</span> atrás; más si el puente es largo.</li>
+    <li>Disilicato de litio: del orden de <span class="mono">12–16 mm²</span> según la zona y el fabricante, y solo puentes cortos de tres piezas hasta los premolares.</li>
+    <li>Siempre <strong>más altos que anchos</strong> (la altura aguanta mucho más) y <strong>redondeados</strong>, sin esquinas.</li>
+    <li>Deja hueco hacia la encía para que el paciente pueda limpiar con un cepillo interdental.</li>
+  </ul>
+  <h4>Paso a paso: lo que cambia respecto a una corona</h4>
+  <ol class="steps">
+    <li><div><p>En la ficha, marca los pilares como coronas y el hueco como <strong>póntico</strong>, y únelos como puente.</p></div></li>
+    <li><div><p>Marca el margen de <strong>cada</strong> pilar.</p></div></li>
+    <li><div><p>Busca un <strong>eje de inserción común</strong>: todas las piezas tienen que entrar a la vez en la misma dirección. Si es imposible, avisa al cliente.</p></div></li>
+    <li><div><p>Coloca los dientes de biblioteca, póntico incluido, y ajusta el póntico a la encía según su tipo.</p></div></li>
+    <li><div><p>Ajusta los conectores: el programa te dice su tamaño en mm². Súbelos por encima del mínimo <strong>sin tocar la encía</strong> ni el diente de enfrente.</p></div></li>
+    <li><div><p>Mordida y modelado a mano, como en las coronas. Después, <strong>vuelve a revisar los conectores</strong>: al modelar pueden haber adelgazado.</p></div></li>
+  </ol>
+  <div class="ex"><span class="label">Ejercicios</span>
+    <label><input type="checkbox" id="ex-pue-1"><span>5 puentes de tres piezas de atrás (por ejemplo 45-46-47).</span></label>
+    <label><input type="checkbox" id="ex-pue-2"><span>5 puentes de tres piezas de delante (por ejemplo 11-12-13).</span></label>
+    <label><input type="checkbox" id="ex-pue-3"><span>2 puentes largos (de cuatro a seis piezas) en circonio, apuntando el tamaño de cada conector.</span></label>
+  </div>
+</section>
+
+<section class="chapter" id="c11">
+  <header><span class="num">11</span><h3>Coronas sobre implantes</h3><span class="sub">Cuando no hay diente, sino un tornillo</span></header>
+  <div class="summary"><span class="label">En pocas palabras</span><p>El implante es un tornillo en el hueso. Una pieza de escaneo le dice al programa dónde está exactamente. Necesitas la <strong>biblioteca correcta</strong> de ese implante; si no sabes cuál es, pregunta.</p></div>
+  <ul>
+    <li><strong>Scanbody (pieza de escaneo):</strong> se enrosca en el implante y se escanea. El programa lo reconoce y así sabe la posición exacta del implante.</li>
+    <li><strong>Biblioteca de implantes:</strong> los archivos de cada marca y modelo de implante. Sin la correcta no se puede diseñar.</li>
+    <li><strong>Corona atornillada sobre Ti-base:</strong> la corona se pega a una base de titanio estándar y lleva un agujero para el tornillo. Es muy habitual.</li>
+    <li><strong>Pilar personalizado con corona cementada:</strong> diseñas un pilar a medida y encima una corona, como si fuera un diente tallado.</li>
+    <li><strong>Canal angulado:</strong> algunos sistemas permiten inclinar el agujero del tornillo para que no salga por la cara de delante.</li>
+  </ul>
+  <h4>Paso a paso</h4>
+  <ol class="steps">
+    <li><div><p>En la ficha: diente, tipo <strong>implante</strong>, marca y modelo, Ti-base o pilar, y tipo de corona.</p></div></li>
+    <li><div><p><strong>Alinea el scanbody:</strong> el programa superpone el de la biblioteca con el escaneado. Tienen que coincidir perfectamente. Si no coinciden, no te fíes del caso y avisa.</p></div></li>
+    <li><div><p><strong>Perfil de emergencia:</strong> estrecho y un poco hundido cerca del implante para dejar sitio a la encía, y más ancho al llegar arriba.</p></div></li>
+    <li><div><p><strong>Pilar personalizado</strong> (si lo hay): margen un poco por debajo de la encía, lo que indique el dentista; paredes altas y sin esquinas vivas.</p></div></li>
+    <li><div><p><strong>Corona:</strong> como en la lección 9. Los implantes no amortiguan como un diente natural, así que la mordida suele diseñarse <strong>más suave</strong> y sin contactos al mover a los lados. Sigue el protocolo del cliente.</p></div></li>
+    <li><div><p>Comprueba por dónde sale el tornillo y que alrededor queda grosor suficiente.</p></div></li>
+    <li><div><p>Exporta <strong>cada pieza por separado</strong> (pilar, corona), como pida el laboratorio.</p></div></li>
+  </ol>
+  <div class="ex"><span class="label">Ejercicios</span>
+    <label><input type="checkbox" id="ex-imp-1"><span>5 coronas atornilladas sobre Ti-base en muelas.</span></label>
+    <label><input type="checkbox" id="ex-imp-2"><span>5 pilares personalizados con su corona cementada.</span></label>
+    <label><input type="checkbox" id="ex-imp-3"><span>2 casos de delante con canal angulado (si tu biblioteca lo permite).</span></label>
+  </div>
+</section>
+
+<section class="chapter" id="c12">
+  <header><span class="num">12</span><h3>Incrustaciones y carillas</h3><span class="sub">Piezas parciales y láminas estéticas</span></header>
+  <div class="summary"><span class="label">En pocas palabras</span><p>En las incrustaciones, lo difícil es el margen, que va por arriba y por los lados. En las carillas, que son muy finas, manda la estética.</p></div>
+  <h4>Incrustaciones</h4>
+  <ul>
+    <li><strong>Margen:</strong> recorre la cara de masticar y los lados. Márcalo con mucha paciencia y zoom.</li>
+    <li><strong>Eje de inserción:</strong> normalmente desde arriba.</li>
+    <li><strong>Grosor:</strong> respeta el mínimo del material; en disilicato, entre 1 y 1,5 mm en las zonas que reciben fuerza.</li>
+    <li><strong>Forma:</strong> continúa los surcos y puntas del diente natural, sin escalones.</li>
+  </ul>
+  <h4>Carillas</h4>
+  <ul>
+    <li><strong>Muy finas:</strong> entre <span class="mono">0,3</span> y <span class="mono">0,6 mm</span> en disilicato, según el material.</li>
+    <li><strong>Estética total:</strong> simetría, línea del centro, línea de la sonrisa y textura. El incisivo central suele medir de ancho un 75–80 % de lo que mide de largo.</li>
+    <li>Muchas veces se copia un <strong>encerado</strong> que el paciente ya ha aprobado (<a href="#c15">lección 15</a>).</li>
+  </ul>
+  <div class="ex"><span class="label">Ejercicios</span>
+    <label><input type="checkbox" id="ex-inc-1"><span>5 onlays en muelas.</span></label>
+    <label><input type="checkbox" id="ex-inc-2"><span>3 casos de seis carillas (del 13 al 23), cuidando la simetría.</span></label>
+  </div>
+</section>
+
+<section class="chapter" id="c13">
+  <header><span class="num">13</span><h3>Férulas de descarga</h3><span class="sub">De los mejores trabajos para empezar a cobrar</span></header>
+  <div class="summary"><span class="label">En pocas palabras</span><p>Una placa rígida que cubre todos los dientes de arriba. Su superficie es <strong>lisa y plana</strong>, los dientes de abajo la tocan todos a la vez y, al mover la mandíbula hacia un lado, <strong>solo toca el canino</strong>.</p></div>
+  <p>La férula de descarga (también «férula oclusal» o «tipo Michigan») es para quien aprieta o rechina los dientes (bruxismo) o tiene molestias en la articulación de la mandíbula.</p>
+  <h4>Cómo es una buena férula tipo Michigan</h4>
+  <ol class="steps">
+    <li><div><p><strong>Cubre todos los dientes</strong> de la arcada, hasta el último molar.</p></div></li>
+    <li><div><p><strong>Superficie lisa y plana</strong>, sin huellas profundas de los dientes de enfrente.</p></div></li>
+    <li><div><p><strong>Contactos pequeños, a la vez y con la misma fuerza</strong> de las puntas de soporte de abajo (las de fuera de muelas y premolares y los bordes de los incisivos).</p></div></li>
+    <li><div><p><strong>Rampa del canino:</strong> al mover la mandíbula hacia un lado, solo toca el canino de ese lado y separa el resto.</p></div></li>
+    <li><div><p><strong>Guía de delante:</strong> al adelantar la mandíbula, los incisivos de abajo deslizan por la férula y las muelas se separan.</p></div></li>
+    <li><div><p><strong>Grosor</strong> suficiente para no romperse: 1,5 a 2 mm como mínimo en la zona de morder.</p></div></li>
+    <li><div><p><strong>Se sujeta bien</strong>, pero se pone y se quita sin forzar.</p></div></li>
+    <li><div><p><strong>Bordes redondeados</strong> y cómodos.</p></div></li>
+  </ol>
+  <p>Otros tipos que te pedirán: <strong>protector nocturno</strong> sencillo, <strong>férula blanda o flexible</strong>, <strong>férula de avance mandibular</strong> para ronquidos (la indica el especialista) y <strong>protector deportivo</strong>.</p>
+  <h4>Qué necesitas recibir</h4>
+  <ul>
+    <li>Escaneo de <strong>las dos arcadas</strong>.</li>
+    <li>La <strong>mordida</strong> registrada con la apertura que quiera el dentista, o cuántos milímetros abrir.</li>
+    <li>Arcada (arriba o abajo), material, tipo de guía, grosor mínimo y hasta dónde llega.</li>
+  </ul>
+  <h4>Paso a paso (sirve para exocad y para Blue Sky Plan)</h4>
+  <ol class="steps">
+    <li><div><b class="t">Cargar y revisar</b><p>Comprueba la mordida y que se ven todos los dientes, sobre todo la parte de atrás del último molar. Si falta, la férula no ajustará.</p></div></li>
+    <li><div><b class="t">Eje de inserción</b><p>Normalmente perpendicular al plano de mordida. Verás las retenciones en color.</p></div></li>
+    <li><div><b class="t">Rellenar retenciones</b><p>El programa rellena las zonas que impedirían entrar a la férula. Deja un poco de retención controlada para que «clique»: poca si el material es rígido y algo más si es flexible. Deja también un hueco mínimo por dentro para que asiente sin apretar. Usa las medidas del laboratorio.</p></div></li>
+    <li><div><b class="t">Dibujar el borde</b><p>Por fuera, en las muelas, cubre las puntas y un poco más abajo de la parte más abultada (para sujetar); en los dientes de delante, solo el borde. Por dentro, unos milímetros sobre la encía del paladar. Línea suave y continua.</p></div></li>
+    <li><div><b class="t">Grosor</b><p>Grosor mínimo de la férula (por ejemplo, 1,5 a 2 mm) y grosor de las paredes.</p></div></li>
+    <li><div><b class="t">Superficie plana</b><p>Con la herramienta de superficie plana o de adaptación al diente de enfrente, crea una superficie lisa donde todas las puntas de soporte toquen a la vez con la misma fuerza. Compruébalo en el mapa de colores.</p></div></li>
+    <li><div><b class="t">Rampas del canino y guía de delante</b><p>Añade rampas en los caninos. Con el articulador virtual mueve la mandíbula a la derecha, a la izquierda y hacia delante, y comprueba que las muelas se separan.</p></div></li>
+    <li><div><b class="t">Acabado</b><p>Suaviza, redondea bordes y quita bultos. Nada de esquinas afiladas.</p></div></li>
+    <li><div><b class="t">Revisar y exportar</b><p>Grosor mínimo en toda la férula, malla cerrada y, si lo pide el laboratorio, el código del caso grabado. Exporta el STL.</p></div></li>
+  </ol>
+  <h4>Errores típicos en férulas</h4>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Error</th><th>Qué pasa</th><th>Solución</th></tr></thead>
+    <tbody>
+      <tr><td>No cubrir el último molar</td><td>Ese molar puede «salirse» con el tiempo</td><td>Llega hasta el último diente</td></tr>
+      <tr><td>Huellas profundas en la superficie</td><td>La mandíbula queda bloqueada y no se relaja</td><td>Superficie plana con contactos pequeños</td></tr>
+      <tr><td>Demasiada retención en material rígido</td><td>No entra o se rompe al ponerla</td><td>Reduce la retención</td></tr>
+      <tr><td>Poca retención</td><td>Se cae</td><td>Cubre más por fuera o aumenta la retención según el material</td></tr>
+      <tr><td>Contactos solo de un lado</td><td>Carga desigual, incómoda</td><td>Contactos a los dos lados a la vez</td></tr>
+      <tr><td>Bordes afilados</td><td>Rozaduras en encía o lengua</td><td>Redondea y suaviza</td></tr>
+    </tbody>
+  </table></div>
+  <div class="ex"><span class="label">Ejercicios</span>
+    <label><input type="checkbox" id="ex-fer-1"><span>10 férulas de arriba tipo Michigan con rampa de canino.</span></label>
+    <label><input type="checkbox" id="ex-fer-2"><span>5 férulas de abajo.</span></label>
+    <label><input type="checkbox" id="ex-fer-3"><span>3 protectores nocturnos sencillos.</span></label>
+    <label><input type="checkbox" id="ex-fer-4"><span>Objetivo: menos de 30 minutos por férula.</span></label>
+  </div>
+</section>
+
+<section class="chapter" id="c14">
+  <header><span class="num">14</span><h3>Modelos para imprimir</h3><span class="sub">El trabajo más fácil para empezar</span></header>
+  <div class="summary"><span class="label">En pocas palabras</span><p>Conviertes el escaneo de la boca en un modelo de resina que se puede imprimir: con base, con muñones que se sacan o con implantes. Muy pedido y perfecto para empezar.</p></div>
+  <p>Cada vez más laboratorios reciben un escaneo en lugar de un molde. Para comprobar el ajuste, pintar la cerámica o hacer alineadores, <strong>hay que imprimir un modelo</strong>.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Tipo de modelo</th><th>Para qué sirve</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Sólido</strong></td><td>Estudio, ortodoncia, alineadores</td></tr>
+      <tr><td><strong>Hueco</strong></td><td>Lo mismo, gastando menos resina</td></tr>
+      <tr><td><strong>Con muñón que se saca</strong> (troquel)</td><td>Coronas y puentes: el técnico saca el muñón para trabajar el margen</td></tr>
+      <tr><td><strong>Con encía que se quita</strong></td><td>Coronas sobre implantes</td></tr>
+      <tr><td><strong>Con réplicas de implante</strong> (análogos)</td><td>Lleva un hueco donde se mete una copia metálica del implante</td></tr>
+      <tr><td><strong>Con encaje de articulador</strong></td><td>Para montarlo en un articulador de laboratorio</td></tr>
+    </tbody>
+  </table></div>
+  <h4>Paso a paso (exocad Model Creator y parecidos)</h4>
+  <ol class="steps">
+    <li><div><b class="t">Importar y orientar</b><p>Las dos arcadas en mordida, el plano de mordida horizontal y el centro de la boca centrado. Si orientas mal, la base sale torcida.</p></div></li>
+    <li><div><b class="t">Recortar</b><p>Quita lengua, mejillas y trozos sobrantes. Deja una franja de encía igual alrededor de los dientes.</p></div></li>
+    <li><div><b class="t">Elegir la base</b><p>Sólida o hueca. Si es hueca: paredes de 1,5 a 2,5 mm y <strong>agujeros de drenaje</strong> para que salga la resina líquida de dentro (si no, puede agrietarse o deformarse). Forma de herradura o con paladar, según el uso.</p></div></li>
+    <li><div><b class="t">Muñones que se sacan</b><p>Marca el margen como en una corona. El programa crea el muñón con una espiga que encaja en el modelo. La holgura entre muñón y modelo depende mucho de la impresora: usa la del laboratorio. El margen tiene que quedar totalmente a la vista.</p></div></li>
+    <li><div><b class="t">Implantes</b><p>Alinea el scanbody como en la lección 11. El programa crea el hueco de la réplica: usa la biblioteca de réplicas para modelo impreso. Opcional: encía que se quita.</p></div></li>
+    <li><div><b class="t">Extras</b><p>Encaje de articulador si lo usan y <strong>texto grabado</strong> con el código del caso y «SUP» o «INF», para que nadie mezcle modelos.</p></div></li>
+    <li><div><b class="t">Exportar</b><p>Comprueba que todo está cerrado y exporta <strong>cada pieza por separado</strong>: modelo de arriba, de abajo, cada muñón, la encía…</p></div></li>
+  </ol>
+  <div class="ex"><span class="label">Ejercicios</span>
+    <label><input type="checkbox" id="ex-mod-1"><span>10 pares de modelos sólidos de ortodoncia.</span></label>
+    <label><input type="checkbox" id="ex-mod-2"><span>10 pares de modelos huecos.</span></label>
+    <label><input type="checkbox" id="ex-mod-3"><span>5 modelos con muñón que se saca.</span></label>
+    <label><input type="checkbox" id="ex-mod-4"><span>3 modelos de implantes con réplica y encía que se quita.</span></label>
+  </div>
+</section>
+
+<section class="chapter" id="c15">
+  <header><span class="num">15</span><h3>Encerados y provisionales</h3><span class="sub">Enseñar el resultado antes de empezar</span></header>
+  <div class="summary"><span class="label">En pocas palabras</span><p>El encerado es «cómo quedarán los dientes», para que el paciente lo apruebe. Los provisionales son los dientes temporales mientras se hace el definitivo.</p></div>
+  <h4>Encerado diagnóstico digital</h4>
+  <ol class="steps">
+    <li><div><p>Recibes escaneos, <strong>fotos</strong> del paciente (sonriendo, serio, de frente y de lado) y las indicaciones del dentista.</p></div></li>
+    <li><div><p>Si tu programa lo permite (en exocad, el módulo de diseño de sonrisa), <strong>pones las fotos junto al escaneo</strong> para diseñar mirando la cara.</p></div></li>
+    <li><div><p>Colocas dientes de biblioteca con buenas proporciones: centro de la sonrisa alineado, borde de los dientes paralelo a la línea de los ojos y forma que encaje con la cara.</p></div></li>
+    <li><div><p>Se imprime el modelo encerado, se hace una llave de silicona y el dentista prueba los dientes en la boca con resina provisional (<strong>mock-up</strong>).</p></div></li>
+  </ol>
+  <h4>Provisionales</h4>
+  <p>Coronas o puentes temporales en resina (PMMA o resina impresa). Se diseñan como los definitivos, a menudo copiando el encerado o el diente de antes de tallar, y un poco más gruesos porque el material es menos resistente.</p>
+  <div class="ex"><span class="label">Ejercicios</span>
+    <label><input type="checkbox" id="ex-enc-1"><span>3 encerados de los seis dientes de delante de arriba (del 13 al 23).</span></label>
+    <label><input type="checkbox" id="ex-enc-2"><span>3 provisionales de puente de tres piezas.</span></label>
+  </div>
+</section>
+
+<section class="chapter" id="c16">
+  <header><span class="num">16</span><h3>Trabajos avanzados</h3><span class="sub">Para cuando ya domines lo anterior</span></header>
+  <div class="summary"><span class="label">En pocas palabras</span><p>Estos trabajos llegan cuando ya hagas bien coronas, férulas y modelos. Aquí tienes una idea de cada uno para que sepas que existen.</p></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Trabajo</th><th>Qué es</th><th>Lo que tienes que saber</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Dentadura completa</strong></td><td>Para personas sin dientes: dientes de prótesis sobre una base rosa</td><td>Altura de la mordida, centro, plano de mordida y colocación clásica de dientes. Módulo propio en exocad y en Blue Sky Plan</td></tr>
+      <tr><td><strong>Esquelético</strong></td><td>Prótesis que se quita, con estructura metálica y ganchos</td><td>Ganchos, apoyos y conectores, y estudio del eje de inserción. Módulo propio en exocad</td></tr>
+      <tr><td><strong>Guía de implantes</strong></td><td>Plantilla con anillas por donde pasa la fresa del dentista</td><td>Combina escaneo y TAC. <strong>El dentista decide dónde va el implante.</strong> Mucha responsabilidad: un error puede dañar un nervio</td></tr>
+      <tr><td><strong>Alineadores</strong></td><td>Mover virtualmente los dientes paso a paso hasta su sitio</td><td>Se imprime un modelo por paso. Requiere formación en ortodoncia y lo aprueba siempre el ortodoncista</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ================= PART 4 ================= -->
+<div class="part">
+  <span class="eyebrow">Parte 4</span>
+  <h2>Trabajar bien</h2>
+  <p>Lo que hace que un cliente vuelva a llamarte.</p>
+</div>
+
+<section class="chapter" id="c17">
+  <header><span class="num">17</span><h3>Lista de control</h3><span class="sub">Revísala antes de entregar cualquier trabajo</span></header>
+  <div class="note key"><span class="label">Consejo</span><p>Imprime esta lista y pégala junto a la pantalla. Antes de entregar, repasa cada punto. Siempre.</p></div>
+  <div class="qa">
+    <section><h4>Coronas, puentes e incrustaciones</h4><ul>
+      <li>Diente, trabajo y material coinciden con la orden.</li>
+      <li>Margen revisado en toda la vuelta, con zoom.</li>
+      <li>Eje de inserción correcto y retenciones rellenas.</li>
+      <li>Medidas iguales a las del laboratorio.</li>
+      <li>Contactos con los vecinos en su sitio y con la fuerza correcta.</li>
+      <li>Mordida: contactos pequeños, sin atravesamientos ni choques al moverse.</li>
+      <li>Crestas marginales a la altura de los vecinos.</li>
+      <li>Sale recta de la encía.</li>
+      <li>Grosor mínimo en toda la pieza (revisado con corte).</li>
+      <li>Conectores por encima del mínimo y con hueco para limpiar.</li>
+      <li>Forma natural, comparada con una referencia.</li>
+      <li>Malla cerrada y nombre de archivo correcto.</li>
+    </ul></section>
+    <section><h4>Férulas</h4><ul>
+      <li>Cubre todos los dientes.</li>
+      <li>Retención adecuada al material.</li>
+      <li>Contactos a los dos lados, a la vez y con la misma fuerza.</li>
+      <li>Rampa de canino y guía de delante correctas.</li>
+      <li>Grosor mínimo respetado.</li>
+      <li>Bordes redondeados y malla cerrada.</li>
+    </ul></section>
+    <section><h4>Modelos</h4><ul>
+      <li>Plano de mordida horizontal.</li>
+      <li>Muñones con el margen a la vista y holgura correcta.</li>
+      <li>Réplicas de implante de la biblioteca correcta.</li>
+      <li>Agujeros de drenaje si es hueco.</li>
+      <li>Código grabado.</li>
+      <li>Cada pieza exportada por separado.</li>
+    </ul></section>
+  </div>
+</section>
+
+<section class="chapter" id="c18">
+  <header><span class="num">18</span><h3>Errores de principiante</h3><span class="sub">Y cómo evitarlos</span></header>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Error</th><th>Por qué pasa</th><th>Cómo evitarlo</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Margen mal marcado</strong></td><td>Fiarse de la línea automática</td><td>Revisar toda la vuelta con zoom, desde varias vistas</td></tr>
+      <tr><td><strong>Coronas «caramelo»</strong>, redondas y sin forma</td><td>Suavizar demasiado</td><td>Suavizar poco y al final; marcar puntas y surcos</td></tr>
+      <tr><td><strong>Surcos demasiado profundos</strong></td><td>Querer que «se note la anatomía»</td><td>Surcos suaves, comparando con dientes reales</td></tr>
+      <tr><td><strong>Corona demasiado grande</strong></td><td>Cambiar el tamaño a ojo</td><td>Comparar con el vecino y con el del otro lado</td></tr>
+      <tr><td><strong>Contactos planos y grandes</strong></td><td>No retocar el ajuste automático</td><td>Contactos pequeños en puntas y hoyitos</td></tr>
+      <tr><td><strong>Olvidar la curva de Spee</strong></td><td>Mirar solo desde arriba</td><td>Mirar siempre también de lado</td></tr>
+      <tr><td><strong>Pieza demasiado fina</strong></td><td>Bonita pero frágil</td><td>Revisar el mapa de grosores antes de terminar</td></tr>
+      <tr><td><strong>Conectores finos</strong></td><td>Dar prioridad a la estética</td><td>Primero que aguante, después que sea bonito</td></tr>
+      <tr><td><strong>No avisar de un escaneo malo</strong></td><td>Miedo a molestar</td><td>Avisar siempre antes de diseñar: es ser profesional</td></tr>
+      <tr><td><strong>Trabajar sin las medidas del cliente</strong></td><td>Usar las que vienen por defecto</td><td>Pedir sus medidas por escrito antes del primer caso</td></tr>
+      <tr><td><strong>Archivos mezclados</strong></td><td>Las prisas</td><td>Una carpeta por caso y nombres fijos</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="chapter" id="c19">
+  <header><span class="num">19</span><h3>Entregar un trabajo</h3><span class="sub">Como una profesional</span></header>
+  <h4>Cómo nombrar los archivos</h4>
+  <p>Usa siempre el sistema del cliente. Si no tiene, propón uno claro: código del caso, dientes, trabajo, material y versión.</p>
+<div class="filename">LS-0153_36_corona_circonio_v1.stl
+LS-0154_45-47_puente_circonio_v1.stl
+LS-0160_SUP_ferula_v1.stl
+LS-0161_SUP_modelo_hueco_v1.stl
+LS-0161_SUP_troquel_16_v1.stl</div>
+  <h4>Qué entregar</h4>
+  <ul>
+    <li>El <strong>STL</strong> de cada pieza que hay que fabricar.</li>
+    <li>El <strong>proyecto</strong>, si el cliente usa el mismo programa y quiere retocarlo.</li>
+    <li><strong>Capturas</strong> desde arriba, de frente y con los contactos: ayudan a aprobar rápido.</li>
+    <li><strong>Notas</strong> con lo importante. Por ejemplo: «el grosor en la punta de delante está justo; recomiendo revisar el tallado».</li>
+  </ul>
+  <h4>Cómo enviar y en cuánto tiempo</h4>
+  <ul>
+    <li>Por las plataformas profesionales que use el cliente o por un almacenamiento seguro acordado. <strong>Nunca</strong> por redes sociales ni mensajería.</li>
+    <li>Acuerda por escrito la hora límite (por ejemplo, «lo que llegue antes de las 12:00 se entrega ese día»), las urgencias y cómo se hacen las correcciones.</li>
+  </ul>
+</section>
+
+<!-- ================= PART 5 ================= -->
+<div class="part">
+  <span class="eyebrow">Parte 5</span>
+  <h2>Tu camino</h2>
+  <p>El plan, los clientes y todo lo que necesitas para seguir.</p>
+</div>
+
+<section class="chapter" id="c20">
+  <header><span class="num">20</span><h3>Plan de 16 semanas</h3><span class="sub">De 2 a 3 horas al día, cinco días a la semana</span></header>
+  <p>Si tienes menos tiempo, alarga el plan, pero <strong>no te saltes fases</strong>.</p>
+  <div class="plan">
+    <div class="week"><span class="w">1<small>semana</small></span><div><b>Números y caras de los dientes</b><span>Dibuja incisivos y caninos a mano.</span></div></div>
+    <div class="week"><span class="w">2<small>semana</small></span><div><b>Anatomía y 3D básico</b><span>Dibuja premolares y molares. Meshmixer: ejercicios A y B.</span></div></div>
+    <div class="week"><span class="w">3<small>semana</small></span><div><b>Mordida y mallas</b><span>Estudia la oclusión. Meshmixer: ejercicio C.</span></div></div>
+    <div class="week"><span class="w">4<small>semana</small></span><div><b>Blue Sky Plan</b><span>Modelos y tu primera férula.</span></div></div>
+    <div class="week"><span class="w">5<small>semana</small></span><div><b>Conocer exocad</b><span>Crear casos, moverte, cargar escaneos y leer el manual oficial.</span></div></div>
+    <div class="week"><span class="w">6<small>semana</small></span><div><b>Coronas de muela I</b><span>10 molares, cuidando margen y contactos.</span></div></div>
+    <div class="week"><span class="w">7<small>semana</small></span><div><b>Coronas de muela II</b><span>10 premolares y 10 molares de arriba, cronometrando.</span></div></div>
+    <div class="week"><span class="w">8<small>semana</small></span><div><b>Coronas de delante</b><span>5 centrales, 5 laterales y 5 caninos, con espejo.</span></div></div>
+    <div class="week"><span class="w">9<small>semana</small></span><div><b>Férulas</b><span>10 férulas tipo Michigan con rampa de canino.</span></div></div>
+    <div class="week"><span class="w">10<small>semana</small></span><div><b>Modelos</b><span>Sólidos, huecos y con muñón que se saca.</span></div></div>
+    <div class="week"><span class="w">11<small>semana</small></span><div><b>Puentes</b><span>10 puentes de delante y de atrás, cuidando los conectores.</span></div></div>
+    <div class="week"><span class="w">12<small>semana</small></span><div><b>Implantes I</b><span>Coronas atornilladas sobre Ti-base.</span></div></div>
+    <div class="week"><span class="w">13<small>semana</small></span><div><b>Implantes II</b><span>Pilares personalizados y modelos con réplicas.</span></div></div>
+    <div class="week"><span class="w">14<small>semana</small></span><div><b>Incrustaciones y carillas</b><span>5 onlays y 3 casos de carillas.</span></div></div>
+    <div class="week"><span class="w">15<small>semana</small></span><div><b>Velocidad y calidad</b><span>Casos cronometrados con la lista de control. Pide a un técnico con experiencia que revise tus diseños.</span></div></div>
+    <div class="week"><span class="w">16<small>semana</small></span><div><b>Portfolio</b><span>Elige tus 20 mejores casos y prepara tus precios.</span></div></div>
+  </div>
+  <div class="note tip"><span class="label">Después de la semana 16</span><p>Sigue practicando cada día y empieza con casos reales sencillos: modelos, férulas y coronas de muela. Deja las dentaduras, esqueléticos, guías y ortodoncia para cuando lleves varios meses trabajando.</p></div>
+  <div class="note key"><span class="label">El mejor consejo que te puedo dar</span><p>Busca una <strong>mentora o mentor</strong>: un técnico dental con experiencia en diseño que revise tus trabajos una vez por semana, aunque tengas que pagarle. Sola en casa es fácil repetir los mismos errores sin darte cuenta.</p></div>
+</section>
+
+<section class="chapter" id="c21">
+  <header><span class="num">21</span><h3>Conseguir clientes</h3><span class="sub">Y trabajar desde casa</span></header>
+  <h4>Tu portfolio</h4>
+  <ul>
+    <li>Entre 15 y 25 casos variados: coronas, férulas, modelos, puentes e implantes.</li>
+    <li>Capturas limpias, fondo neutro, varias vistas y el mapa de contactos.</li>
+    <li><strong>Nunca</strong> datos de pacientes.</li>
+    <li>Una web sencilla o un PDF, y un perfil de LinkedIn cuidado.</li>
+  </ul>
+  <h4>Dónde buscar clientes</h4>
+  <ol class="steps">
+    <li><div><p><strong>Laboratorios dentales</strong> de tu zona y de toda España. Muchos van desbordados. Preséntate y ofrece un caso de prueba gratis para que vean tu calidad.</p></div></li>
+    <li><div><p><strong>Clínicas con escáner</strong> y fresadora o impresora propia, sobre todo para modelos y férulas.</p></div></li>
+    <li><div><p><strong>Centros de fresado</strong> y <strong>empresas de diseño dental</strong> que contratan diseñadoras a distancia.</p></div></li>
+    <li><div><p><strong>LinkedIn</strong> y grupos profesionales de usuarios de exocad y 3Shape.</p></div></li>
+    <li><div><p><strong>Plataformas de trabajo freelance:</strong> mucha competencia en precio, pero útiles al principio para coger experiencia.</p></div></li>
+    <li><div><p><strong>Distribuidores de exocad y 3Shape:</strong> a veces conocen laboratorios que buscan diseñadoras.</p></div></li>
+    <li><div><p><strong>España y Latinoamérica:</strong> hablar español y atender en el mismo horario es una ventaja.</p></div></li>
+  </ol>
+  <h4>Cuánto cobrar</h4>
+  <p>El precio del diseño <strong>cambia muchísimo</strong> según el país, tu experiencia, la urgencia y el volumen. Hay competencia de otros países muy barata, así que tu valor está en la <strong>calidad, la rapidez, la comunicación y la cercanía</strong>. Antes de poner precios, pregunta a laboratorios y mira qué cobran otras diseñadoras.</p>
+  <ul>
+    <li>Se suele cobrar <strong>por pieza o por caso</strong> (una corona, una férula, un par de modelos…).</li>
+    <li>Suplementos por <strong>urgencia</strong> o <strong>complejidad</strong> (implantes, estética, casos grandes) y descuentos por <strong>volumen</strong>.</li>
+    <li>Incluye una o dos rondas de <strong>correcciones</strong> razonables.</li>
+    <li>No compitas solo por precio: siempre habrá alguien más barato.</li>
+  </ul>
+  <h4>Papeles en España</h4>
+  <ul>
+    <li><strong>Alta como autónoma</strong> en Hacienda y en la Seguridad Social. Infórmate de la <strong>cuota reducida para nuevas autónomas</strong> vigente.</li>
+    <li>La <strong>actividad</strong> en la que darte de alta y si tus facturas llevan <strong>IVA</strong> dependen de tu titulación y de cómo prestes el servicio. <strong>Pregúntalo a una gestoría</strong> antes de tu primera factura.</li>
+    <li>Un <strong>contrato sencillo</strong> con cada cliente y el de protección de datos.</li>
+    <li><strong>Seguro de responsabilidad civil</strong> profesional: muy recomendable.</li>
+    <li><strong>Licencia de software a tu nombre</strong> para uso comercial. Una licencia de prueba o de estudiante no sirve para trabajar cobrando.</li>
+  </ul>
+  <div class="note tip"><span class="label">La inteligencia artificial</span><p>Ya hay herramientas que proponen coronas solas. No te asustes: las coronas sencillas serán cada vez más automáticas, y el valor estará en <strong>revisar y corregir</strong> lo que propone la máquina, en los <strong>casos difíciles</strong> y en el <strong>trato con el laboratorio</strong>. Aprende a usarlas, porque te harán mucho más rápida. Pero sin saber de dientes no sabrás si lo que propone está bien. Por eso esta guía insiste tanto en lo básico.</p></div>
+</section>
+
+<section class="chapter" id="c22">
+  <header><span class="num">22</span><h3>Dónde seguir aprendiendo</h3><span class="sub">Recursos de confianza</span></header>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Tipo</th><th>Recursos</th></tr></thead>
+    <tbody>
+      <tr><td>Oficiales</td><td>Manual en línea de exocad (exocad Wiki) y su canal de vídeos · 3Shape Academy · Tutoriales de Blue Sky Plan · Fichas técnicas de cada material</td></tr>
+      <tr><td>Formación reglada</td><td>FP de Grado Superior en Prótesis Dentales · Cursos de exocad y 3Shape de distribuidores oficiales (mejor si incluyen práctica y licencia)</td></tr>
+      <tr><td>Libros</td><td><em>Wheeler. Anatomía, fisiología y oclusión dental</em> (Nelson) · <em>Anatomía odontológica funcional y aplicada</em> (Figún y Garino) · <em>Tratamiento de oclusión y afecciones temporomandibulares</em> (Okeson), la referencia para mordida y férulas</td></tr>
+      <tr><td>Práctica</td><td>Casos de ejemplo de los programas · Escaneos sin datos de pacientes de laboratorios y clínicas · Modelos de dientes para estudiar o fotos de calidad</td></tr>
+      <tr><td>Comunidad</td><td>Grupos profesionales de usuarios de exocad y 3Shape · Congresos y ferias del sector dental</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="chapter" id="c23">
+  <header><span class="num">23</span><h3>Glosario</h3><span class="sub">Las palabras raras, en cristiano</span></header>
+  <dl class="glossary">
+    <div><dt>Análogo (réplica)</dt><dd>Copia metálica de un implante que se pone en el modelo.</dd></div>
+    <div><dt>Antagonista</dt><dd>El diente o la arcada de enfrente.</dd></div>
+    <div><dt>Articulador virtual</dt><dd>Simulador de los movimientos de la mandíbula.</dd></div>
+    <div><dt>Biblioteca</dt><dd>Formas ya hechas de dientes, implantes o pilares.</dd></div>
+    <div><dt>CAD / CAM</dt><dd>Diseñar / fabricar con ordenador.</dd></div>
+    <div><dt>Chamfer (chaflán)</dt><dd>Margen del tallado con el borde curvo.</dd></div>
+    <div><dt>Color del diente (guía VITA)</dt><dd>Código del color que pide el dentista, como A2 o A3. Lo usa el laboratorio al terminar la pieza.</dd></div>
+    <div><dt>Conector</dt><dd>Unión entre las piezas de un puente.</dd></div>
+    <div><dt>Cut-back</dt><dd>Reducir el diseño para que el ceramista añada cerámica.</dd></div>
+    <div><dt>Eje de inserción</dt><dd>Dirección en la que la pieza entra y sale.</dd></div>
+    <div><dt>Espacio de cemento</dt><dd>Hueco finísimo entre corona y muñón para el cemento.</dd></div>
+    <div><dt>Férula de descarga</dt><dd>Placa rígida contra el bruxismo y los problemas de la mandíbula.</dd></div>
+    <div><dt>Guía canina / anterior</dt><dd>Contactos que guían la mandíbula hacia los lados / hacia delante.</dd></div>
+    <div><dt>Interferencia</dt><dd>Choque que no debería existir al mover la mandíbula.</dd></div>
+    <div><dt>Malla</dt><dd>Superficie 3D hecha de triángulos.</dd></div>
+    <div><dt>Margen</dt><dd>Borde del tallado donde termina la corona.</dd></div>
+    <div><dt>Mock-up</dt><dd>Prueba en boca del diseño con resina provisional.</dd></div>
+    <div><dt>Muñón</dt><dd>Diente tallado que recibe la corona.</dd></div>
+    <div><dt>Perfil de emergencia</dt><dd>Forma con la que la corona sale de la encía.</dd></div>
+    <div><dt>Pilar</dt><dd>Diente que sujeta un puente, o pieza entre implante y corona.</dd></div>
+    <div><dt>Póntico</dt><dd>Diente «falso» de un puente.</dd></div>
+    <div><dt>Retención</dt><dd>Zona escondida que impide que la pieza entre.</dd></div>
+    <div><dt>Scanbody</dt><dd>Pieza que se enrosca al implante para escanear su posición.</dd></div>
+    <div><dt>STL / PLY</dt><dd>Archivos 3D sin color / con color.</dd></div>
+    <div><dt>Ti-base</dt><dd>Base de titanio donde se pega una corona sobre implante.</dd></div>
+    <div><dt>Tronera</dt><dd>Hueco en «V» alrededor del punto de contacto.</dd></div>
+    <div><dt>Troquel</dt><dd>Muñón que se saca del modelo.</dd></div>
+    <div><dt>Encerado (wax-up)</dt><dd>Propuesta de cómo quedarán los dientes.</dd></div>
+  </dl>
+</section>
+
+<section class="chapter" id="c24">
+  <header><span class="num">24</span><h3>Chuleta de medidas</h3><span class="sub">Para estudiar, no para trabajar sin mirar la ficha</span></header>
+  <div class="note warn"><span class="label">Recuerda</span><p>Son valores orientativos habituales. En el trabajo real, usa siempre los del fabricante y los del laboratorio.</p></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Concepto</th><th>Valor orientativo</th></tr></thead>
+    <tbody>
+      <tr><td>Espacio de cemento en el margen</td><td class="mono">0–0,02 mm</td></tr>
+      <tr><td>Espacio de cemento extra</td><td class="mono">0,03–0,08 mm</td></tr>
+      <tr><td>Distancia al margen</td><td class="mono">0,5–1,0 mm</td></tr>
+      <tr><td>Circonio monolítico, grosor arriba</td><td class="mono">0,5–1,0 mm</td></tr>
+      <tr><td>Disilicato, corona: arriba / paredes</td><td class="mono">~1,5 / 1,0–1,5 mm</td></tr>
+      <tr><td>Carilla de disilicato</td><td class="mono">0,3–0,6 mm</td></tr>
+      <tr><td>Provisional de resina</td><td class="mono">1,0–1,5 mm</td></tr>
+      <tr><td>Conector de circonio: delante / atrás</td><td class="mono">7–9 / 9–12 mm²</td></tr>
+      <tr><td>Conector de disilicato (puentes cortos)</td><td class="mono">12–16 mm²</td></tr>
+      <tr><td>Férula, grosor mínimo</td><td class="mono">1,5–2,0 mm</td></tr>
+      <tr><td>Pared de modelo hueco</td><td class="mono">1,5–2,5 mm</td></tr>
+      <tr><td>Incisivo central: ancho respecto al largo</td><td class="mono">75–80 %</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="chapter" id="c25">
+  <header><span class="num">25</span><h3>Examen final</h3><span class="sub">Contesta antes de mirar la respuesta</span></header>
+  <p>Cuando respondas bien a todo esto <strong>sin mirar</strong>, estarás preparada para tus primeros clientes.</p>
+  <div class="quiz">
+    <details><summary>¿Qué diente es el 46? ¿Y el 23?</summary><p>El 46 es el primer molar de abajo a la derecha del paciente. El 23 es el canino de arriba a la izquierda.</p></details>
+    <details><summary>¿Cuáles son las cúspides de soporte arriba y abajo?</summary><p>Arriba, las de dentro (palatinas). Abajo, las de fuera (vestibulares).</p></details>
+    <details><summary>¿Qué es la guía canina y por qué la férula lleva rampas?</summary><p>Al mover la mandíbula hacia un lado, solo toca el canino y separa el resto. La rampa de la férula lo reproduce para proteger las muelas y ayudar a relajar los músculos.</p></details>
+    <details><summary>¿Por qué la corona no debe salir abombada de la encía?</summary><p>Porque acumula placa y la encía se inflama.</p></details>
+    <details><summary>¿Qué pasa si marcas mal el margen?</summary><p>La corona no ajusta: se queda corta (y entran bacterias) o se pasa (y daña la encía). Hay que repetirla.</p></details>
+    <details><summary>¿Para qué sirve el espacio de cemento y por qué es menor cerca del margen?</summary><p>Deja sitio al cemento para que la corona baje del todo. Cerca del margen es menor para que el cierre sea lo más ajustado posible.</p></details>
+    <details><summary>¿Qué diferencia hay entre un póntico ovoide y uno higiénico?</summary><p>El ovoide entra un poco en la encía y es muy estético. El higiénico no toca la encía, para que se limpie fácil; se usa en muelas de abajo.</p></details>
+    <details><summary>¿Por qué un conector debe ser más alto que ancho?</summary><p>Porque la resistencia a romperse crece mucho más con la altura que con la anchura.</p></details>
+    <details><summary>¿Qué es un scanbody y qué haces si no coincide con la biblioteca?</summary><p>La pieza que se enrosca al implante para escanear su posición. Si no coincide, no diseñas: avisas al cliente.</p></details>
+    <details><summary>¿Por qué un modelo hueco lleva agujeros de drenaje?</summary><p>Para que salga la resina líquida de dentro. Si se queda, el modelo puede agrietarse o deformarse.</p></details>
+    <details><summary>¿Qué necesitas como mínimo para diseñar una férula?</summary><p>Las dos arcadas, la mordida con la apertura indicada, qué arcada, material, tipo de guía y grosor.</p></details>
+    <details><summary>¿Qué haces si te llega un escaneo en el que no se ve el margen?</summary><p>No diseñas. Avisas al cliente y pides un escaneo nuevo o indicaciones.</p></details>
+    <details><summary>¿Por qué no debes recibir casos con el nombre del paciente?</summary><p>Porque son datos de salud, los más protegidos por la ley de protección de datos.</p></details>
+    <details><summary>Di cinco puntos de la lista de control de coronas.</summary><p>Por ejemplo: margen revisado, contactos con los vecinos, mordida sin choques, grosor mínimo, salida recta de la encía, malla cerrada…</p></details>
+    <details><summary>¿Qué diferencia hay entre STL y PLY?</summary><p>El STL guarda solo la forma. El PLY guarda la forma y el color.</p></details>
+  </div>
+  <h4>Examen práctico (cronometrado)</h4>
+  <div class="ex"><span class="label">Tu prueba final</span>
+    <label><input type="checkbox" id="ex-fin-1"><span>Una corona de muela en menos de 20 minutos, pasando toda la lista de control.</span></label>
+    <label><input type="checkbox" id="ex-fin-2"><span>Una férula tipo Michigan con rampa de canino en menos de 30 minutos.</span></label>
+    <label><input type="checkbox" id="ex-fin-3"><span>Un par de modelos con muñón que se saca en menos de 20 minutos.</span></label>
+    <label><input type="checkbox" id="ex-fin-4"><span>Un técnico con experiencia ha revisado los tres y te da el visto bueno.</span></label>
+  </div>
+  <p>Si lo consigues con buena calidad, <strong>ya estás lista para empezar a trabajar desde casa.</strong></p>
+</section>
+
+<div class="closing">
+  <h3>Unas últimas palabras</h3>
+  <p>Nadie diseña bien sus primeras cincuenta coronas. Es normal que al principio tardes una hora y el resultado no te guste. Sigue el plan, compárate con dientes de verdad, deja que te corrijan y no te saltes la anatomía ni la mordida.</p>
+  <p>En unos meses de práctica constante notarás el cambio, y en un año puedes tener una profesión de verdad que te permita trabajar desde casa.</p>
+  <p>¡Mucho ánimo y a practicar!</p>
+  <p class="sig">Tu profesora</p>
+</div>
+
+</div>
+</main>
+</div>
+
+<script>
+(function(){
+  /* ---- Progress (saved only in this browser) ---- */
+  var KEY = 'guiaDental.v1';
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { state = {}; }
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('.ex input[type="checkbox"]'));
+  function update(){
+    var done = boxes.filter(function(b){ return b.checked; }).length;
+    var pct = boxes.length ? (done / boxes.length * 100) : 0;
+    document.querySelectorAll('[data-progress-text]').forEach(function(el){ el.textContent = done + ' de ' + boxes.length; });
+    document.querySelectorAll('[data-progress-bar]').forEach(function(el){ el.style.width = pct + '%'; });
+  }
+  boxes.forEach(function(b){
+    if (state[b.id]) b.checked = true;
+    b.addEventListener('change', function(){
+      state[b.id] = b.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+      update();
+    });
+  });
+  update();
+
+  /* ---- Tooth chart ---- */
+  var names = {1:'incisivo central',2:'incisivo lateral',3:'canino',4:'primer premolar',5:'segundo premolar',6:'primer molar',7:'segundo molar',8:'tercer molar (muela del juicio)'};
+  var quads = {1:'de arriba a la derecha',2:'de arriba a la izquierda',3:'de abajo a la izquierda',4:'de abajo a la derecha'};
+  var out = document.getElementById('toothOut');
+  var current = null;
+  function makeRow(el, list){
+    list.forEach(function(n){
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = n;
+      btn.setAttribute('aria-pressed','false');
+      btn.setAttribute('aria-label','Diente ' + n);
+      btn.addEventListener('click', function(){
+        if (current) current.setAttribute('aria-pressed','false');
+        btn.setAttribute('aria-pressed','true');
+        current = btn;
+        var q = Math.floor(n / 10), p = n % 10;
+        var name = names[p];
+        out.innerHTML = '<b>' + n + '</b> · ' + name.charAt(0).toUpperCase() + name.slice(1) + ' ' + quads[q] + ' del paciente.';
+      });
+      el.appendChild(btn);
+    });
+  }
+  makeRow(document.getElementById('archUp'), [18,17,16,15,14,13,12,11,21,22,23,24,25,26,27,28]);
+  makeRow(document.getElementById('archLow'), [48,47,46,45,44,43,42,41,31,32,33,34,35,36,37,38]);
+  var sc = document.querySelector('.teeth-scroll');
+  if (sc) sc.scrollLeft = (sc.scrollWidth - sc.clientWidth) / 2;
+
+  /* ---- Mobile index ---- */
+  var toc = document.getElementById('toc');
+  var openBtn = document.getElementById('openToc');
+  var closeBtn = document.getElementById('closeToc');
+  function setOpen(v){ toc.classList.toggle('open', v); openBtn.setAttribute('aria-expanded', v ? 'true' : 'false'); }
+  openBtn.addEventListener('click', function(){ setOpen(true); });
+  closeBtn.addEventListener('click', function(){ setOpen(false); });
+  toc.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ setOpen(false); }); });
+
+  /* ---- Highlight current lesson in the index ---- */
+  var links = {};
+  toc.querySelectorAll('a[href^="#c"]').forEach(function(a){ links[a.getAttribute('href').slice(1)] = a; });
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){
+          Object.keys(links).forEach(function(k){ links[k].classList.remove('active'); });
+          var l = links[e.target.id]; if (l) l.classList.add('active');
+        }
+      });
+    }, {rootMargin:'-20% 0px -70% 0px'});
+    document.querySelectorAll('section.chapter').forEach(function(s){ io.observe(s); });
+  }
+})();
+</script>
